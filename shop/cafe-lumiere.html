@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAFÉ LUMIÈRE — 大阪市北区のカフェ | ハレマップ</title>
+<meta name="description" content="CAFÉ LUMIÈRE（大阪市北区）は洗練された空間と珈琲が自慢のデザインカフェ。HARE COLLECTION 2026 協力店舗。営業時間・アクセス・Instagram情報はハレマップでご確認ください。">
+<meta property="og:title" content="CAFÉ LUMIÈRE | ハレマップ">
+<meta property="og:description" content="洗練された空間と珈琲が自慢のデザインカフェ。大阪市北区。HARE COLLECTION 2026 協力店舗。">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "CAFÉ LUMIÈRE",
+  "description": "洗練された空間と珈琲が自慢のデザインカフェ。深夜まで営業。",
+  "address": { "@type": "PostalAddress", "addressLocality": "大阪市北区", "addressRegion": "大阪府", "addressCountry": "JP" },
+  "url": "https://haremap.vercel.app/shop/cafe-lumiere"
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pk:#FF1493;--pk2:#d60f7d;--bg:#000;--bg2:#0a0a0a;--bg3:#111;--bd:#1e1e1e;--bd2:#2a2a2a;--t1:#fff;--t2:#999;--t3:#444;--card:rgba(255,255,255,0.03)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:'Montserrat','Noto Sans JP',sans-serif}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(0,0,0,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;gap:16px}
+.nav-logo{font-size:22px;font-weight:700;letter-spacing:.05em}
+.nav-logo span{color:var(--pk)}
+.nav-back{font-size:11px;color:var(--t3);letter-spacing:.1em;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--t1)}
+
+/* BREADCRUMB */
+.bread{border-bottom:1px solid var(--bd);background:var(--bg2)}
+.bread-inner{max-width:1280px;margin:0 auto;padding:10px 24px;font-size:11px;color:var(--t3);letter-spacing:.05em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bread a{color:var(--t3);transition:color .2s}
+.bread a:hover{color:var(--pk)}
+.bread-sep{color:#2a2a2a}
+
+/* HERO PHOTO */
+.shop-hero{
+  width:100%;height:360px;
+  background:linear-gradient(135deg,#1a0d06 0%,#0a0808 50%,#100d00 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.shop-hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.85));
+}
+.hero-photo-hint{position:relative;z-index:1;font-size:10px;letter-spacing:.4em;color:rgba(255,20,147,.2);text-transform:uppercase}
+.hero-premium-badge{
+  position:absolute;top:20px;left:24px;z-index:2;
+  background:var(--pk);color:#fff;
+  font-size:9px;letter-spacing:.25em;padding:5px 14px;text-transform:uppercase;
+}
+.hero-photo-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;
+  width:100%;height:100%;position:absolute;inset:0;opacity:.35;
+}
+.hpg-cell{background:linear-gradient(135deg,#1a0d06,#050505)}
+
+/* LAYOUT */
+.detail-wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.detail-layout{display:grid;grid-template-columns:1fr 340px;gap:32px;padding:32px 0 64px;align-items:start}
+
+/* Shop header */
+.shop-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.badge{font-size:9px;letter-spacing:.2em;padding:4px 10px}
+.badge-prem{background:var(--pk);color:#fff}
+.badge-cat{border:1px solid var(--bd2);color:var(--t3)}
+.badge-hare{border:1px solid rgba(255,20,147,.3);color:var(--pk)}
+.shop-name{font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:.04em;margin-bottom:8px}
+.shop-area{font-size:13px;color:var(--t2);letter-spacing:.06em;margin-bottom:20px}
+
+/* Tags */
+.shop-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.stag{font-size:10px;letter-spacing:.08em;padding:5px 12px;border:1px solid var(--bd);color:var(--t2)}
+
+/* Desc */
+.section-label{font-size:9px;letter-spacing:.35em;color:var(--t3);text-transform:uppercase;margin-bottom:12px}
+.section-label.accent{color:var(--pk)}
+.shop-desc{font-size:14px;color:var(--t2);line-height:1.85;letter-spacing:.03em;margin-bottom:32px}
+
+/* Photos */
+.photo-section{margin-bottom:32px}
+.photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+.photo-cell{
+  aspect-ratio:1;
+  background:linear-gradient(135deg,#1a0d06,#050a1a,#100d00);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;letter-spacing:.2em;color:rgba(255,255,255,.06);
+  border:1px solid var(--bd);
+}
+.photo-cell:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:200px}
+
+/* IG feed */
+.ig-section{margin-bottom:32px}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ig-cell{
+  aspect-ratio:1;
+  background:linear-gradient(135deg,#0d0608,#060a0d);
+  border:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;letter-spacing:.15em;color:rgba(255,255,255,.06);
+}
+
+/* Map */
+.map-section{margin-bottom:32px}
+#shopMap{height:220px;border:1px solid var(--bd)}
+.leaflet-container{background:#080808}
+.leaflet-control-attribution{background:rgba(0,0,0,.6)!important}
+.leaflet-control-attribution,.leaflet-control-attribution a{color:#333!important}
+
+/* HARE block */
+.hare-block{
+  border:1px solid rgba(255,20,147,.15);
+  background:rgba(255,20,147,.03);
+  border-left:3px solid var(--pk);
+  padding:20px 24px;margin-bottom:32px;
+}
+.hare-block-title{font-size:10px;letter-spacing:.3em;color:var(--pk);margin-bottom:8px;text-transform:uppercase}
+.hare-block-text{font-size:12px;color:var(--t2);line-height:1.75;letter-spacing:.03em}
+
+/* SIDEBAR */
+.shop-side{position:sticky;top:80px}
+.side-box{border:1px solid var(--bd);background:var(--card);padding:24px;margin-bottom:16px}
+.side-title{font-size:9px;letter-spacing:.3em;color:var(--t3);text-transform:uppercase;margin-bottom:16px}
+.side-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd)}
+.side-row:last-child{border-bottom:none;padding-bottom:0}
+.side-key{font-size:9px;color:var(--t3);letter-spacing:.1em;margin-bottom:3px;text-transform:uppercase}
+.side-val{font-size:13px;color:var(--t1);letter-spacing:.03em}
+.side-val.dim{color:var(--t3)}
+.side-marker{width:3px;height:3px;border-radius:50%;background:var(--t3);flex-shrink:0;margin-top:8px}
+
+.btn-ig{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px;border:1px solid var(--pk);
+  color:var(--pk);font-size:11px;font-weight:600;letter-spacing:.1em;
+  transition:all .2s;margin-bottom:10px;
+}
+.btn-ig:hover{background:var(--pk);color:#fff}
+.side-note{font-size:10px;color:var(--t3);line-height:1.65;letter-spacing:.04em;text-align:center;padding:10px 0}
+
+/* RELATED */
+.related-sec{border-top:1px solid var(--bd);padding:48px 0 64px}
+.related-title{font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--t3);text-transform:uppercase;margin-bottom:20px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;border:1px solid var(--bd)}
+.rel-card{
+  background:var(--card);
+  overflow:hidden;transition:background .2s;
+}
+.rel-card:hover{background:rgba(255,255,255,.04)}
+.rel-photo{
+  height:100px;
+  background:linear-gradient(135deg,#0a0a0a,#050505);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;color:rgba(255,255,255,.06);letter-spacing:.2em;
+}
+.rel-body{padding:14px}
+.rel-name{font-size:12px;font-weight:600;margin-bottom:5px;letter-spacing:.03em}
+.rel-area{font-size:10px;color:var(--t3);letter-spacing:.06em}
+
+/* FOOTER */
+footer{padding:40px 24px;border-top:1px solid var(--bd);text-align:center}
+.ft-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--pk),transparent);margin-bottom:22px}
+.ft-logo{font-size:14px;font-weight:700;letter-spacing:.06em;margin-bottom:6px}
+.ft-logo span{color:var(--pk)}
+.ft-sub{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase}
+
+@media(max-width:900px){
+  .detail-layout{grid-template-columns:1fr;gap:24px}
+  .shop-side{position:static}
+  .shop-hero{height:220px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">ハレ<span>マップ</span></a>
+    <a href="../index.html" class="nav-back">← 店舗一覧に戻る</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="bread">
+  <div class="bread-inner">
+    <a href="../index.html">ハレマップ</a>
+    <span class="bread-sep">›</span>
+    <a href="../index.html">カフェ</a>
+    <span class="bread-sep">›</span>
+    <a href="../index.html">大阪市北区</a>
+    <span class="bread-sep">›</span>
+    <span style="color:var(--t2)">CAFÉ LUMIÈRE</span>
+  </div>
+</div>
+
+<!-- HERO PHOTO -->
+<div class="shop-hero">
+  <span class="hero-premium-badge">PREMIUM</span>
+  <div class="hero-photo-grid">
+    <div class="hpg-cell"></div>
+    <div class="hpg-cell" style="background:linear-gradient(135deg,#0d0a00,#050505)"></div>
+    <div class="hpg-cell" style="background:linear-gradient(135deg,#1a0d00,#050505)"></div>
+  </div>
+  <span class="hero-photo-hint">PHOTO GALLERY</span>
+</div>
+
+<!-- MAIN -->
+<div class="detail-wrap">
+  <div class="detail-layout">
+
+    <!-- LEFT -->
+    <div class="shop-main">
+
+      <div class="shop-badges">
+        <span class="badge badge-prem">PREMIUM</span>
+        <span class="badge badge-cat">カフェ</span>
+        <span class="badge badge-hare">HARE COLLECTION 2026</span>
+      </div>
+
+      <h1 class="shop-name">CAFÉ LUMIÈRE</h1>
+      <div class="shop-area">大阪市北区</div>
+
+      <div class="shop-tags">
+        <span class="stag">コーヒー</span>
+        <span class="stag">夜カフェ</span>
+        <span class="stag">インスタ映え</span>
+        <span class="stag">デザイン空間</span>
+        <span class="stag">深夜営業</span>
+      </div>
+
+      <div class="section-label accent">About</div>
+      <div class="shop-desc">
+        洗練された空間と珈琲が自慢のデザインカフェ。深夜まで営業しており、仕事帰りや夜の街歩きに最適な環境を提供しています。内装はすべてシェフ兼オーナーがデザインした統一された世界観で構成されており、HARE COLLECTIONの美学と高い親和性を持ちます。季節限定のスペシャルティコーヒーも展開中。
+      </div>
+
+      <!-- Photos -->
+      <div class="photo-section">
+        <div class="section-label">Photos</div>
+        <div class="photo-grid">
+          <div class="photo-cell">MAIN</div>
+          <div class="photo-cell">INTERIOR</div>
+          <div class="photo-cell">MENU</div>
+          <div class="photo-cell">DETAIL</div>
+          <div class="photo-cell">EXTERIOR</div>
+        </div>
+      </div>
+
+      <!-- IG Feed -->
+      <div class="ig-section">
+        <div class="section-label">Instagram</div>
+        <div class="ig-grid">
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+          <div class="ig-cell">POST</div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-section">
+        <div class="section-label">Access</div>
+        <div id="shopMap"></div>
+      </div>
+
+      <!-- HARE block -->
+      <div class="hare-block">
+        <div class="hare-block-title">HARE COLLECTION 2026 協力店舗</div>
+        <div class="hare-block-text">
+          CAFÉ LUMIÈRE は HARE COLLECTION 2026 の協力店舗です。店内にポスターを掲載中。<br>
+          本番は2026年8月8日（大阪）。チケット・詳細は公式SNSをご確認ください。
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Sidebar -->
+    <div class="shop-side">
+
+      <div class="side-box" style="padding:20px">
+        <a href="https://www.instagram.com" target="_blank" class="btn-ig">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+          Instagram を見る
+        </a>
+        <div class="side-note">電話番号・予約はInstagramのプロフィールよりご確認ください。</div>
+      </div>
+
+      <div class="side-box">
+        <div class="side-title">Shop Info</div>
+        <div class="side-row">
+          <div class="side-marker"></div>
+          <div><div class="side-key">エリア</div><div class="side-val">大阪市北区</div></div>
+        </div>
+        <div class="side-row">
+          <div class="side-marker"></div>
+          <div><div class="side-key">カテゴリ</div><div class="side-val">カフェ</div></div>
+        </div>
+        <div class="side-row">
+          <div class="side-marker"></div>
+          <div><div class="side-key">営業時間</div><div class="side-val dim">Instagram にてご確認ください</div></div>
+        </div>
+        <div class="side-row">
+          <div class="side-marker"></div>
+          <div><div class="side-key">掲載開始</div><div class="side-val">2026.06.08</div></div>
+        </div>
+        <div class="side-row">
+          <div class="side-marker"></div>
+          <div><div class="side-key">掲載プラン</div><div class="side-val" style="color:var(--pk)">PREMIUM</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RELATED SHOPS -->
+  <div class="related-sec">
+    <div class="related-title">近くの店舗 / 同カテゴリ</div>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-line"></div>
+  <div class="ft-logo">ハレ<span>マップ</span></div>
+  <div class="ft-sub">HARE COLLECTION 2026 — 2026.08.08 OSAKA</div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('shopMap', { center:[34.7022,135.5004], zoom:15, zoomControl:false });
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution:'&copy; OpenStreetMap &copy; CARTO', subdomains:'abcd', maxZoom:19
+}).addTo(map);
+L.control.zoom({ position:'bottomright' }).addTo(map);
+const icon = L.divIcon({
+  className:'',
+  html:'<div style="width:20px;height:20px;border-radius:50%;background:#FF1493;box-shadow:0 0 8px rgba(255,20,147,.5)"></div>',
+  iconSize:[20,20],iconAnchor:[10,10]
+});
+L.marker([34.7022,135.5004],{icon}).addTo(map).bindPopup('CAFÉ LUMIÈRE').openPopup();
+
+const related = [
+  {name:"BOOK CAFÉ 文鳥",   area:"大阪市西区", bg:"linear-gradient(135deg,#1a0d06,#050505)"},
+  {name:"PHOTO STUDIO PRISM",area:"大阪市北区", bg:"linear-gradient(135deg,#050a1a,#050505)"},
+  {name:"BARBER EDGE",      area:"大阪市北区", bg:"linear-gradient(135deg,#0d001a,#050505)"},
+  {name:"VINTAGE MARKET 然",area:"大阪市北区", bg:"linear-gradient(135deg,#050a1a,#0a0005)"},
+];
+document.getElementById('relatedGrid').innerHTML = related.map(r=>`
+  <a href="#" class="rel-card">
+    <div class="rel-photo" style="background:${r.bg}">PHOTO</div>
+    <div class="rel-body">
+      <div class="rel-name">${r.name}</div>
+      <div class="rel-area">${r.area}</div>
+    </div>
+  </a>
+`).join('');
+</script>
+</body>
+</html>
