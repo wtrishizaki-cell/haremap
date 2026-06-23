@@ -8,265 +8,249 @@
 <meta property="og:title" content="ハレマップ — HARE COLLECTION 2026 協力店舗">
 <meta property="og:description" content="HARE COLLECTION 2026 の協力店舗をエリアやカテゴリから検索できます。">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --pk:#FF1493;--pk2:#d60f7d;
-  --bg:#000;--bg2:#0a0a0a;--bg3:#111;
-  --bd:#1e1e1e;--bd2:#2a2a2a;
-  --t1:#fff;--t2:#999;--t3:#444;
-  --card:rgba(255,255,255,0.03);
+  --pk:#FF1493;--pk2:#d60f7d;--pk-bg:rgba(255,20,147,.07);
+  --bg:#fff;--bg2:#f8f8f8;--bg3:#f0f0f0;
+  --bd:#e8e8e8;--bd2:#d0d0d0;
+  --t1:#111;--t2:#555;--t3:#999;
+  --shadow:0 2px 12px rgba(0,0,0,.06);
+  --shadow-h:0 6px 24px rgba(0,0,0,.11);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t1);font-family:'Montserrat','Noto Sans JP',sans-serif}
+body{background:var(--bg);color:var(--t1);font-family:'Montserrat','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit}
+img{display:block}
 
 /* ── NAV ── */
 .nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(0,0,0,.97);backdrop-filter:blur(12px);
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--bd);
 }
 .nav-inner{
-  max-width:1280px;margin:0 auto;padding:0 24px;
-  height:60px;display:flex;align-items:center;gap:20px;
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  height:56px;display:flex;align-items:center;gap:16px;
 }
-.nav-logo{font-size:20px;font-weight:700;letter-spacing:.06em;white-space:nowrap}
+.nav-logo{font-size:19px;font-weight:700;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
 .nav-logo span{color:var(--pk)}
 .nav-search{
-  flex:1;max-width:460px;
-  display:flex;border:1px solid var(--bd2);
-  background:var(--bg3);
+  flex:1;max-width:440px;
+  display:flex;border:1.5px solid var(--bd2);border-radius:6px;overflow:hidden;
+  background:#fff;
 }
 .nav-search input{
-  flex:1;background:transparent;border:none;
-  padding:0 14px;font-size:12px;color:var(--t1);
-  font-family:inherit;outline:none;letter-spacing:.04em;
+  flex:1;border:none;padding:0 14px;font-size:13px;color:var(--t1);
+  font-family:inherit;outline:none;background:transparent;
 }
 .nav-search input::placeholder{color:var(--t3)}
 .nav-search button{
   padding:0 18px;background:var(--pk);border:none;
-  color:#fff;font-size:11px;font-weight:600;letter-spacing:.1em;
-  transition:background .2s;
+  color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;
+  transition:background .2s;flex-shrink:0;
 }
 .nav-search button:hover{background:var(--pk2)}
 
 /* ── HERO ── */
 .hero{
-  background:linear-gradient(180deg,#080005 0%,#000 100%);
+  background:linear-gradient(160deg,#fff 0%,#fff5fa 60%,#ffe0ef 100%);
+  padding:56px 20px 48px;text-align:center;
   border-bottom:1px solid var(--bd);
-  padding:72px 24px 56px;
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 55% 45% at 50% 0%,rgba(255,20,147,.07) 0%,transparent 70%);
-  pointer-events:none;
 }
 .hero-eyebrow{
   display:inline-block;
-  font-size:10px;letter-spacing:.45em;color:var(--pk);
+  font-size:10px;letter-spacing:.42em;color:var(--pk);
   border:1px solid rgba(255,20,147,.3);
-  padding:5px 20px;margin-bottom:28px;text-transform:uppercase;
+  padding:5px 18px;margin-bottom:24px;text-transform:uppercase;border-radius:2px;
 }
 .hero h1{
-  font-size:clamp(30px,4.5vw,52px);font-weight:700;
-  letter-spacing:.04em;margin-bottom:16px;line-height:1.2;
+  font-size:clamp(28px,6vw,50px);font-weight:700;
+  letter-spacing:.03em;margin-bottom:14px;line-height:1.2;color:var(--t1);
 }
 .hero h1 em{color:var(--pk);font-style:normal}
 .hero-desc{
-  font-size:13px;color:var(--t2);letter-spacing:.06em;
-  margin-bottom:40px;line-height:1.9;
+  font-size:13px;color:var(--t2);letter-spacing:.05em;
+  margin-bottom:36px;line-height:1.9;
 }
 .hero-box{
-  max-width:560px;margin:0 auto 32px;
-  display:flex;border:1px solid var(--bd2);
-  background:var(--bg3);
+  max-width:520px;margin:0 auto 28px;
+  display:flex;border:1.5px solid var(--bd2);border-radius:8px;overflow:hidden;
+  background:#fff;box-shadow:var(--shadow);
 }
 .hero-box input{
-  flex:1;background:transparent;border:none;
-  padding:14px 20px;font-size:13px;color:var(--t1);
-  font-family:inherit;outline:none;letter-spacing:.04em;
+  flex:1;border:none;padding:14px 20px;font-size:13px;color:var(--t1);
+  font-family:inherit;outline:none;
 }
 .hero-box input::placeholder{color:var(--t3)}
 .hero-box button{
   padding:0 28px;background:var(--pk);border:none;
-  color:#fff;font-size:12px;font-weight:600;letter-spacing:.12em;
+  color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;
   transition:background .2s;white-space:nowrap;
 }
 .hero-box button:hover{background:var(--pk2)}
 .cat-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .cat-pill{
-  padding:7px 18px;
-  background:transparent;border:1px solid var(--bd2);
-  color:var(--t2);font-size:11px;font-weight:400;
-  letter-spacing:.08em;transition:all .2s;
+  padding:7px 16px;border-radius:20px;
+  background:#fff;border:1.5px solid var(--bd2);
+  color:var(--t2);font-size:11px;font-weight:500;
+  letter-spacing:.06em;transition:all .18s;
 }
-.cat-pill:hover,.cat-pill.on{
-  background:var(--pk);border-color:var(--pk);color:#fff;
-}
+.cat-pill:hover{border-color:var(--pk);color:var(--pk)}
+.cat-pill.on{background:var(--pk);border-color:var(--pk);color:#fff}
 
 /* ── AREA NAV ── */
 .area-nav{
-  background:var(--bg2);border-bottom:1px solid var(--bd);
-  padding:12px 24px;overflow-x:auto;
+  background:#fff;border-bottom:1px solid var(--bd);
+  padding:10px 20px;overflow-x:auto;position:sticky;top:56px;z-index:100;
 }
 .area-nav::-webkit-scrollbar{display:none}
 .area-nav-inner{
-  max-width:1280px;margin:0 auto;
-  display:flex;align-items:center;gap:8px;white-space:nowrap;
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
 }
-.area-label{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase;margin-right:6px;flex-shrink:0}
+.area-label{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase;margin-right:4px;flex-shrink:0}
 .area-pill{
-  padding:5px 14px;
-  background:transparent;border:1px solid var(--bd2);
-  color:var(--t3);font-size:11px;letter-spacing:.06em;
-  transition:all .2s;flex-shrink:0;
+  padding:5px 14px;border-radius:16px;
+  background:transparent;border:1.5px solid var(--bd);
+  color:var(--t3);font-size:11px;letter-spacing:.05em;
+  transition:all .18s;flex-shrink:0;
 }
-.area-pill:hover,.area-pill.on{background:var(--bg3);border-color:var(--bd2);color:var(--t1)}
+.area-pill:hover{border-color:var(--pk);color:var(--pk)}
+.area-pill.on{background:var(--pk-bg);border-color:var(--pk);color:var(--pk);font-weight:600}
 
 /* ── STATS ── */
 .stats-strip{
-  background:var(--bg3);border-bottom:1px solid var(--bd);
-  padding:20px 24px;
-  display:flex;justify-content:center;gap:60px;
+  background:var(--bg2);border-bottom:1px solid var(--bd);
+  padding:18px 20px;display:flex;justify-content:center;gap:40px;
+  flex-wrap:wrap;
 }
-.sstat{text-align:center}
-.sstat-n{font-size:30px;font-weight:700;line-height:1;margin-bottom:5px}
+.sstat{text-align:center;min-width:60px}
+.sstat-n{font-size:26px;font-weight:700;line-height:1;margin-bottom:4px;color:var(--t1)}
 .sstat-n.p{color:var(--pk)}
-.sstat-l{font-size:9px;letter-spacing:.3em;color:var(--t3);text-transform:uppercase}
+.sstat-l{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase}
+
+/* ── MAP SECTION ── */
+.map-section{border-bottom:1px solid var(--bd)}
+.map-title-bar{
+  max-width:1200px;margin:0 auto;padding:20px 20px 12px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.map-title{font-size:11px;font-weight:600;letter-spacing:.35em;color:var(--t2);text-transform:uppercase}
+.map-hint{font-size:10px;color:var(--t3);letter-spacing:.05em}
+#map{height:320px;width:100%;background:var(--bg3)}
 
 /* ── SECTION ── */
-.section{max-width:1280px;margin:0 auto;padding:0 24px}
+.section{max-width:1200px;margin:0 auto;padding:0 20px}
 .sec-head{
-  display:flex;align-items:baseline;justify-content:space-between;
-  margin-bottom:20px;padding-top:52px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:36px 0 16px;
 }
-.sec-title{font-size:11px;font-weight:600;letter-spacing:.4em;color:var(--t2);text-transform:uppercase}
-.sec-count{font-size:11px;color:var(--t3);letter-spacing:.1em}
-.see-all{font-size:11px;color:var(--pk);letter-spacing:.12em;transition:opacity .2s}
-.see-all:hover{opacity:.65}
-
-/* ── FEATURED ── */
-.featured-wrap{overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-.featured-wrap::-webkit-scrollbar{display:none}
-.featured-row{display:flex;gap:16px;width:max-content}
-.feat-card{
-  width:280px;flex-shrink:0;
-  background:var(--card);border:1px solid var(--bd);
-  border-top:2px solid var(--pk);
-  overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer;
-}
-.feat-card:hover{transform:translateY(-2px)}
-.feat-photo{
-  height:160px;width:100%;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.06);
-  text-transform:uppercase;overflow:hidden;
-}
-.feat-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.8));
-}
-.feat-plan{
-  position:absolute;top:12px;left:12px;z-index:1;
-  font-size:8px;letter-spacing:.25em;padding:3px 9px;
-  background:var(--pk);color:#fff;
-}
-.feat-body{padding:16px}
-.feat-name{font-size:14px;font-weight:600;margin-bottom:7px;letter-spacing:.03em;line-height:1.3}
-.feat-meta{font-size:10px;color:var(--t3);letter-spacing:.06em;margin-bottom:10px;display:flex;gap:10px}
-.feat-desc{font-size:11px;color:var(--t2);line-height:1.75;letter-spacing:.02em;margin-bottom:14px}
-.feat-link{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:6px 14px;border:1px solid var(--bd2);
-  color:var(--t2);font-size:10px;font-weight:500;letter-spacing:.1em;
-  transition:all .2s;
-}
-.feat-link:hover{border-color:var(--pk);color:var(--pk)}
+.sec-title{font-size:11px;font-weight:600;letter-spacing:.35em;color:var(--t2);text-transform:uppercase}
+.sec-count{font-size:11px;color:var(--t3);letter-spacing:.08em}
 
 /* ── SHOP GRID ── */
 .shop-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:1px;
-  border:1px solid var(--bd);
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:16px;
   padding-bottom:64px;
 }
 .shop-card{
-  background:var(--card);
+  background:#fff;border:1.5px solid var(--bd);border-radius:10px;
   overflow:hidden;cursor:pointer;
-  transition:background .2s;
-  border:none;
+  transition:box-shadow .2s,transform .15s,border-color .18s;
 }
-.shop-card:hover{background:rgba(255,255,255,.05)}
-.shop-card.premium{border-top:2px solid var(--pk)}
+.shop-card:hover{
+  box-shadow:var(--shadow-h);
+  transform:translateY(-2px);
+  border-color:rgba(255,20,147,.3);
+}
 .shop-photo{
-  height:140px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.06);
-  text-transform:uppercase;position:relative;overflow:hidden;
-}
-.shop-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.72));
+  height:150px;
+  display:flex;align-items:flex-end;
+  position:relative;overflow:hidden;
 }
 .shop-cat-label{
-  position:absolute;bottom:10px;left:12px;z-index:1;
-  font-size:9px;letter-spacing:.2em;padding:2px 8px;
-  background:rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.08);color:var(--t2);
-  text-transform:uppercase;
+  font-size:9px;letter-spacing:.18em;padding:3px 10px;margin:0 12px 12px;
+  background:rgba(255,255,255,.9);border-radius:20px;
+  color:var(--t1);font-weight:600;text-transform:uppercase;
+  border:1px solid rgba(0,0,0,.08);
 }
-.shop-body{padding:16px 18px}
-.shop-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
-.shop-name{font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1.35}
-.shop-plan-badge{
-  font-size:8px;letter-spacing:.18em;padding:3px 8px;
-  margin-left:8px;margin-top:1px;flex-shrink:0;
-}
-.badge-premium{background:var(--pk);color:#fff}
-.badge-free{border:1px solid #222;color:#333}
+.shop-body{padding:16px 18px 18px}
+.shop-name{font-size:14px;font-weight:700;letter-spacing:.03em;line-height:1.3;margin-bottom:6px;color:var(--t1)}
 .shop-area{font-size:10px;color:var(--t3);letter-spacing:.06em;margin-bottom:10px}
-.shop-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.tag{font-size:9px;letter-spacing:.06em;padding:3px 8px;border:1px solid var(--bd);color:var(--t3)}
-.shop-restricted{
-  font-size:10px;color:var(--t3);letter-spacing:.06em;
-  border-top:1px solid var(--bd);padding-top:10px;margin-top:2px;
-  line-height:1.6;
+.shop-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.tag{
+  font-size:9px;letter-spacing:.05em;padding:3px 9px;border-radius:12px;
+  border:1px solid var(--bd);color:var(--t2);background:var(--bg2);
 }
-.shop-restricted a{color:rgba(255,20,147,.35);transition:color .2s}
-.shop-restricted a:hover{color:var(--pk)}
+.shop-desc{font-size:11px;color:var(--t2);line-height:1.75;margin-bottom:12px}
+.shop-ig{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:6px;
+  border:1.5px solid var(--bd2);
+  color:var(--t2);font-size:10px;font-weight:500;letter-spacing:.08em;
+  transition:all .18s;
+}
+.shop-ig:hover{border-color:var(--pk);color:var(--pk)}
+.shop-ig-icon{width:13px;height:13px;fill:currentColor}
+
+/* ── PHOTO GRADIENTS (light) ── */
+.g-cafe{background:linear-gradient(135deg,#fde8d8,#ffd0e8,#f5e6f0)}
+.g-shop{background:linear-gradient(135deg,#dce8ff,#e8d8ff,#f0e8ff)}
+.g-hair{background:linear-gradient(135deg,#f0d8ff,#ffe0f0,#e8d8ff)}
+.g-gall{background:linear-gradient(135deg,#e8e8e8,#f0e8f8,#e8f0f8)}
+.g-nail{background:linear-gradient(135deg,#ffd8e8,#ffe8f0,#ffd0e0)}
+.g-food{background:linear-gradient(135deg,#fef0d8,#ffe8d0,#fde8c8)}
+.g-rec {background:linear-gradient(135deg,#d8eef8,#dce8f0,#d8f0f8)}
+.g-life{background:linear-gradient(135deg,#e8f8e8,#d8f0e8,#e8ece8)}
 
 /* ── FOOTER ── */
-footer{padding:44px 24px;border-top:1px solid var(--bd);text-align:center}
-.ft-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--pk),transparent);margin-bottom:24px}
-.ft-logo{font-size:14px;font-weight:700;letter-spacing:.06em;margin-bottom:8px}
+footer{
+  background:var(--t1);
+  padding:40px 20px;text-align:center;
+}
+.ft-logo{font-size:15px;font-weight:700;letter-spacing:.06em;margin-bottom:8px;color:#fff}
 .ft-logo span{color:var(--pk)}
-.ft-sub{font-size:9px;letter-spacing:.25em;color:var(--t3);margin-bottom:12px;text-transform:uppercase}
-.ft-hash{font-size:10px;color:#222;letter-spacing:.06em}
+.ft-sub{font-size:9px;letter-spacing:.22em;color:#666;margin-bottom:10px;text-transform:uppercase}
+.ft-hash{font-size:10px;color:#444;letter-spacing:.06em}
 
-/* ── PHOTO GRADIENTS ── */
-.g-cafe{background:linear-gradient(135deg,#1a0d06,#0a0808,#100d00)}
-.g-shop{background:linear-gradient(135deg,#050a1a,#0a0010,#0a0a0a)}
-.g-hair{background:linear-gradient(135deg,#0d001a,#1a0010,#000010)}
-.g-gall{background:linear-gradient(135deg,#0a0a0a,#050505,#100010)}
-.g-nail{background:linear-gradient(135deg,#1a000a,#0a0010,#000815)}
-.g-food{background:linear-gradient(135deg,#0a0a00,#100805,#0a0005)}
-.g-rec {background:linear-gradient(135deg,#001010,#000a0a,#051010)}
-.g-life{background:linear-gradient(135deg,#080808,#0a050a,#05050a)}
+/* ── EMPTY STATE ── */
+.empty{grid-column:1/-1;text-align:center;padding:64px 20px;color:var(--t3);font-size:12px;letter-spacing:.1em}
+
+/* ── LEAFLET OVERRIDES ── */
+.leaflet-popup-content-wrapper{border-radius:8px;box-shadow:var(--shadow-h);border:1px solid var(--bd)}
+.leaflet-popup-content{margin:12px 16px;font-family:'Montserrat','Noto Sans JP',sans-serif}
+.map-popup-name{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.map-popup-meta{font-size:10px;color:var(--t2)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   .nav-search{display:none}
-  .hero h1{font-size:28px}
-  .shop-grid{grid-template-columns:1fr 1fr}
-  .stats-strip{gap:28px}
+  .hero{padding:44px 16px 36px}
+  .hero h1{font-size:30px}
+  .hero-desc{font-size:12px}
+  .hero-box{max-width:100%}
+  .shop-grid{grid-template-columns:1fr 1fr;gap:12px;padding-bottom:48px}
+  .shop-photo{height:120px}
+  .shop-name{font-size:13px}
+  .stats-strip{gap:20px}
+  .sstat-n{font-size:22px}
+  #map{height:280px}
+  .area-nav{top:56px}
+  .sec-head{padding:28px 0 14px}
 }
 @media(max-width:480px){
-  .shop-grid{grid-template-columns:1fr}
+  .shop-grid{grid-template-columns:1fr;gap:12px}
+  .cat-pill{font-size:12px;padding:8px 16px}
+  .hero-box input{font-size:14px;padding:14px 16px}
+  .shop-card{border-radius:8px}
+  .shop-photo{height:160px}
 }
 </style>
 </head>
@@ -277,8 +261,8 @@ footer{padding:44px 24px;border-top:1px solid var(--bd);text-align:center}
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">ハレ<span>マップ</span></a>
     <div class="nav-search">
-      <input type="text" placeholder="店舗名、エリア、カテゴリで検索">
-      <button>検索</button>
+      <input type="text" id="navQ" placeholder="店舗名、エリア、カテゴリで検索">
+      <button id="navBtn">検索</button>
     </div>
   </div>
 </nav>
@@ -292,11 +276,11 @@ footer{padding:44px 24px;border-top:1px solid var(--bd);text-align:center}
     エリアやカテゴリから検索してください。
   </p>
   <div class="hero-box">
-    <input type="text" placeholder="店舗名、エリア、カテゴリで検索">
-    <button>検索</button>
+    <input type="text" id="heroQ" placeholder="店舗名、エリア、カテゴリで検索">
+    <button id="heroBtn">検索</button>
   </div>
   <div class="cat-row" id="catRow">
-    <button class="cat-pill on"  data-cat="">すべて</button>
+    <button class="cat-pill on" data-cat="">すべて</button>
     <button class="cat-pill" data-cat="カフェ">カフェ</button>
     <button class="cat-pill" data-cat="セレクトショップ">ショップ</button>
     <button class="cat-pill" data-cat="美容室">美容室</button>
@@ -322,39 +306,33 @@ footer{padding:44px 24px;border-top:1px solid var(--bd);text-align:center}
 
 <!-- STATS -->
 <div class="stats-strip">
-  <div class="sstat"><div class="sstat-n" id="sTotal">15</div><div class="sstat-l">Listed Stores</div></div>
-  <div class="sstat"><div class="sstat-n p" id="sPrem">4</div><div class="sstat-l">Premium</div></div>
-  <div class="sstat"><div class="sstat-n" id="sArea">6</div><div class="sstat-l">Areas</div></div>
-  <div class="sstat"><div class="sstat-n p" id="sDays">46</div><div class="sstat-l">Days to 8/8</div></div>
+  <div class="sstat"><div class="sstat-n" id="sTotal">15</div><div class="sstat-l">掲載店舗</div></div>
+  <div class="sstat"><div class="sstat-n" id="sArea">6</div><div class="sstat-l">エリア</div></div>
+  <div class="sstat"><div class="sstat-n p" id="sDays">--</div><div class="sstat-l">Days to 8/8</div></div>
 </div>
 
-<!-- FEATURED -->
-<div class="section">
-  <div class="sec-head">
-    <div class="sec-title">Premium Partner</div>
-    <a href="#all" class="see-all">すべて表示</a>
+<!-- MAP -->
+<div class="map-section">
+  <div class="map-title-bar">
+    <div class="map-title">店舗マップ</div>
+    <div class="map-hint">マーカーをタップすると店舗情報が表示されます</div>
   </div>
-</div>
-<div style="padding:0 24px;max-width:1280px;margin:0 auto">
-  <div class="featured-wrap">
-    <div class="featured-row" id="featRow"></div>
-  </div>
+  <div id="map"></div>
 </div>
 
 <!-- ALL SHOPS -->
 <div class="section" id="all">
   <div class="sec-head">
     <div class="sec-title">掲載店舗一覧</div>
-    <div class="sec-count" id="gridCount">15 件</div>
+    <div class="sec-count" id="gridCount"></div>
   </div>
 </div>
-<div style="max-width:1280px;margin:0 auto;padding:0 24px 0">
+<div style="max-width:1200px;margin:0 auto;padding:0 20px">
   <div class="shop-grid" id="shopGrid"></div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="ft-line"></div>
   <div class="ft-logo">ハレ<span>マップ</span></div>
   <div class="ft-sub">HARE COLLECTION 2026 — 2026.08.08 OSAKA</div>
   <div class="ft-hash">#HARECOLLECTION2026 &nbsp; #ハレコレ2026 &nbsp; #ハレマップ</div>
@@ -362,21 +340,21 @@ footer{padding:44px 24px;border-top:1px solid var(--bd);text-align:center}
 
 <script>
 const STORES = [
-  { id:1,  slug:"select-shop-void",      name:"SELECT SHOP VOID",       area:"大阪市西区",    cat:"セレクトショップ", plan:"premium", desc:"ヴィンテージとモダンが融合するセレクトショップ。HAREの世界観と高い親和性を持つ。",   ig:"https://www.instagram.com", tags:["セレクト","メンズ","レディース"], bg:"g-shop" },
-  { id:2,  slug:"cafe-lumiere",          name:"CAFÉ LUMIÈRE",            area:"大阪市北区",    cat:"カフェ",           plan:"premium", desc:"洗練された空間と珈琲が自慢のデザインカフェ。深夜まで営業。",                         ig:"https://www.instagram.com", tags:["コーヒー","デザイン","深夜営業"], bg:"g-cafe" },
-  { id:3,  slug:"hair-salon-noir",       name:"HAIR SALON NOIR",         area:"大阪市中央区",  cat:"美容室",           plan:"premium", desc:"アートとファッションをコンセプトにしたヘアサロン。",                                   ig:"https://www.instagram.com", tags:["ヘアカラー","デザイン","アート"], bg:"g-hair" },
-  { id:4,  slug:"gallery-mono",          name:"GALLERY MONO",            area:"大阪市西区",    cat:"ギャラリー",       plan:"premium", desc:"現代アートギャラリー。若手アーティストの作品を継続的に紹介する。",                    ig:"https://www.instagram.com", tags:["アート","展示","イベント"], bg:"g-gall" },
-  { id:5,  slug:"book-cafe-buncho",      name:"BOOK CAFÉ 文鳥",          area:"大阪市西区",    cat:"カフェ",           plan:"free",    desc:"", ig:"", tags:["カフェ","書籍"], bg:"g-cafe" },
-  { id:6,  slug:"vintage-market-zen",    name:"VINTAGE MARKET 然",       area:"大阪市北区",    cat:"セレクトショップ", plan:"free",    desc:"", ig:"", tags:["古着","ヴィンテージ"], bg:"g-shop" },
-  { id:7,  slug:"nail-beauty-lace",      name:"NAIL & BEAUTY LACE",      area:"大阪市中央区",  cat:"ネイルサロン",     plan:"free",    desc:"", ig:"", tags:["ネイル","美容"], bg:"g-nail" },
-  { id:8,  slug:"ramen-atelier-koku",    name:"RAMEN ATELIER 黒",        area:"大阪市天王寺区",cat:"飲食",             plan:"free",    desc:"", ig:"", tags:["ラーメン","こだわり"], bg:"g-food" },
-  { id:9,  slug:"second-hand-blvd",      name:"SECOND HAND BLVD",        area:"京都市",        cat:"セレクトショップ", plan:"free",    desc:"", ig:"", tags:["古着","京都"], bg:"g-shop" },
-  { id:10, slug:"photo-studio-prism",    name:"PHOTO STUDIO PRISM",      area:"大阪市北区",    cat:"フォトスタジオ",   plan:"free",    desc:"", ig:"", tags:["撮影","スタジオ"], bg:"g-gall" },
-  { id:11, slug:"piercing-jewelry-dark", name:"PIERCING & JEWELRY dark",  area:"大阪市中央区",  cat:"ジュエリー",       plan:"free",    desc:"", ig:"", tags:["ピアス","アクセサリー"], bg:"g-nail" },
-  { id:12, slug:"lifestyle-store-arch",  name:"LIFESTYLE STORE ARCH",    area:"神戸市",        cat:"ライフスタイル",   plan:"free",    desc:"", ig:"", tags:["ライフスタイル","雑貨"], bg:"g-life" },
-  { id:13, slug:"barber-edge",           name:"BARBER EDGE",             area:"大阪市北区",    cat:"理容室",           plan:"free",    desc:"", ig:"", tags:["バーバー","メンズ"], bg:"g-hair" },
-  { id:14, slug:"tattoo-studio-ink",     name:"TATTOO STUDIO INK",       area:"大阪市西区",    cat:"タトゥースタジオ", plan:"free",    desc:"", ig:"", tags:["タトゥー","アート"], bg:"g-gall" },
-  { id:15, slug:"record-shop-signal",    name:"RECORD SHOP SIGNAL",      area:"大阪市天王寺区",cat:"レコードショップ", plan:"free",    desc:"", ig:"", tags:["レコード","音楽"], bg:"g-rec"  },
+  { id:1,  slug:"select-shop-void",      name:"SELECT SHOP VOID",       area:"大阪市西区",      cat:"セレクトショップ", desc:"ヴィンテージとモダンが融合するセレクトショップ。HAREの世界観と高い親和性を持つ。",   ig:"https://www.instagram.com", tags:["セレクト","メンズ","レディース"], bg:"g-shop", lat:34.686, lng:135.483 },
+  { id:2,  slug:"cafe-lumiere",          name:"CAFÉ LUMIÈRE",            area:"大阪市北区",      cat:"カフェ",           desc:"洗練された空間と珈琲が自慢のデザインカフェ。深夜まで営業。",                         ig:"https://www.instagram.com", tags:["コーヒー","デザイン","深夜営業"], bg:"g-cafe", lat:34.703, lng:135.497 },
+  { id:3,  slug:"hair-salon-noir",       name:"HAIR SALON NOIR",         area:"大阪市中央区",    cat:"美容室",           desc:"アートとファッションをコンセプトにしたヘアサロン。",                                   ig:"https://www.instagram.com", tags:["ヘアカラー","デザイン","アート"], bg:"g-hair", lat:34.683, lng:135.510 },
+  { id:4,  slug:"gallery-mono",          name:"GALLERY MONO",            area:"大阪市西区",      cat:"ギャラリー",       desc:"現代アートギャラリー。若手アーティストの作品を継続的に紹介する。",                    ig:"https://www.instagram.com", tags:["アート","展示","イベント"], bg:"g-gall", lat:34.688, lng:135.479 },
+  { id:5,  slug:"book-cafe-buncho",      name:"BOOK CAFÉ 文鳥",          area:"大阪市西区",      cat:"カフェ",           desc:"本と珈琲が楽しめるブックカフェ。",                                                   ig:"", tags:["カフェ","書籍"], bg:"g-cafe", lat:34.685, lng:135.485 },
+  { id:6,  slug:"vintage-market-zen",    name:"VINTAGE MARKET 然",       area:"大阪市北区",      cat:"セレクトショップ", desc:"古着とヴィンテージ雑貨を取り扱うマーケット。",                                       ig:"", tags:["古着","ヴィンテージ"], bg:"g-shop", lat:34.705, lng:135.502 },
+  { id:7,  slug:"nail-beauty-lace",      name:"NAIL & BEAUTY LACE",      area:"大阪市中央区",    cat:"ネイルサロン",     desc:"",                                                                                   ig:"", tags:["ネイル","美容"], bg:"g-nail", lat:34.681, lng:135.515 },
+  { id:8,  slug:"ramen-atelier-koku",    name:"RAMEN ATELIER 黒",        area:"大阪市天王寺区",  cat:"飲食",             desc:"",                                                                                   ig:"", tags:["ラーメン","こだわり"], bg:"g-food", lat:34.649, lng:135.515 },
+  { id:9,  slug:"second-hand-blvd",      name:"SECOND HAND BLVD",        area:"京都市",          cat:"セレクトショップ", desc:"",                                                                                   ig:"", tags:["古着","京都"], bg:"g-shop", lat:35.012, lng:135.770 },
+  { id:10, slug:"photo-studio-prism",    name:"PHOTO STUDIO PRISM",      area:"大阪市北区",      cat:"フォトスタジオ",   desc:"",                                                                                   ig:"", tags:["撮影","スタジオ"], bg:"g-gall", lat:34.700, lng:135.495 },
+  { id:11, slug:"piercing-jewelry-dark", name:"PIERCING & JEWELRY dark",  area:"大阪市中央区",    cat:"ジュエリー",       desc:"",                                                                                   ig:"", tags:["ピアス","アクセサリー"], bg:"g-nail", lat:34.685, lng:135.508 },
+  { id:12, slug:"lifestyle-store-arch",  name:"LIFESTYLE STORE ARCH",    area:"神戸市",          cat:"ライフスタイル",   desc:"",                                                                                   ig:"", tags:["ライフスタイル","雑貨"], bg:"g-life", lat:34.691, lng:135.195 },
+  { id:13, slug:"barber-edge",           name:"BARBER EDGE",             area:"大阪市北区",      cat:"理容室",           desc:"",                                                                                   ig:"", tags:["バーバー","メンズ"], bg:"g-hair", lat:34.706, lng:135.499 },
+  { id:14, slug:"tattoo-studio-ink",     name:"TATTOO STUDIO INK",       area:"大阪市西区",      cat:"タトゥースタジオ", desc:"",                                                                                   ig:"", tags:["タトゥー","アート"], bg:"g-gall", lat:34.689, lng:135.481 },
+  { id:15, slug:"record-shop-signal",    name:"RECORD SHOP SIGNAL",      area:"大阪市天王寺区",  cat:"レコードショップ", desc:"",                                                                                   ig:"", tags:["レコード","音楽"], bg:"g-rec", lat:34.647, lng:135.511 },
 ];
 
 let activeCat = '', activeArea = '', searchQ = '';
@@ -393,59 +371,75 @@ function filtered() {
   });
 }
 
-function renderFeatured() {
-  const row = document.getElementById('featRow');
-  row.innerHTML = STORES.filter(s => s.plan === 'premium').map(s => `
-    <a href="shop/${s.slug}.html" class="feat-card">
-      <div class="feat-photo ${s.bg}">
-        <span class="feat-plan">PREMIUM</span>
-        <span style="z-index:1;position:relative">PHOTO</span>
-      </div>
-      <div class="feat-body">
-        <div class="feat-name">${s.name}</div>
-        <div class="feat-meta"><span>${s.area}</span><span>${s.cat}</span></div>
-        <div class="feat-desc">${s.desc}</div>
-        <span class="feat-link">Instagram を見る</span>
-      </div>
-    </a>
-  `).join('');
+// ── MAP ──
+const pinkIcon = L.divIcon({
+  className:'',
+  html:`<div style="
+    width:28px;height:28px;border-radius:50%;
+    background:#FF1493;border:3px solid #fff;
+    box-shadow:0 2px 8px rgba(255,20,147,.5);
+    display:flex;align-items:center;justify-content:center;
+  "><svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
+  iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-16]
+});
+
+const map = L.map('map',{zoomControl:true}).setView([34.693,135.502],11);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains:'abcd',maxZoom:19
+}).addTo(map);
+
+let markers = [];
+function renderMap(stores) {
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+  stores.forEach(s => {
+    const m = L.marker([s.lat, s.lng], {icon: pinkIcon})
+      .bindPopup(`<div class="map-popup-name">${s.name}</div><div class="map-popup-meta">${s.area} &middot; ${s.cat}</div>`)
+      .addTo(map);
+    markers.push(m);
+  });
+  if (stores.length) {
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.2));
+  }
 }
 
+// ── GRID ──
 function renderGrid() {
-  const grid = document.getElementById('shopGrid');
-  const items = filtered().sort((a,b) => (a.plan==='premium'?0:1)-(b.plan==='premium'?0:1));
+  const items = filtered();
   document.getElementById('gridCount').textContent = items.length + ' 件';
+  const grid = document.getElementById('shopGrid');
   if (!items.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:64px;color:#333;font-size:12px;letter-spacing:.12em">該当する店舗は見つかりませんでした。</div>';
+    grid.innerHTML = '<div class="empty">該当する店舗は見つかりませんでした。</div>';
+    renderMap([]);
     return;
   }
-  grid.innerHTML = items.map(s => {
-    const ip = s.plan === 'premium';
-    return `<a href="shop/${s.slug}.html" class="shop-card${ip?' premium':''}">
+  grid.innerHTML = items.map(s => `
+    <a href="shop/${s.slug}.html" class="shop-card">
       <div class="shop-photo ${s.bg}">
         <span class="shop-cat-label">${s.cat}</span>
       </div>
       <div class="shop-body">
-        <div class="shop-head">
-          <div class="shop-name">${s.name}</div>
-          <span class="shop-plan-badge ${ip?'badge-premium':'badge-free'}">${ip?'PREMIUM':'FREE'}</span>
-        </div>
+        <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        ${ip
-          ? `<span class="feat-link" style="font-size:10px;padding:5px 12px;border:1px solid var(--bd2);color:var(--t2);display:inline-block;letter-spacing:.1em">Instagram を見る</span>`
-          : `<div class="shop-restricted">詳細情報はプレミアムプランにてご覧いただけます。<br><a href="#">プレミアムプランについて</a></div>`
-        }
+        ${s.desc ? `<div class="shop-desc">${s.desc}</div>` : ''}
+        ${s.ig ? `<span class="shop-ig">
+          <svg class="shop-ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Instagram を見る
+        </span>` : ''}
       </div>
-    </a>`;
-  }).join('');
+    </a>
+  `).join('');
+  renderMap(items);
 }
 
 // Stats
 document.getElementById('sTotal').textContent = STORES.length;
-document.getElementById('sPrem').textContent  = STORES.filter(s=>s.plan==='premium').length;
 document.getElementById('sArea').textContent  = new Set(STORES.map(s=>s.area)).size;
-document.getElementById('sDays').textContent  = Math.ceil((new Date('2026-08-08')-new Date())/86400000);
+const days = Math.ceil((new Date('2026-08-08') - new Date()) / 86400000);
+document.getElementById('sDays').textContent  = days > 0 ? days : 0;
 
 // Filters
 document.querySelectorAll('.cat-pill').forEach(b => {
@@ -460,18 +454,16 @@ document.querySelectorAll('.area-pill').forEach(b => {
     b.classList.add('on'); activeArea = b.dataset.area; renderGrid();
   });
 });
-['.nav-search input','.hero-box input'].forEach(sel => {
-  document.querySelectorAll(sel).forEach(el => {
-    el.addEventListener('input', e => { searchQ = e.target.value; renderGrid(); });
-  });
-});
-['.nav-search button','.hero-box button'].forEach(sel => {
-  document.querySelectorAll(sel).forEach(el => {
-    el.addEventListener('click', () => document.getElementById('all').scrollIntoView({behavior:'smooth'}));
-  });
-});
+function doSearch(q) {
+  searchQ = q;
+  renderGrid();
+  document.getElementById('all').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('navQ').addEventListener('input', e => { searchQ = e.target.value; renderGrid(); });
+document.getElementById('heroQ').addEventListener('input', e => { searchQ = e.target.value; renderGrid(); });
+document.getElementById('navBtn').addEventListener('click', () => doSearch(document.getElementById('navQ').value));
+document.getElementById('heroBtn').addEventListener('click', () => doSearch(document.getElementById('heroQ').value));
 
-renderFeatured();
 renderGrid();
 </script>
 </body>
