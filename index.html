@@ -4,10 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ハレマップ — HARE COLLECTION 2026 協力店舗</title>
-<meta name="description" content="HARE COLLECTION 2026 の活動に参加する協力店舗を紹介するサイトです。カフェ・セレクトショップ・美容室・ギャラリーなど、大阪・京都・神戸エリアから検索できます。">
-<meta property="og:title" content="ハレマップ — HARE COLLECTION 2026 協力店舗">
-<meta property="og:description" content="HARE COLLECTION 2026 の協力店舗をエリアやカテゴリから検索できます。">
-<meta property="og:type" content="website">
+<meta name="description" content="HARE COLLECTION 2026 の協力店舗を紹介するサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -15,248 +12,141 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --pk:#FF1493;--pk2:#d60f7d;--pk-bg:rgba(255,20,147,.07);
-  --bg:#fff;--bg2:#f8f8f8;--bg3:#f0f0f0;
-  --bd:#e8e8e8;--bd2:#d0d0d0;
+  --bg:#fff;--bg2:#f8f8f8;--bg3:#f1f1f1;
+  --bd:#e5e5e5;--bd2:#cecece;
   --t1:#111;--t2:#555;--t3:#999;
-  --shadow:0 2px 12px rgba(0,0,0,.06);
-  --shadow-h:0 6px 24px rgba(0,0,0,.11);
+  --sh:0 2px 12px rgba(0,0,0,.06);--sh-h:0 6px 24px rgba(0,0,0,.12);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t1);font-family:'Montserrat','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit}
-img{display:block}
 
-/* ── NAV ── */
-.nav{
-  position:sticky;top:0;z-index:200;
-  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--bd);
-}
-.nav-inner{
-  max-width:1200px;margin:0 auto;padding:0 20px;
-  height:56px;display:flex;align-items:center;gap:16px;
-}
+/* NAV */
+.nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;gap:16px}
 .nav-logo{font-size:19px;font-weight:700;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
 .nav-logo span{color:var(--pk)}
-.nav-search{
-  flex:1;max-width:440px;
-  display:flex;border:1.5px solid var(--bd2);border-radius:6px;overflow:hidden;
-  background:#fff;
-}
-.nav-search input{
-  flex:1;border:none;padding:0 14px;font-size:13px;color:var(--t1);
-  font-family:inherit;outline:none;background:transparent;
-}
+.nav-search{flex:1;max-width:440px;display:flex;border:1.5px solid var(--bd2);border-radius:6px;overflow:hidden;background:#fff}
+.nav-search input{flex:1;border:none;padding:0 14px;font-size:13px;color:var(--t1);font-family:inherit;outline:none}
 .nav-search input::placeholder{color:var(--t3)}
-.nav-search button{
-  padding:0 18px;background:var(--pk);border:none;
-  color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;
-  transition:background .2s;flex-shrink:0;
-}
+.nav-search button{padding:0 18px;background:var(--pk);border:none;color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;transition:background .2s;flex-shrink:0}
 .nav-search button:hover{background:var(--pk2)}
 
-/* ── HERO ── */
-.hero{
-  background:linear-gradient(160deg,#fff 0%,#fff5fa 60%,#ffe0ef 100%);
-  padding:56px 20px 48px;text-align:center;
-  border-bottom:1px solid var(--bd);
-}
-.hero-eyebrow{
-  display:inline-block;
-  font-size:10px;letter-spacing:.42em;color:var(--pk);
-  border:1px solid rgba(255,20,147,.3);
-  padding:5px 18px;margin-bottom:24px;text-transform:uppercase;border-radius:2px;
-}
-.hero h1{
-  font-size:clamp(28px,6vw,50px);font-weight:700;
-  letter-spacing:.03em;margin-bottom:14px;line-height:1.2;color:var(--t1);
-}
+/* HERO */
+.hero{background:linear-gradient(160deg,#fff 0%,#fff5fa 60%,#ffe0ef 100%);padding:56px 20px 44px;text-align:center;border-bottom:1px solid var(--bd)}
+.hero-eyebrow{display:inline-block;font-size:10px;letter-spacing:.42em;color:var(--pk);border:1px solid rgba(255,20,147,.3);padding:5px 18px;margin-bottom:22px;border-radius:2px}
+.hero h1{font-size:clamp(26px,6vw,48px);font-weight:700;letter-spacing:.03em;margin-bottom:12px;line-height:1.2}
 .hero h1 em{color:var(--pk);font-style:normal}
-.hero-desc{
-  font-size:13px;color:var(--t2);letter-spacing:.05em;
-  margin-bottom:36px;line-height:1.9;
-}
-.hero-box{
-  max-width:520px;margin:0 auto 28px;
-  display:flex;border:1.5px solid var(--bd2);border-radius:8px;overflow:hidden;
-  background:#fff;box-shadow:var(--shadow);
-}
-.hero-box input{
-  flex:1;border:none;padding:14px 20px;font-size:13px;color:var(--t1);
-  font-family:inherit;outline:none;
-}
+.hero-desc{font-size:13px;color:var(--t2);letter-spacing:.05em;margin-bottom:32px;line-height:1.9}
+.hero-box{max-width:520px;margin:0 auto 24px;display:flex;border:1.5px solid var(--bd2);border-radius:8px;overflow:hidden;background:#fff;box-shadow:var(--sh)}
+.hero-box input{flex:1;border:none;padding:14px 20px;font-size:13px;color:var(--t1);font-family:inherit;outline:none}
 .hero-box input::placeholder{color:var(--t3)}
-.hero-box button{
-  padding:0 28px;background:var(--pk);border:none;
-  color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;
-  transition:background .2s;white-space:nowrap;
-}
+.hero-box button{padding:0 28px;background:var(--pk);border:none;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;transition:background .2s;white-space:nowrap}
 .hero-box button:hover{background:var(--pk2)}
 .cat-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.cat-pill{
-  padding:7px 16px;border-radius:20px;
-  background:#fff;border:1.5px solid var(--bd2);
-  color:var(--t2);font-size:11px;font-weight:500;
-  letter-spacing:.06em;transition:all .18s;
-}
+.cat-pill{padding:7px 16px;border-radius:20px;background:#fff;border:1.5px solid var(--bd2);color:var(--t2);font-size:11px;font-weight:500;letter-spacing:.06em;transition:all .18s}
 .cat-pill:hover{border-color:var(--pk);color:var(--pk)}
 .cat-pill.on{background:var(--pk);border-color:var(--pk);color:#fff}
 
-/* ── AREA NAV ── */
-.area-nav{
-  background:#fff;border-bottom:1px solid var(--bd);
-  padding:10px 20px;overflow-x:auto;position:sticky;top:56px;z-index:100;
-}
+/* AREA NAV */
+.area-nav{background:#fff;border-bottom:1px solid var(--bd);padding:10px 20px;overflow-x:auto;position:sticky;top:56px;z-index:100}
 .area-nav::-webkit-scrollbar{display:none}
-.area-nav-inner{
-  max-width:1200px;margin:0 auto;
-  display:flex;align-items:center;gap:6px;white-space:nowrap;
-}
+.area-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .area-label{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase;margin-right:4px;flex-shrink:0}
-.area-pill{
-  padding:5px 14px;border-radius:16px;
-  background:transparent;border:1.5px solid var(--bd);
-  color:var(--t3);font-size:11px;letter-spacing:.05em;
-  transition:all .18s;flex-shrink:0;
-}
+.area-pill{padding:5px 13px;border-radius:16px;background:transparent;border:1.5px solid var(--bd);color:var(--t3);font-size:11px;letter-spacing:.04em;transition:all .18s;flex-shrink:0}
 .area-pill:hover{border-color:var(--pk);color:var(--pk)}
 .area-pill.on{background:var(--pk-bg);border-color:var(--pk);color:var(--pk);font-weight:600}
 
-/* ── STATS ── */
-.stats-strip{
-  background:var(--bg2);border-bottom:1px solid var(--bd);
-  padding:18px 20px;display:flex;justify-content:center;gap:40px;
-  flex-wrap:wrap;
-}
-.sstat{text-align:center;min-width:60px}
+/* STATS */
+.stats-strip{background:var(--bg2);border-bottom:1px solid var(--bd);padding:18px 20px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.sstat{text-align:center;min-width:56px}
 .sstat-n{font-size:26px;font-weight:700;line-height:1;margin-bottom:4px;color:var(--t1)}
 .sstat-n.p{color:var(--pk)}
-.sstat-l{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase}
+.sstat-l{font-size:9px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase}
 
-/* ── MAP SECTION ── */
+/* SPONSOR BAND */
+.sponsor-band{background:var(--t1);padding:20px;border-bottom:1px solid #222}
+.sponsor-inner{max-width:1200px;margin:0 auto}
+.sponsor-label{font-size:9px;letter-spacing:.4em;color:#666;text-transform:uppercase;margin-bottom:12px}
+.sponsor-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.sponsor-card{background:#1a1a1a;border:1px solid #333;padding:12px 20px;display:flex;align-items:center;gap:12px;transition:border-color .2s;border-radius:4px}
+.sponsor-card:hover{border-color:var(--pk)}
+.sponsor-name{font-size:12px;font-weight:600;color:#fff;letter-spacing:.04em}
+.sponsor-cat{font-size:9px;color:#666;letter-spacing:.1em;margin-top:2px}
+.sponsor-badge{font-size:8px;letter-spacing:.18em;padding:2px 8px;background:var(--pk);color:#fff;border-radius:2px;flex-shrink:0}
+
+/* MAP */
 .map-section{border-bottom:1px solid var(--bd)}
-.map-title-bar{
-  max-width:1200px;margin:0 auto;padding:20px 20px 12px;
-  display:flex;align-items:center;justify-content:space-between;
-}
+.map-bar{max-width:1200px;margin:0 auto;padding:16px 20px 10px;display:flex;align-items:center;justify-content:space-between}
 .map-title{font-size:11px;font-weight:600;letter-spacing:.35em;color:var(--t2);text-transform:uppercase}
-.map-hint{font-size:10px;color:var(--t3);letter-spacing:.05em}
+.map-hint{font-size:10px;color:var(--t3);letter-spacing:.04em}
 #map{height:320px;width:100%;background:var(--bg3)}
 
-/* ── SECTION ── */
+/* SECTION */
 .section{max-width:1200px;margin:0 auto;padding:0 20px}
-.sec-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:36px 0 16px;
-}
+.sec-head{display:flex;align-items:center;justify-content:space-between;padding:32px 0 16px}
 .sec-title{font-size:11px;font-weight:600;letter-spacing:.35em;color:var(--t2);text-transform:uppercase}
 .sec-count{font-size:11px;color:var(--t3);letter-spacing:.08em}
 
-/* ── SHOP GRID ── */
-.shop-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:16px;
-  padding-bottom:64px;
-}
-.shop-card{
-  background:#fff;border:1.5px solid var(--bd);border-radius:10px;
-  overflow:hidden;cursor:pointer;
-  transition:box-shadow .2s,transform .15s,border-color .18s;
-}
-.shop-card:hover{
-  box-shadow:var(--shadow-h);
-  transform:translateY(-2px);
-  border-color:rgba(255,20,147,.3);
-}
-.shop-photo{
-  height:150px;
-  display:flex;align-items:flex-end;
-  position:relative;overflow:hidden;
-}
-.shop-cat-label{
-  font-size:9px;letter-spacing:.18em;padding:3px 10px;margin:0 12px 12px;
-  background:rgba(255,255,255,.9);border-radius:20px;
-  color:var(--t1);font-weight:600;text-transform:uppercase;
-  border:1px solid rgba(0,0,0,.08);
-}
-.shop-body{padding:16px 18px 18px}
-.shop-name{font-size:14px;font-weight:700;letter-spacing:.03em;line-height:1.3;margin-bottom:6px;color:var(--t1)}
-.shop-area{font-size:10px;color:var(--t3);letter-spacing:.06em;margin-bottom:10px}
-.shop-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
-.tag{
-  font-size:9px;letter-spacing:.05em;padding:3px 9px;border-radius:12px;
-  border:1px solid var(--bd);color:var(--t2);background:var(--bg2);
-}
-.shop-desc{font-size:11px;color:var(--t2);line-height:1.75;margin-bottom:12px}
-.shop-ig{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:6px 14px;border-radius:6px;
-  border:1.5px solid var(--bd2);
-  color:var(--t2);font-size:10px;font-weight:500;letter-spacing:.08em;
-  transition:all .18s;
-}
+/* SHOP GRID */
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;padding-bottom:64px}
+.shop-card{background:#fff;border:1.5px solid var(--bd);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s,border-color .18s}
+.shop-card:hover{box-shadow:var(--sh-h);transform:translateY(-2px);border-color:rgba(255,20,147,.3)}
+.shop-photo{height:140px;display:flex;align-items:flex-end;position:relative;overflow:hidden}
+.shop-cat-label{font-size:9px;letter-spacing:.16em;padding:3px 10px;margin:0 12px 12px;background:rgba(255,255,255,.92);border-radius:20px;color:var(--t1);font-weight:600;border:1px solid rgba(0,0,0,.08)}
+.shop-body{padding:14px 16px 16px}
+.shop-name{font-size:13px;font-weight:700;letter-spacing:.03em;line-height:1.3;margin-bottom:4px;color:var(--t1)}
+.shop-area{font-size:10px;color:var(--t3);letter-spacing:.06em;margin-bottom:8px}
+.shop-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.tag{font-size:9px;letter-spacing:.04em;padding:3px 8px;border-radius:10px;border:1px solid var(--bd);color:var(--t2);background:var(--bg2)}
+.shop-info{font-size:10px;color:var(--t2);line-height:1.8;margin-bottom:10px;border-top:1px solid var(--bd);padding-top:10px}
+.shop-info span{display:block}
+.shop-desc{font-size:11px;color:var(--t2);line-height:1.75;margin-bottom:10px}
+.shop-ig{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:6px;border:1.5px solid var(--bd2);color:var(--t2);font-size:10px;font-weight:500;letter-spacing:.08em;transition:all .18s}
 .shop-ig:hover{border-color:var(--pk);color:var(--pk)}
-.shop-ig-icon{width:13px;height:13px;fill:currentColor}
+.ig-svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 
-/* ── PHOTO GRADIENTS (light) ── */
-.g-cafe{background:linear-gradient(135deg,#fde8d8,#ffd0e8,#f5e6f0)}
-.g-shop{background:linear-gradient(135deg,#dce8ff,#e8d8ff,#f0e8ff)}
-.g-hair{background:linear-gradient(135deg,#f0d8ff,#ffe0f0,#e8d8ff)}
-.g-gall{background:linear-gradient(135deg,#e8e8e8,#f0e8f8,#e8f0f8)}
-.g-nail{background:linear-gradient(135deg,#ffd8e8,#ffe8f0,#ffd0e0)}
-.g-food{background:linear-gradient(135deg,#fef0d8,#ffe8d0,#fde8c8)}
-.g-rec {background:linear-gradient(135deg,#d8eef8,#dce8f0,#d8f0f8)}
-.g-life{background:linear-gradient(135deg,#e8f8e8,#d8f0e8,#e8ece8)}
+/* GRADIENTS */
+.g-cafe{background:linear-gradient(135deg,#fde8d8,#ffd8e8,#f5e8f0)}
+.g-food{background:linear-gradient(135deg,#fef0d0,#ffe0c8,#fde8c0)}
+.g-hair{background:linear-gradient(135deg,#f0d8ff,#e8d0f8,#f8d8ff)}
+.g-gym {background:linear-gradient(135deg,#d8eeff,#dce8f8,#d8f0ff)}
+.g-shop{background:linear-gradient(135deg,#dce8ff,#e0d8ff,#e8e0ff)}
+.g-other{background:linear-gradient(135deg,#e8f0e8,#dce8dc,#e8ece8)}
 
-/* ── FOOTER ── */
-footer{
-  background:var(--t1);
-  padding:40px 20px;text-align:center;
-}
-.ft-logo{font-size:15px;font-weight:700;letter-spacing:.06em;margin-bottom:8px;color:#fff}
+/* FOOTER */
+footer{background:var(--t1);padding:36px 20px;text-align:center}
+.ft-logo{font-size:15px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:#fff}
 .ft-logo span{color:var(--pk)}
-.ft-sub{font-size:9px;letter-spacing:.22em;color:#666;margin-bottom:10px;text-transform:uppercase}
-.ft-hash{font-size:10px;color:#444;letter-spacing:.06em}
-
-/* ── EMPTY STATE ── */
+.ft-sub{font-size:9px;letter-spacing:.22em;color:#555;margin-bottom:8px;text-transform:uppercase}
+.ft-hash{font-size:10px;color:#333;letter-spacing:.06em}
 .empty{grid-column:1/-1;text-align:center;padding:64px 20px;color:var(--t3);font-size:12px;letter-spacing:.1em}
 
-/* ── LEAFLET OVERRIDES ── */
-.leaflet-popup-content-wrapper{border-radius:8px;box-shadow:var(--shadow-h);border:1px solid var(--bd)}
-.leaflet-popup-content{margin:12px 16px;font-family:'Montserrat','Noto Sans JP',sans-serif}
-.map-popup-name{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px}
-.map-popup-meta{font-size:10px;color:var(--t2)}
-
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:768px){
   .nav-search{display:none}
-  .hero{padding:44px 16px 36px}
-  .hero h1{font-size:30px}
+  .hero{padding:40px 16px 32px}
+  .hero h1{font-size:28px}
   .hero-desc{font-size:12px}
-  .hero-box{max-width:100%}
-  .shop-grid{grid-template-columns:1fr 1fr;gap:12px;padding-bottom:48px}
-  .shop-photo{height:120px}
-  .shop-name{font-size:13px}
+  .shop-grid{grid-template-columns:1fr 1fr;gap:10px;padding-bottom:48px}
+  .shop-photo{height:110px}
+  .shop-name{font-size:12px}
   .stats-strip{gap:20px}
-  .sstat-n{font-size:22px}
-  #map{height:280px}
-  .area-nav{top:56px}
-  .sec-head{padding:28px 0 14px}
+  #map{height:260px}
+  .sponsor-row{gap:10px}
 }
 @media(max-width:480px){
-  .shop-grid{grid-template-columns:1fr;gap:12px}
+  .shop-grid{grid-template-columns:1fr;gap:10px}
   .cat-pill{font-size:12px;padding:8px 16px}
-  .hero-box input{font-size:14px;padding:14px 16px}
-  .shop-card{border-radius:8px}
   .shop-photo{height:160px}
+  .shop-card{border-radius:8px}
+  .hero-box input{font-size:14px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">ハレ<span>マップ</span></a>
@@ -267,14 +157,10 @@ footer{
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">HARE COLLECTION 2026 — 協力店舗マップ</div>
   <h1>街を、もっと<em>ハレ</em>に。</h1>
-  <p class="hero-desc">
-    HARE COLLECTION 2026 の活動に参加する協力店舗を紹介するサイトです。<br>
-    エリアやカテゴリから検索してください。
-  </p>
+  <p class="hero-desc">HARE COLLECTION 2026 の活動に参加する協力店舗を紹介するサイトです。<br>エリアやカテゴリから検索してください。</p>
   <div class="hero-box">
     <input type="text" id="heroQ" placeholder="店舗名、エリア、カテゴリで検索">
     <button id="heroBtn">検索</button>
@@ -282,45 +168,51 @@ footer{
   <div class="cat-row" id="catRow">
     <button class="cat-pill on" data-cat="">すべて</button>
     <button class="cat-pill" data-cat="カフェ">カフェ</button>
-    <button class="cat-pill" data-cat="セレクトショップ">ショップ</button>
-    <button class="cat-pill" data-cat="美容室">美容室</button>
-    <button class="cat-pill" data-cat="ギャラリー">ギャラリー</button>
-    <button class="cat-pill" data-cat="ネイルサロン">ネイル</button>
     <button class="cat-pill" data-cat="飲食">飲食</button>
+    <button class="cat-pill" data-cat="美容室">美容室</button>
+    <button class="cat-pill" data-cat="ジム・整体">ジム・整体</button>
+    <button class="cat-pill" data-cat="ショップ">ショップ</button>
+    <button class="cat-pill" data-cat="その他">その他</button>
   </div>
 </section>
 
-<!-- AREA NAV -->
 <div class="area-nav">
   <div class="area-nav-inner">
     <span class="area-label">Area</span>
-    <button class="area-pill on" data-area="">すべてのエリア</button>
-    <button class="area-pill" data-area="大阪市西区">大阪市西区</button>
-    <button class="area-pill" data-area="大阪市北区">大阪市北区</button>
-    <button class="area-pill" data-area="大阪市中央区">大阪市中央区</button>
-    <button class="area-pill" data-area="大阪市天王寺区">天王寺区</button>
-    <button class="area-pill" data-area="京都市">京都市</button>
-    <button class="area-pill" data-area="神戸市">神戸市</button>
+    <button class="area-pill on" data-region="">すべてのエリア</button>
+    <button class="area-pill" data-region="堀江">堀江</button>
+    <button class="area-pill" data-region="梅田・北区">梅田・北区</button>
+    <button class="area-pill" data-region="心斎橋・難波">心斎橋・難波</button>
+    <button class="area-pill" data-region="玉造・東成">玉造・東成</button>
+    <button class="area-pill" data-region="天王寺">天王寺</button>
+    <button class="area-pill" data-region="中之島・北浜">中之島・北浜</button>
+    <button class="area-pill" data-region="神戸・兵庫">神戸・兵庫</button>
+    <button class="area-pill" data-region="京都">京都</button>
+    <button class="area-pill" data-region="その他">その他</button>
   </div>
 </div>
 
-<!-- STATS -->
 <div class="stats-strip">
-  <div class="sstat"><div class="sstat-n" id="sTotal">15</div><div class="sstat-l">掲載店舗</div></div>
-  <div class="sstat"><div class="sstat-n" id="sArea">6</div><div class="sstat-l">エリア</div></div>
+  <div class="sstat"><div class="sstat-n" id="sTotal">--</div><div class="sstat-l">掲載店舗</div></div>
+  <div class="sstat"><div class="sstat-n" id="sArea">--</div><div class="sstat-l">エリア</div></div>
   <div class="sstat"><div class="sstat-n p" id="sDays">--</div><div class="sstat-l">Days to 8/8</div></div>
 </div>
 
-<!-- MAP -->
+<div class="sponsor-band" id="sponsorBand" style="display:none">
+  <div class="sponsor-inner">
+    <div class="sponsor-label">Official Sponsor</div>
+    <div class="sponsor-row" id="sponsorRow"></div>
+  </div>
+</div>
+
 <div class="map-section">
-  <div class="map-title-bar">
+  <div class="map-bar">
     <div class="map-title">店舗マップ</div>
     <div class="map-hint">マーカーをタップすると店舗情報が表示されます</div>
   </div>
   <div id="map"></div>
 </div>
 
-<!-- ALL SHOPS -->
 <div class="section" id="all">
   <div class="sec-head">
     <div class="sec-title">掲載店舗一覧</div>
@@ -331,92 +223,146 @@ footer{
   <div class="shop-grid" id="shopGrid"></div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-logo">ハレ<span>マップ</span></div>
   <div class="ft-sub">HARE COLLECTION 2026 — 2026.08.08 OSAKA</div>
-  <div class="ft-hash">#HARECOLLECTION2026 &nbsp; #ハレコレ2026 &nbsp; #ハレマップ</div>
+  <div class="ft-hash">#HARECOLLECTION2026 &nbsp;#ハレコレ2026 &nbsp;#ハレマップ</div>
 </footer>
 
 <script>
+// region: エリアフィルター用グループ
 const STORES = [
-  { id:1,  slug:"select-shop-void",      name:"SELECT SHOP VOID",       area:"大阪市西区",      cat:"セレクトショップ", desc:"ヴィンテージとモダンが融合するセレクトショップ。HAREの世界観と高い親和性を持つ。",   ig:"https://www.instagram.com", tags:["セレクト","メンズ","レディース"], bg:"g-shop", lat:34.686, lng:135.483 },
-  { id:2,  slug:"cafe-lumiere",          name:"CAFÉ LUMIÈRE",            area:"大阪市北区",      cat:"カフェ",           desc:"洗練された空間と珈琲が自慢のデザインカフェ。深夜まで営業。",                         ig:"https://www.instagram.com", tags:["コーヒー","デザイン","深夜営業"], bg:"g-cafe", lat:34.703, lng:135.497 },
-  { id:3,  slug:"hair-salon-noir",       name:"HAIR SALON NOIR",         area:"大阪市中央区",    cat:"美容室",           desc:"アートとファッションをコンセプトにしたヘアサロン。",                                   ig:"https://www.instagram.com", tags:["ヘアカラー","デザイン","アート"], bg:"g-hair", lat:34.683, lng:135.510 },
-  { id:4,  slug:"gallery-mono",          name:"GALLERY MONO",            area:"大阪市西区",      cat:"ギャラリー",       desc:"現代アートギャラリー。若手アーティストの作品を継続的に紹介する。",                    ig:"https://www.instagram.com", tags:["アート","展示","イベント"], bg:"g-gall", lat:34.688, lng:135.479 },
-  { id:5,  slug:"book-cafe-buncho",      name:"BOOK CAFÉ 文鳥",          area:"大阪市西区",      cat:"カフェ",           desc:"本と珈琲が楽しめるブックカフェ。",                                                   ig:"", tags:["カフェ","書籍"], bg:"g-cafe", lat:34.685, lng:135.485 },
-  { id:6,  slug:"vintage-market-zen",    name:"VINTAGE MARKET 然",       area:"大阪市北区",      cat:"セレクトショップ", desc:"古着とヴィンテージ雑貨を取り扱うマーケット。",                                       ig:"", tags:["古着","ヴィンテージ"], bg:"g-shop", lat:34.705, lng:135.502 },
-  { id:7,  slug:"nail-beauty-lace",      name:"NAIL & BEAUTY LACE",      area:"大阪市中央区",    cat:"ネイルサロン",     desc:"",                                                                                   ig:"", tags:["ネイル","美容"], bg:"g-nail", lat:34.681, lng:135.515 },
-  { id:8,  slug:"ramen-atelier-koku",    name:"RAMEN ATELIER 黒",        area:"大阪市天王寺区",  cat:"飲食",             desc:"",                                                                                   ig:"", tags:["ラーメン","こだわり"], bg:"g-food", lat:34.649, lng:135.515 },
-  { id:9,  slug:"second-hand-blvd",      name:"SECOND HAND BLVD",        area:"京都市",          cat:"セレクトショップ", desc:"",                                                                                   ig:"", tags:["古着","京都"], bg:"g-shop", lat:35.012, lng:135.770 },
-  { id:10, slug:"photo-studio-prism",    name:"PHOTO STUDIO PRISM",      area:"大阪市北区",      cat:"フォトスタジオ",   desc:"",                                                                                   ig:"", tags:["撮影","スタジオ"], bg:"g-gall", lat:34.700, lng:135.495 },
-  { id:11, slug:"piercing-jewelry-dark", name:"PIERCING & JEWELRY dark",  area:"大阪市中央区",    cat:"ジュエリー",       desc:"",                                                                                   ig:"", tags:["ピアス","アクセサリー"], bg:"g-nail", lat:34.685, lng:135.508 },
-  { id:12, slug:"lifestyle-store-arch",  name:"LIFESTYLE STORE ARCH",    area:"神戸市",          cat:"ライフスタイル",   desc:"",                                                                                   ig:"", tags:["ライフスタイル","雑貨"], bg:"g-life", lat:34.691, lng:135.195 },
-  { id:13, slug:"barber-edge",           name:"BARBER EDGE",             area:"大阪市北区",      cat:"理容室",           desc:"",                                                                                   ig:"", tags:["バーバー","メンズ"], bg:"g-hair", lat:34.706, lng:135.499 },
-  { id:14, slug:"tattoo-studio-ink",     name:"TATTOO STUDIO INK",       area:"大阪市西区",      cat:"タトゥースタジオ", desc:"",                                                                                   ig:"", tags:["タトゥー","アート"], bg:"g-gall", lat:34.689, lng:135.481 },
-  { id:15, slug:"record-shop-signal",    name:"RECORD SHOP SIGNAL",      area:"大阪市天王寺区",  cat:"レコードショップ", desc:"",                                                                                   ig:"", tags:["レコード","音楽"], bg:"g-rec", lat:34.647, lng:135.511 },
+  {id:'s02',name:'machiasai',area:'城東区',addr:'大阪府大阪市城東区',phone:'',hours:'',holiday:'',cat:'その他',tags:['アート','カルチャー'],bg:'g-other',lat:34.703,lng:135.546,region:'玉造・東成'},
+  {id:'s03',name:'和牛焼肉モウモウ 南堀江店',area:'堀江',addr:'大阪府大阪市西区南堀江1丁目20-19',phone:'06-6695-7711',hours:'17:00〜翌0:00（L.O.23:30）',holiday:'不定休',cat:'飲食',tags:['焼肉','和牛'],bg:'g-food',lat:34.664,lng:135.492,region:'堀江'},
+  {id:'s04',name:'堀江発酵堂',area:'堀江',addr:'大阪府大阪市西区南堀江1-15-17',phone:'06-6541-8111',hours:'11:00〜19:00（L.O.18:30）',holiday:'不定休',cat:'カフェ',tags:['発酵','ナチュラル'],bg:'g-cafe',lat:34.664,lng:135.490,region:'堀江'},
+  {id:'s05',name:'totoburger',area:'玉造',addr:'大阪府大阪市東成区中道3丁目14-11 ソルーナ玉造1F',phone:'06-7709-1966',hours:'月火木金土 11:00〜21:00 / 日祝 11:00〜16:00',holiday:'水曜',cat:'飲食',tags:['バーガー','テイクアウト'],bg:'g-food',lat:34.665,lng:135.542,region:'玉造・東成'},
+  {id:'s06',name:'the blue donut',area:'玉造',addr:'大阪府大阪市東成区中道1-8-13',phone:'',hours:'10:00〜16:00（売切次第終了）',holiday:'月・火曜',cat:'カフェ',tags:['ドーナツ','スイーツ'],bg:'g-cafe',lat:34.666,lng:135.543,region:'玉造・東成'},
+  {id:'s08',name:'MUKU',area:'本町',addr:'大阪府大阪市中央区淡路町4-4-18 プラシーデンス淡路町1F',phone:'080-6314-2432',hours:'8:00〜17:00',holiday:'日・祝日',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.682,lng:135.503,region:'心斎橋・難波'},
+  {id:'s10',name:'Cafe CHARBON',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目6-23',phone:'06-4391-7215',hours:'平日・日祝 11:30〜22:00 / 金土・祝前 11:30〜23:00',holiday:'年末年始',cat:'カフェ',tags:['カフェ','夜カフェ'],bg:'g-cafe',lat:34.669,lng:135.491,region:'堀江'},
+  {id:'s11',name:'RENGA',area:'松屋町',addr:'大阪府大阪市中央区松屋町4-18 実和ビル1F',phone:'06-6777-6696',hours:'7:00〜21:00',holiday:'正月3日のみ',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.677,lng:135.516,region:'心斎橋・難波'},
+  {id:'s13',name:'ソレアス整骨院',area:'福島',addr:'大阪府大阪市福島区福島1-2-30 市光ビル2F',phone:'06-6695-7532',hours:'10:30〜20:30',holiday:'日曜',cat:'ジム・整体',tags:['整骨院','ケア'],bg:'g-gym',lat:34.692,lng:135.480,region:'梅田・北区'},
+  {id:'s15',name:'PLENU.',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'美容室',tags:['ヘアサロン','デザイン'],bg:'g-hair',lat:34.578,lng:136.529,region:'その他'},
+  {id:'s16',name:'nonfiction（フォトスタジオ）',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'その他',tags:['フォトスタジオ','撮影'],bg:'g-other',lat:34.579,lng:136.530,region:'その他'},
+  {id:'s17',name:'カメイサンのカフェ',area:'松阪（三重）',addr:'三重県松阪市西之庄町44-11',phone:'0598-31-3372',hours:'平日 10:00〜16:30 / 土日祝 9:00〜17:00',holiday:'月・火曜',cat:'カフェ',tags:['カフェ','のどか'],bg:'g-cafe',lat:34.577,lng:136.528,region:'その他'},
+  {id:'s18',name:'BUDDHA',area:'玉造',addr:'大阪市東成区中道1-8-15 金井ビル1F',phone:'06-6753-7797',hours:'月〜金 11:00〜15:00',holiday:'土日祝',cat:'飲食',tags:['ランチ','アジアン'],bg:'g-food',lat:34.666,lng:135.544,region:'玉造・東成'},
+  {id:'s21',name:'JOBASE',area:'都島',addr:'大阪府大阪市都島区',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['ジム','トレーニング'],bg:'g-gym',lat:34.708,lng:135.524,region:'玉造・東成'},
+  {id:'s22',name:'パーソナルジムrunner',area:'福島',addr:'大阪府大阪市福島区',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['パーソナルジム','ダイエット'],bg:'g-gym',lat:34.693,lng:135.482,region:'梅田・北区'},
+  {id:'s23',name:'スナッチだいちゃん',area:'梅田',addr:'大阪市北区曽根崎',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['格闘技','トレーニング'],bg:'g-gym',lat:34.703,lng:135.499,region:'梅田・北区'},
+  {id:'s24',name:'なにわたこ焼き あま福',area:'長堀橋',addr:'大阪市中央区島之内1-21-25 FIB堺筋ビル1F',phone:'06-6241-7117',hours:'月〜木 16:00〜24:00 / 金 16:00〜25:00 / 土 11:00〜25:00 / 日祝 11:00〜22:00',holiday:'不定休',cat:'飲食',tags:['たこ焼き','大阪グルメ'],bg:'g-food',lat:34.672,lng:135.509,region:'心斎橋・難波'},
+  {id:'s25',name:'Studio Gaudi',area:'天満',addr:'大阪府大阪市北区天神橋4-7-11 グリフォンビル6F',phone:'080-3829-0060',hours:'11:00〜21:30（最終受付 20:00）',holiday:'不定休',cat:'ジム・整体',tags:['スタジオ','フィットネス'],bg:'g-gym',lat:34.697,lng:135.511,region:'梅田・北区'},
+  {id:'s26',name:'Solnis.-duo-',area:'福島',addr:'大阪府大阪市福島区福島7-3-18 第一住建福島駅前ビル4F',phone:'',hours:'10:00〜22:00',holiday:'水曜',cat:'美容室',tags:['サロン','ヘアケア'],bg:'g-hair',lat:34.694,lng:135.476,region:'梅田・北区'},
+  {id:'s27',name:'Solnis.-qua-',area:'玉造',addr:'大阪府大阪市東成区',phone:'',hours:'',holiday:'',cat:'美容室',tags:['サロン','ヘアケア'],bg:'g-hair',lat:34.667,lng:135.540,region:'玉造・東成'},
+  {id:'s28',name:'Solnis.',area:'南船場',addr:'大阪府大阪市中央区南船場4丁目8-8 Dazz complex 6F',phone:'',hours:'10:00〜22:00',holiday:'水曜',cat:'美容室',tags:['サロン','ヘアケア'],bg:'g-hair',lat:34.678,lng:135.505,region:'心斎橋・難波'},
+  {id:'s29',name:'サードプレイスジム',area:'堺筋本町',addr:'大阪府大阪市中央区南船場1-1-12 企業交流プラザビル10F',phone:'090-8985-2968',hours:'9:00〜23:00（最終受付 22:00）',holiday:'不定休',cat:'ジム・整体',tags:['ジム','パーソナル'],bg:'g-gym',lat:34.681,lng:135.507,region:'心斎橋・難波'},
+  {id:'s31',name:'韓国バーヨンウォン',area:'梅田',addr:'大阪市北区堂山町10-16 3階',phone:'070-6457-0167',hours:'20:00〜翌5:00',holiday:'不定休',cat:'飲食',tags:['韓国バー','ナイト'],bg:'g-food',lat:34.703,lng:135.500,region:'梅田・北区'},
+  {id:'s32',name:"T's",area:'梅田',addr:'大阪市北区',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','ファッション'],bg:'g-shop',lat:34.704,lng:135.498,region:'梅田・北区'},
+  {id:'s33',name:'dM',area:'心斎橋',addr:'大阪市中央区',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','ストリート'],bg:'g-shop',lat:34.673,lng:135.501,region:'心斎橋・難波'},
+  {id:'s34',name:'Moi flower',area:'難波',addr:'大阪市難波',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['フラワー','花屋'],bg:'g-shop',lat:34.663,lng:135.503,region:'心斎橋・難波'},
+  {id:'s36',name:'BASE sports bar',area:'心斎橋',addr:'大阪府大阪市中央区西心斎橋2丁目3-5 スポタカビル北館2F',phone:'06-6732-8419',hours:'20:00〜翌5:00',holiday:'不定休',cat:'飲食',tags:['スポーツバー','ナイト'],bg:'g-food',lat:34.671,lng:135.496,region:'心斎橋・難波'},
+  {id:'s37',name:'藁しべ 天満 扇町店',area:'天神橋',addr:'大阪府大阪市北区天神橋3-9-14 カサブロンセ1F',phone:'06-6809-1137',hours:'月〜金 16:00〜翌0:00 / 土日祝 14:00〜翌0:00',holiday:'なし（無休）',cat:'飲食',tags:['居酒屋','天満'],bg:'g-food',lat:34.697,lng:135.511,region:'梅田・北区'},
+  {id:'s38',name:'HEAL HAIR',area:'堀江',addr:'大阪府大阪市西区北堀江1-9-11 3F',phone:'06-6599-9441',hours:'10:00〜20:00',holiday:'月曜',cat:'美容室',tags:['ヘアサロン','カラー'],bg:'g-hair',lat:34.669,lng:135.492,region:'堀江'},
+  {id:'s39',name:'panissimo',area:'玉造',addr:'大阪市東成区中道4-5-14 エスポワールあずま1F',phone:'',hours:'',holiday:'月・第1第3木曜',cat:'カフェ',tags:['パン','ベーカリー'],bg:'g-cafe',lat:34.664,lng:135.545,region:'玉造・東成'},
+  {id:'s40',name:'つけ麺 雀 アメ村本店',area:'アメ村',addr:'大阪府大阪市中央区西心斎橋2-11-11',phone:'06-6211-1174',hours:'11:30〜16:30 / 18:00〜22:00',holiday:'元旦以外無休',cat:'飲食',tags:['つけ麺','ラーメン'],bg:'g-food',lat:34.672,lng:135.494,region:'心斎橋・難波'},
+  {id:'s41',name:'焼き鳥 末広',area:'南新町',addr:'大阪市中央区南新町2-3-1 クィーンズビル1F',phone:'090-9985-8008',hours:'月〜土 11:30〜15:00 / 17:00〜23:00',holiday:'不定休',cat:'飲食',tags:['焼き鳥','居酒屋'],bg:'g-food',lat:34.674,lng:135.514,region:'心斎橋・難波'},
+  {id:'s42',name:"美容室ORL'MENT【オルメント】",area:'扇町',addr:'大阪府大阪市北区与力町7-12',phone:'050-1868-9336',hours:'10:00〜20:00',holiday:'不定休',cat:'美容室',tags:['美容室','デザイン'],bg:'g-hair',lat:34.701,lng:135.508,region:'梅田・北区'},
+  {id:'s46',name:'イクリプシス',area:'祇園四条',addr:'京都府京都市東山区中之町200 鴨川ビル5F',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','京都'],bg:'g-shop',lat:35.004,lng:135.773,region:'京都'},
+  {id:'s47',name:'鉄板鍋ショウ',area:'寺田町',addr:'大阪府大阪市天王寺区寺田町2-4-11',phone:'06-6773-0118',hours:'月 19:00〜23:30 / 火〜日祝 17:30〜23:30',holiday:'不定休',cat:'飲食',tags:['鉄板','鍋'],bg:'g-food',lat:34.655,lng:135.527,region:'天王寺'},
+  {id:'s48',name:'ホットブルズ',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目13-28 IMANO OSAKA SHINSAIBASHI HOSTEL 1F',phone:'',hours:'',holiday:'',cat:'飲食',tags:['バー','クラフト'],bg:'g-food',lat:34.669,lng:135.494,region:'堀江'},
+  {id:'s49',name:'MONDIAL',area:'堀江',addr:'大阪府大阪市西区北堀江1-6-16 フォレステージュ北堀江1F',phone:'06-6585-9955',hours:'8:30〜21:00（L.O.20:30）',holiday:'不定休',cat:'カフェ',tags:['コーヒー','ランチ'],bg:'g-cafe',lat:34.669,lng:135.491,region:'堀江'},
+  {id:'s50',name:'クラフトバーガー',area:'堀江',addr:'大阪市西区北堀江1-6-12',phone:'',hours:'',holiday:'',cat:'飲食',tags:['バーガー','クラフト'],bg:'g-food',lat:34.669,lng:135.491,region:'堀江'},
+  {id:'s51',name:'Base Island Kitchen',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目16-27',phone:'080-7013-5231',hours:'11:30〜16:30',holiday:'火・不定休',cat:'飲食',tags:['ランチ','キッチン'],bg:'g-food',lat:34.668,lng:135.495,region:'堀江'},
+  {id:'s52',name:'JAZZ BERRY',area:'堀江',addr:'大阪府大阪市西区北堀江1-9-18 ベルヴォーグ北堀江102',phone:'090-7754-0003',hours:'12:00〜23:00',holiday:'不定休',cat:'飲食',tags:['バー','ジャズ'],bg:'g-food',lat:34.669,lng:135.492,region:'堀江'},
+  {id:'s53',name:'CAFE CHARBONの隣のパン屋',area:'堀江',addr:'大阪市西区北堀江1-6-23付近',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['パン','ベーカリー'],bg:'g-cafe',lat:34.669,lng:135.491,region:'堀江'},
+  {id:'s54',name:'WEST WOOD BAKER',area:'堀江',addr:'大阪府大阪市西区南堀江1-16-9',phone:'06-6538-0022',hours:'9:00〜22:00',holiday:'なし（無休）',cat:'カフェ',tags:['パン','ベーカリー','無休'],bg:'g-cafe',lat:34.665,lng:135.491,region:'堀江'},
+  {id:'s58',name:'and 堀江店',area:'堀江',addr:'大阪市西区北堀江',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','ストリート'],bg:'g-shop',lat:34.669,lng:135.493,region:'堀江'},
+  {id:'s59',name:'PROTEIN LAB.',area:'堀江',addr:'大阪府大阪市西区北堀江1-15-19',phone:'06-6710-9739',hours:'10:00〜22:00（L.O.21:30）',holiday:'不定休',cat:'カフェ',tags:['プロテイン','ヘルシー'],bg:'g-gym',lat:34.668,lng:135.494,region:'堀江'},
+  {id:'s61',name:'BLUX BURGER',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目9-9',phone:'',hours:'10:00〜16:00 / 18:00〜翌1:00',holiday:'不明',cat:'飲食',tags:['バーガー','ナイト'],bg:'g-food',lat:34.669,lng:135.491,region:'堀江'},
+  {id:'s63',name:'WISM',area:'堀江',addr:'大阪府大阪市西区南堀江1-9-7',phone:'06-4390-4050',hours:'11:30〜20:00',holiday:'不定休',cat:'ショップ',tags:['セレクト','ファッション'],bg:'g-shop',lat:34.665,lng:135.492,region:'堀江'},
+  {id:'s65',name:"men's salon Flip 大阪梅田",area:'梅田',addr:'大阪市北区梅田',phone:'',hours:'',holiday:'',cat:'美容室',tags:['メンズ','バーバー'],bg:'g-hair',lat:34.704,lng:135.497,region:'梅田・北区'},
+  {id:'s66',name:'アジイチバ',area:'梅田',addr:'大阪府大阪市北区曽根崎2-10-18 本陣ビルB1',phone:'06-6312-3755',hours:'17:00〜24:00（L.O.23:30）',holiday:'不定休',cat:'飲食',tags:['アジア','居酒屋'],bg:'g-food',lat:34.702,lng:135.497,region:'梅田・北区'},
+  {id:'s67',name:'TONARI（ナリ）',area:'梅田',addr:'大阪府大阪市北区中崎西1-9-3',phone:'06-7181-4525',hours:'月〜金 11:00〜22:00 / 土日祝 10:00〜22:00',holiday:'不定休',cat:'カフェ',tags:['カフェ','ランチ'],bg:'g-cafe',lat:34.704,lng:135.500,region:'梅田・北区'},
+  {id:'s68',name:'VIVA鍼灸整骨院 芦屋駅前院',area:'芦屋',addr:'兵庫県芦屋市船戸町2-1-105 ラポルテ西館1F',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','ケア'],bg:'g-gym',lat:34.726,lng:135.302,region:'神戸・兵庫'},
+  {id:'s69',name:'VIVA接骨院 苦楽園通り院',area:'西宮',addr:'兵庫県西宮市南越木岩町11-6 Excel Kurakuen 107',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['接骨院','ケア'],bg:'g-gym',lat:34.737,lng:135.342,region:'神戸・兵庫'},
+  {id:'s70',name:'VIVA鍼灸整骨院六甲道院',area:'神戸',addr:'兵庫県神戸市灘区深田町3-1-15 ライオンズマンション六甲道第3 107',phone:'078-855-4089',hours:'月〜金 10:00〜13:00 / 15:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','神戸'],bg:'g-gym',lat:34.720,lng:135.238,region:'神戸・兵庫'},
+  {id:'s71',name:'VIVA骨盤整体院三田院',area:'三田',addr:'兵庫県三田市天神1-1-6',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整体','骨盤'],bg:'g-gym',lat:34.889,lng:135.219,region:'神戸・兵庫'},
+  {id:'s72',name:'VIVA骨盤整体院宝塚院',area:'宝塚',addr:'兵庫県宝塚市口谷東1-21-11 ヴィラ・デ・フォーレ宝塚1F',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整体','骨盤'],bg:'g-gym',lat:34.798,lng:135.358,region:'神戸・兵庫'},
+  {id:'s73',name:'VIVA骨盤整体院高槻院',area:'高槻',addr:'大阪府高槻市紺屋町6-16',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'年中無休',cat:'ジム・整体',tags:['整体','高槻'],bg:'g-gym',lat:34.849,lng:135.618,region:'その他'},
+  {id:'s74',name:'VIVA接骨院 阪急茨木駅前院',area:'茨木',addr:'大阪府茨木市別院町3-33 シャーメゾン下中条別院102',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['接骨院','茨木'],bg:'g-gym',lat:34.817,lng:135.568,region:'その他'},
+  {id:'s75',name:'VIVA鍼灸接骨整体院 忠岡院',area:'泉北郡',addr:'大阪府泉北郡忠岡町忠岡東1-15-31',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','南大阪'],bg:'g-gym',lat:34.460,lng:135.406,region:'その他'},
+  {id:'s76',name:'VIVA鍼灸接骨整体院 岸和田春木院',area:'岸和田',addr:'大阪府岸和田市春木若松町21-1',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','岸和田'],bg:'g-gym',lat:34.460,lng:135.375,region:'その他'},
+  {id:'s77',name:'VIVA鍼灸接骨整体院 東岸和田院',area:'岸和田',addr:'大阪府岸和田市土生町2-31-25',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','岸和田'],bg:'g-gym',lat:34.461,lng:135.380,region:'その他'},
+  {id:'s78',name:'VIVA鍼灸接骨整体院 堺深井院',area:'堺',addr:'大阪府堺市中区深井清水町4030 淀川深井ビル101号',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','堺'],bg:'g-gym',lat:34.563,lng:135.470,region:'その他'},
+  {id:'s79',name:'VIVA骨盤接骨院 三条寺町院',area:'京都市',addr:'京都府京都市中京区寺町通御池下る下本能寺前町515 ギャラリーカトビル',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['接骨院','京都'],bg:'g-gym',lat:35.011,lng:135.768,region:'京都'},
+  {id:'s80',name:'VIVA骨盤整体院 垂水院',area:'神戸垂水',addr:'兵庫県神戸市垂水区陸ノ町2-11 1F',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整体','垂水'],bg:'g-gym',lat:34.638,lng:135.074,region:'神戸・兵庫'},
+  {id:'s81',name:'SHIMATONERIKO 路地裏 COFFEE ROASTER',area:'天王寺',addr:'大阪市阿倍野区松崎町2-3-5',phone:'06-7181-4600',hours:'月水木金土日祝 8:00〜17:00',holiday:'火曜',cat:'カフェ',tags:['コーヒー','ロースター'],bg:'g-cafe',lat:34.648,lng:135.513,region:'天王寺'},
+  {id:'s82',name:'ピラティスK 奈良大安寺店',area:'奈良',addr:'奈良県奈良市大安寺町514-1 PAKETテラス2階',phone:'0570-050-055',hours:'火水金 10:00〜22:00 / 木 17:30〜22:00 / 土祝 10:00〜18:30 / 日 10:00〜18:00',holiday:'月曜',cat:'ジム・整体',tags:['ピラティス','奈良'],bg:'g-gym',lat:34.680,lng:135.818,region:'その他'},
+  {id:'s83',name:'GARB weeks',area:'中之島',addr:'大阪府大阪市北区中之島1-1-29 中之島公園内',phone:'050-3627-9872',hours:'11:30〜22:00（L.O.21:30）',holiday:'なし（無休）',cat:'カフェ',tags:['公園カフェ','中之島'],bg:'g-cafe',lat:34.692,lng:135.499,region:'中之島・北浜'},
+  {id:'s84',name:'大阪市中央公会堂',area:'中之島',addr:'大阪市北区中之島1丁目1番27号',phone:'06-6208-2002',hours:'9:30〜21:30',holiday:'第4火曜・年末年始',cat:'その他',tags:['文化施設','中之島'],bg:'g-other',lat:34.692,lng:135.499,region:'中之島・北浜'},
+  {id:'s85',name:'DRAWING HOUSE OF NAKANOSHIMA',area:'中之島',addr:'大阪市北区中之島1-1-27 大阪市中央公会堂B1F',phone:'06-6233-9660',hours:'11:00〜22:00（L.O.21:00）',holiday:'第4火曜',cat:'カフェ',tags:['カフェ','アート'],bg:'g-cafe',lat:34.692,lng:135.499,region:'中之島・北浜'},
+  {id:'s87',name:'&ISLAND',area:'北浜',addr:'大阪府大阪市中央区北浜2-1-23',phone:'06-6233-2010',hours:'月〜土祝 11:00〜22:00 / 日 11:00〜21:00',holiday:'不定休',cat:'飲食',tags:['ダイニング','北浜'],bg:'g-food',lat:34.690,lng:135.515,region:'中之島・北浜'},
+  {id:'s89',name:'MOUNT',area:'北浜',addr:'大阪府大阪市中央区北浜2-1-17 北浜ビジネス会館1F',phone:'06-6227-8024',hours:'月〜金 10:00〜17:30 / 土 11:00〜18:00 / 日祝 11:00〜17:00',holiday:'不定休',cat:'カフェ',tags:['コーヒー','ランチ'],bg:'g-cafe',lat:34.690,lng:135.514,region:'中之島・北浜'},
 ];
 
-let activeCat = '', activeArea = '', searchQ = '';
+// スポンサー企業（店舗とは別セクション）
+const SPONSORS = [
+  {name:'積水ハウス（株）',area:'神戸',cat:'住宅・建設',url:'',addr:'兵庫県神戸市中央区小野柄通7-1-1'},
+];
 
-function filtered() {
-  return STORES.filter(s => {
-    if (activeCat && s.cat !== activeCat) return false;
-    if (activeArea && s.area !== activeArea) return false;
-    if (searchQ) {
-      const q = searchQ.toLowerCase();
-      if (!s.name.toLowerCase().includes(q) && !s.area.includes(q) && !s.cat.includes(q)) return false;
+let activeCat='', activeRegion='', searchQ='';
+
+function filtered(){
+  return STORES.filter(s=>{
+    if(activeCat && s.cat!==activeCat) return false;
+    if(activeRegion && s.region!==activeRegion) return false;
+    if(searchQ){
+      const q=searchQ.toLowerCase();
+      if(!s.name.toLowerCase().includes(q)&&!s.area.includes(q)&&!s.cat.includes(q)) return false;
     }
     return true;
   });
 }
 
-// ── MAP ──
-const pinkIcon = L.divIcon({
+// MAP
+const pinkIcon=L.divIcon({
   className:'',
-  html:`<div style="
-    width:28px;height:28px;border-radius:50%;
-    background:#FF1493;border:3px solid #fff;
-    box-shadow:0 2px 8px rgba(255,20,147,.5);
-    display:flex;align-items:center;justify-content:center;
-  "><svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
-  iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-16]
+  html:`<div style="width:26px;height:26px;border-radius:50%;background:#FF1493;border:3px solid #fff;box-shadow:0 2px 8px rgba(255,20,147,.5);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
+  iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-15]
 });
 
-const map = L.map('map',{zoomControl:true}).setView([34.693,135.502],11);
+const map=L.map('map',{zoomControl:true}).setView([34.693,135.502],11);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
   attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
   subdomains:'abcd',maxZoom:19
 }).addTo(map);
 
-let markers = [];
-function renderMap(stores) {
-  markers.forEach(m => map.removeLayer(m));
-  markers = [];
-  stores.forEach(s => {
-    const m = L.marker([s.lat, s.lng], {icon: pinkIcon})
-      .bindPopup(`<div class="map-popup-name">${s.name}</div><div class="map-popup-meta">${s.area} &middot; ${s.cat}</div>`)
+let markers=[];
+function renderMap(stores){
+  markers.forEach(m=>map.removeLayer(m));
+  markers=[];
+  stores.forEach(s=>{
+    const m=L.marker([s.lat,s.lng],{icon:pinkIcon})
+      .bindPopup(`<div style="font-family:'Noto Sans JP',sans-serif"><b style="font-size:13px;color:#111">${s.name}</b><br><span style="font-size:10px;color:#777">${s.area} &middot; ${s.cat}</span></div>`)
       .addTo(map);
     markers.push(m);
   });
-  if (stores.length) {
-    const group = L.featureGroup(markers);
-    map.fitBounds(group.getBounds().pad(0.2));
+  if(stores.length){
+    try{map.fitBounds(L.featureGroup(markers).getBounds().pad(0.15));}catch(e){}
   }
 }
 
-// ── GRID ──
-function renderGrid() {
-  const items = filtered();
-  document.getElementById('gridCount').textContent = items.length + ' 件';
-  const grid = document.getElementById('shopGrid');
-  if (!items.length) {
-    grid.innerHTML = '<div class="empty">該当する店舗は見つかりませんでした。</div>';
+const igSvg=`<svg class="ig-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+
+function renderGrid(){
+  const items=filtered();
+  document.getElementById('gridCount').textContent=items.length+' 件';
+  const grid=document.getElementById('shopGrid');
+  if(!items.length){
+    grid.innerHTML='<div class="empty">該当する店舗は見つかりませんでした。</div>';
     renderMap([]);
     return;
   }
-  grid.innerHTML = items.map(s => `
-    <a href="shop/${s.slug}.html" class="shop-card">
+  grid.innerHTML=items.map(s=>`
+    <div class="shop-card">
       <div class="shop-photo ${s.bg}">
         <span class="shop-cat-label">${s.cat}</span>
       </div>
@@ -424,45 +370,62 @@ function renderGrid() {
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        ${s.desc ? `<div class="shop-desc">${s.desc}</div>` : ''}
-        ${s.ig ? `<span class="shop-ig">
-          <svg class="shop-ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram を見る
-        </span>` : ''}
+        ${(s.hours||s.holiday||s.addr)?`<div class="shop-info">
+          ${s.addr?`<span>📍 ${s.addr}</span>`:''}
+          ${s.hours?`<span>🕐 ${s.hours}</span>`:''}
+          ${s.holiday?`<span>定休日: ${s.holiday}</span>`:''}
+        </div>`:''}
       </div>
-    </a>
+    </div>
   `).join('');
   renderMap(items);
 }
 
+// スポンサー
+(function(){
+  const band=document.getElementById('sponsorBand');
+  const row=document.getElementById('sponsorRow');
+  if(!SPONSORS.length) return;
+  band.style.display='block';
+  row.innerHTML=SPONSORS.map(s=>`
+    <div class="sponsor-card">
+      <span class="sponsor-badge">SPONSOR</span>
+      <div><div class="sponsor-name">${s.name}</div><div class="sponsor-cat">${s.cat} &middot; ${s.area}</div></div>
+    </div>
+  `).join('');
+})();
+
 // Stats
-document.getElementById('sTotal').textContent = STORES.length;
-document.getElementById('sArea').textContent  = new Set(STORES.map(s=>s.area)).size;
-const days = Math.ceil((new Date('2026-08-08') - new Date()) / 86400000);
-document.getElementById('sDays').textContent  = days > 0 ? days : 0;
+document.getElementById('sTotal').textContent=STORES.length;
+document.getElementById('sArea').textContent=new Set(STORES.map(s=>s.region)).size;
+const days=Math.ceil((new Date('2026-08-08')-new Date())/86400000);
+document.getElementById('sDays').textContent=days>0?days:0;
 
 // Filters
-document.querySelectorAll('.cat-pill').forEach(b => {
-  b.addEventListener('click', () => {
+document.querySelectorAll('.cat-pill').forEach(b=>{
+  b.addEventListener('click',()=>{
     document.querySelectorAll('.cat-pill').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); activeCat = b.dataset.cat; renderGrid();
+    b.classList.add('on'); activeCat=b.dataset.cat; renderGrid();
   });
 });
-document.querySelectorAll('.area-pill').forEach(b => {
-  b.addEventListener('click', () => {
+document.querySelectorAll('.area-pill').forEach(b=>{
+  b.addEventListener('click',()=>{
     document.querySelectorAll('.area-pill').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); activeArea = b.dataset.area; renderGrid();
+    b.classList.add('on'); activeRegion=b.dataset.region; renderGrid();
   });
 });
-function doSearch(q) {
-  searchQ = q;
+document.getElementById('navQ').addEventListener('input',e=>{searchQ=e.target.value;renderGrid();});
+document.getElementById('heroQ').addEventListener('input',e=>{searchQ=e.target.value;renderGrid();});
+document.getElementById('navBtn').addEventListener('click',()=>{
+  searchQ=document.getElementById('navQ').value;
   renderGrid();
   document.getElementById('all').scrollIntoView({behavior:'smooth'});
-}
-document.getElementById('navQ').addEventListener('input', e => { searchQ = e.target.value; renderGrid(); });
-document.getElementById('heroQ').addEventListener('input', e => { searchQ = e.target.value; renderGrid(); });
-document.getElementById('navBtn').addEventListener('click', () => doSearch(document.getElementById('navQ').value));
-document.getElementById('heroBtn').addEventListener('click', () => doSearch(document.getElementById('heroQ').value));
+});
+document.getElementById('heroBtn').addEventListener('click',()=>{
+  searchQ=document.getElementById('heroQ').value;
+  renderGrid();
+  document.getElementById('all').scrollIntoView({behavior:'smooth'});
+});
 
 renderGrid();
 </script>
