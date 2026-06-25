@@ -354,7 +354,7 @@ const STORES = [
   {id:'s05',name:'totoburger',area:'玉造',addr:'大阪府大阪市東成区中道3丁目14-11 ソルーナ玉造1F',phone:'06-7709-1966',hours:'月火木金土 11:00〜21:00 / 日祝 11:00〜16:00',holiday:'水曜',cat:'飲食',tags:['バーガー','テイクアウト'],bg:'g-food',lat:34.665,lng:135.542,region:'玉造・東成'},
   {id:'s06',name:'the blue donut',area:'玉造',addr:'大阪府大阪市東成区中道1-8-13',phone:'',hours:'10:00〜16:00（売切次第終了）',holiday:'月・火曜',cat:'カフェ',tags:['ドーナツ','スイーツ'],bg:'g-cafe',lat:34.666,lng:135.543,region:'玉造・東成'},
   {id:'s08',name:'MUKU',area:'本町',addr:'大阪府大阪市中央区淡路町4-4-18 プラシーデンス淡路町1F',phone:'080-6314-2432',hours:'8:00〜17:00',holiday:'日・祝日',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.682,lng:135.503,region:'心斎橋・難波'},
-  {id:'s10',name:'Cafe CHARBON',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目6-23',phone:'06-4391-7215',hours:'平日・日祝 11:30〜22:00 / 金土・祝前 11:30〜23:00',holiday:'年末年始',cat:'カフェ',tags:['カフェ','夜カフェ'],bg:'g-cafe',lat:34.669,lng:135.491,region:'堀江',plan:'matsu',photo:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80',photos:['https://images.unsplash.com/photo-1541167760496-1628856ab772?w=300&q=80','https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&q=80','https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=300&q=80'],desc:'大阪・堀江の人気夜カフェ。深夜まで営業するスタイリッシュな空間で、こだわりのドリンクとフードが楽しめる。ハレの世界観と溶け合うムーディーな雰囲気が魅力。',igUrl:'https://www.instagram.com/',hareMedia:true,video:'https://www.instagram.com/'},
+  {id:'s10',name:'Cafe CHARBON',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目6-23',phone:'06-4391-7215',hours:'平日・日祝 11:30〜22:00 / 金土・祝前 11:30〜23:00',holiday:'年末年始',cat:'カフェ',tags:['カフェ','夜カフェ'],bg:'g-cafe',lat:34.669,lng:135.491,region:'堀江',plan:'matsu',photo:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80',photos:['https://images.unsplash.com/photo-1541167760496-1628856ab772?w=300&q=80','https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&q=80','https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=300&q=80'],desc:'大阪・堀江の人気夜カフェ。深夜まで営業するスタイリッシュな空間で、こだわりのドリンクとフードが楽しめる。ハレの世界観と溶け合うムーディーな雰囲気が魅力。',igUrl:'https://www.instagram.com/',hareMedia:true,tiktokId:'7634529308790230290'},
   {id:'s11',name:'RENGA',area:'松屋町',addr:'大阪府大阪市中央区松屋町4-18 実和ビル1F',phone:'06-6777-6696',hours:'7:00〜21:00',holiday:'正月3日のみ',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.677,lng:135.516,region:'心斎橋・難波'},
   {id:'s13',name:'ソレアス整骨院',area:'福島',addr:'大阪府大阪市福島区福島1-2-30 市光ビル2F',phone:'06-6695-7532',hours:'10:30〜20:30',holiday:'日曜',cat:'ジム・整体',tags:['整骨院','ケア'],bg:'g-gym',lat:34.692,lng:135.480,region:'梅田・北区'},
   {id:'s15',name:'PLENU.',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'美容室',tags:['ヘアサロン','デザイン'],bg:'g-hair',lat:34.578,lng:136.529,region:'その他'},
@@ -575,25 +575,46 @@ function shopInfoHtml(s){
     ${s.holiday?`<span>定休日: ${s.holiday}</span>`:''}
   </div>`;
 }
+function catPhoto(cat){
+  const m={
+    'カフェ':'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=70',
+    '飲食':'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=70',
+    '美容室':'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=70',
+    'ジム・整体':'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=70',
+    'ショップ':'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=70',
+    'その他':'https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=600&q=70',
+    '住宅・建設':'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=70',
+  };
+  return m[cat]||'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=70';
+}
+
 function renderCard(s){
   const tags=s.tags.map(t=>`<span class="tag">${t}</span>`).join('');
   const info=shopInfoHtml(s);
   const igBtn=s.igUrl?`<a href="${s.igUrl}" class="shop-ig" target="_blank">${igSvg} Instagram</a>`:'';
 
   if(s.plan==='matsu'){
-    const videoHtml=s.video?`
-      <a href="${s.video}" target="_blank" class="video-wrap" style="display:block">
+    let mediaHtml;
+    if(s.tiktokId){
+      mediaHtml=`<div style="position:relative;width:100%;height:300px;overflow:hidden;background:#000">
+        <iframe src="https://www.tiktok.com/embed/v2/${s.tiktokId}" style="width:100%;height:100%;border:none" allow="fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div>`;
+    } else if(s.video){
+      mediaHtml=`<a href="${s.video}" target="_blank" class="video-wrap" style="display:block">
         <img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:300px">
         <div class="video-play-icon"><div class="play-circle"><div class="play-triangle"></div></div></div>
-      </a>`:
-      `<img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:300px">`;
+      </a>`;
+    } else {
+      mediaHtml=`<img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:300px">`;
+    }
     const gallery=s.photos?.length?`<div class="shop-gallery-row">${s.photos.map(p=>`<img src="${p}" alt="">`).join('')}</div>`:'';
     return `<div class="shop-card tier-matsu">
       <div style="position:relative;overflow:hidden">
-        ${videoHtml}
-        ${planBadgeHtml(s.plan)}
+        ${mediaHtml}
+        ${s.tiktokId?'':planBadgeHtml(s.plan)}
       </div>
       <div class="shop-body">
+        ${s.tiktokId?planBadgeHtml(s.plan).replace('class="plan-badge','style="position:static;display:inline-block;margin-bottom:8px" class="plan-badge')+'':''}
         ${s.hareMedia?'<div class="haremedia-badge">📲 晴れマップSNSで紹介中</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area} &middot; <span class="shop-cat-label" style="position:static;display:inline;background:var(--bg3);padding:2px 8px;border-radius:10px;font-size:9px">${s.cat}</span></div>
@@ -646,8 +667,10 @@ function renderCard(s){
     </div>`;
   }
 
+  const freePhoto=s.photo||catPhoto(s.cat);
   return `<div class="shop-card">
-    <div class="shop-photo ${s.bg}">
+    <div style="position:relative;overflow:hidden">
+      <img src="${freePhoto}" alt="${s.name}" class="shop-cover" style="height:140px;object-fit:cover;width:100%">
       <span class="shop-cat-label">${s.cat}</span>
     </div>
     <div class="shop-body">
@@ -655,6 +678,7 @@ function renderCard(s){
       <div class="shop-area">${s.area}</div>
       <div class="shop-tags">${tags}</div>
       ${info}
+      ${igBtn?`<div style="margin-top:6px">${igBtn}</div>`:''}
     </div>
   </div>`;
 }
