@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>晴れマップ — 大阪のお気に入りを見つけよう</title>
-<meta name="description" content="晴れマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
+<title>ハレマップ — 大阪のお気に入りを見つけよう</title>
+<meta name="description" content="ハレマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -174,8 +174,8 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
 .shop-card.tier-matsu .shop-cover{height:100%;max-height:300px}
 .shop-card.tier-matsu .shop-body{padding:20px 22px}
 /* TIKTOK EMBED */
-.tiktok-frame-wrap{width:100%;height:480px;overflow:hidden;background:#000;position:relative}
-.tiktok-frame-wrap iframe{width:100%;height:100%;border:none;display:block}
+.tiktok-frame-wrap{width:100%;background:#111;display:flex;justify-content:center;align-items:flex-start;padding:10px 0;overflow:hidden}
+.tiktok-frame-wrap iframe{width:325px;height:735px;border:none;flex-shrink:0}
 .tiktok-link{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;background:#111;color:#bbb;font-size:10px;font-weight:700;letter-spacing:.1em;text-decoration:none;border-top:1px solid #2a2a2a;transition:background .18s}
 .tiktok-link:hover,.tiktok-link:active{background:#1a1a1a;color:#fff}
 
@@ -209,8 +209,7 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
   #map{height:240px}
   /* sponsor */
   .sponsor-row{gap:10px}
-  /* tiktok */
-  .tiktok-frame-wrap{height:420px}
+  /* tiktok — height governed by iframe, no override needed */
 }
 @media(max-width:480px){
   .nav-search input{font-size:12px}
@@ -223,7 +222,6 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
   .plan-grid-4{grid-template-columns:1fr}
   .shop-grid{grid-template-columns:1fr;gap:12px}
   .shop-card{border-radius:8px}
-  .tiktok-frame-wrap{height:370px}
 }
 </style>
 </head>
@@ -242,7 +240,7 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
 <section class="hero">
   <div class="hero-eyebrow">HAREMEDIA — 街のお気に入りを届けるメディア</div>
   <h1>街の、<em>ハレ</em>な場所へ。</h1>
-  <p class="hero-desc">晴れマップは、大阪・京都・神戸の「本当にいいお店」を発見できるメディアです。<br>カフェ・飲食・美容室・ショップ・ジムなど、エリアやカテゴリから探してください。</p>
+  <p class="hero-desc">ハレマップは、大阪・京都・神戸の「本当にいいお店」を発見できるメディアです。<br>カフェ・飲食・美容室・ショップ・ジムなど、エリアやカテゴリから探してください。</p>
   <div class="hero-box">
     <input type="text" id="heroQ" placeholder="店舗名、エリア、カテゴリで検索">
     <button id="heroBtn">検索</button>
@@ -284,8 +282,8 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
 <div class="plan-section">
   <div class="plan-section-inner">
     <div class="plan-eyebrow">LISTING PLANS</div>
-    <h2>晴れマップに掲載しませんか？</h2>
-    <p>あなたのお店・サービスを晴れマップのユーザーに届けよう。無料プランから始め、好きなタイミングでアップグレードできます。<br>竹・松プランでは<strong>晴れマップ公式SNSアカウント</strong>によるPR投稿もご提供しています。</p>
+    <h2>ハレマップに掲載しませんか？</h2>
+    <p>あなたのお店・サービスをハレマップのユーザーに届けよう。無料プランから始め、好きなタイミングでアップグレードできます。<br>竹・松プランでは<strong>ハレマップ公式SNSアカウント</strong>によるPR投稿もご提供しています。</p>
     <div class="plan-grid-4">
       <div class="plan-card">
         <span class="plan-chip chip-free">無料</span>
@@ -322,7 +320,7 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
           <li>写真ギャラリー（最大5枚）</li>
           <li>おすすめ商品・紹介文</li>
           <li>予約・問い合わせリンク</li>
-          <li>晴れマップSNSで紹介 1回</li>
+          <li>ハレマップSNSで紹介 1回</li>
           <li>検索で優先表示</li>
         </ul>
         <a href="https://www.instagram.com/" class="plan-cta" target="_blank">お申し込みはこちら</a>
@@ -330,11 +328,11 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
       <div class="plan-card">
         <span class="plan-chip chip-matsu">松</span>
         <div class="plan-price">¥30,000<sub>〜 / 期間</sub></div>
-        <div class="plan-card-name">動画 + 晴れマップPR</div>
+        <div class="plan-card-name">動画 + ハレマップPR</div>
         <ul class="plan-features">
           <li>竹の全内容</li>
           <li>リール動画 埋め込み</li>
-          <li>晴れマップSNSでPR投稿</li>
+          <li>ハレマップSNSでPR投稿</li>
           <li>トップページ優先表示</li>
           <li>プレミアムパートナーバッジ</li>
         </ul>
@@ -372,7 +370,7 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
 <footer>
   <div class="ft-logo">晴れ<span>マップ</span></div>
   <div class="ft-sub">HAREMEDIA — 街のお気に入りを届けるメディア</div>
-  <div class="ft-hash">#晴れマップ &nbsp;#HARECOLLECTION2026 &nbsp;#ハレコレ2026</div>
+  <div class="ft-hash">#ハレマップ &nbsp;#HARECOLLECTION2026 &nbsp;#ハレコレ2026</div>
 </footer>
 
 <script>
@@ -384,13 +382,16 @@ const STORES = [
   {id:'s05',name:'totoburger',area:'玉造',addr:'大阪府大阪市東成区中道3丁目14-11 ソルーナ玉造1F',phone:'06-7709-1966',hours:'月火木金土 11:00〜21:00 / 日祝 11:00〜16:00',holiday:'水曜',cat:'飲食',tags:['バーガー','テイクアウト'],bg:'g-food',lat:34.6728,lng:135.5362,region:'玉造・東成'},
   {id:'s06',name:'the blue donut',area:'玉造',addr:'大阪府大阪市東成区中道1-8-13',phone:'',hours:'10:00〜16:00（売切次第終了）',holiday:'月・火曜',cat:'カフェ',tags:['ドーナツ','スイーツ'],bg:'g-cafe',lat:34.6708,lng:135.5323,region:'玉造・東成'},
   {id:'s08',name:'MUKU',area:'本町',addr:'大阪府大阪市中央区淡路町4-4-18 プラシーデンス淡路町1F',phone:'080-6314-2432',hours:'8:00〜17:00',holiday:'日・祝日',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.6861,lng:135.5036,region:'心斎橋・難波'},
+  {id:'s09',name:'アワログカフェ（Ourlog coffee）',area:'本町',addr:'大阪市中央区淡路町4丁目7-5',phone:'',hours:'月〜金8:00〜19:00 土日祝10:00〜19:00',holiday:'なし',cat:'カフェ',tags:['コーヒー','本町'],bg:'g-cafe',lat:34.6858,lng:135.5040,region:'心斎橋・難波'},
   {id:'s10',name:'Cafe CHARBON',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目6-23',phone:'06-4391-7215',hours:'平日・日祝 11:30〜22:00 / 金土・祝前 11:30〜23:00',holiday:'年末年始',cat:'カフェ',tags:['カフェ','夜カフェ'],bg:'g-cafe',lat:34.6696,lng:135.4916,region:'堀江',plan:'matsu',photo:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80',photos:['https://images.unsplash.com/photo-1541167760496-1628856ab772?w=300&q=80','https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&q=80','https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=300&q=80'],desc:'大阪・堀江の人気夜カフェ。深夜まで営業するスタイリッシュな空間で、こだわりのドリンクとフードが楽しめる。ハレの世界観と溶け合うムーディーな雰囲気が魅力。',igUrl:'https://www.instagram.com/',hareMedia:true,tiktokId:'7634529308790230290',tiktokUrl:'https://vt.tiktok.com/ZSC2PAjbL/'},
   {id:'s11',name:'RENGA',area:'松屋町',addr:'大阪府大阪市中央区松屋町4-18 実和ビル1F',phone:'06-6777-6696',hours:'7:00〜21:00',holiday:'正月3日のみ',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.6762,lng:135.5147,region:'心斎橋・難波'},
   {id:'s13',name:'ソレアス整骨院',area:'福島',addr:'大阪府大阪市福島区福島1-2-30 市光ビル2F',phone:'06-6695-7532',hours:'10:30〜20:30',holiday:'日曜',cat:'ジム・整体',tags:['整骨院','ケア'],bg:'g-gym',lat:34.693,lng:135.4742,region:'梅田・北区'},
+  {id:'s14',name:'たまごのたまこ',area:'谷町6丁目',addr:'大阪府大阪市中央区谷町6丁目4-26',phone:'090-4279-2310',hours:'火〜日11:30〜16:00',holiday:'月曜',cat:'カフェ',tags:['カフェ','スイーツ'],bg:'g-cafe',lat:34.6774,lng:135.5186,region:'心斎橋・難波'},
   {id:'s15',name:'PLENU.',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'美容室',tags:['ヘアサロン','デザイン'],bg:'g-hair',lat:34.568,lng:136.527,region:'その他'},
   {id:'s16',name:'nonfiction（フォトスタジオ）',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'その他',tags:['フォトスタジオ','撮影'],bg:'g-other',lat:34.569,lng:136.5265,region:'その他'},
   {id:'s17',name:'カメイサンのカフェ',area:'松阪（三重）',addr:'三重県松阪市西之庄町44-11',phone:'0598-31-3372',hours:'平日 10:00〜16:30 / 土日祝 9:00〜17:00',holiday:'月・火曜',cat:'カフェ',tags:['カフェ','のどか'],bg:'g-cafe',lat:34.575,lng:136.5222,region:'その他'},
   {id:'s18',name:'BUDDHA',area:'玉造',addr:'大阪市東成区中道1-8-15 金井ビル1F',phone:'06-6753-7797',hours:'月〜金 11:00〜15:00',holiday:'土日祝',cat:'飲食',tags:['ランチ','アジアン'],bg:'g-food',lat:34.671,lng:135.5325,region:'玉造・東成'},
+  {id:'s20',name:'FRAME+spa&treatment 天王寺あべの店',area:'天王寺',addr:'大阪府大阪市阿倍野区旭町1-1-14 あべの旭町ビル4F',phone:'06-6616-9508',hours:'〜22:00',holiday:'不定休',cat:'ジム・整体',tags:['スパ','トリートメント','天王寺'],bg:'g-gym',lat:34.6450,lng:135.5133,region:'天王寺'},
   {id:'s21',name:'JOBASE',area:'都島',addr:'大阪府大阪市都島区',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['ジム','トレーニング'],bg:'g-gym',lat:34.707,lng:135.5215,region:'玉造・東成'},
   {id:'s22',name:'パーソナルジムrunner',area:'福島',addr:'大阪府大阪市福島区',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['パーソナルジム','ダイエット'],bg:'g-gym',lat:34.694,lng:135.475,region:'梅田・北区'},
   {id:'s23',name:'スナッチだいちゃん',area:'梅田',addr:'大阪市北区曽根崎',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['格闘技','トレーニング'],bg:'g-gym',lat:34.7012,lng:135.497,region:'梅田・北区'},
@@ -400,6 +401,7 @@ const STORES = [
   {id:'s27',name:'Solnis.-qua-',area:'玉造',addr:'大阪府大阪市東成区',phone:'',hours:'',holiday:'',cat:'美容室',tags:['サロン','ヘアケア'],bg:'g-hair',lat:34.667,lng:135.540,region:'玉造・東成'},
   {id:'s28',name:'Solnis.',area:'南船場',addr:'大阪府大阪市中央区南船場4丁目8-8 Dazz complex 6F',phone:'',hours:'10:00〜22:00',holiday:'水曜',cat:'美容室',tags:['サロン','ヘアケア'],bg:'g-hair',lat:34.6775,lng:135.5031,region:'心斎橋・難波'},
   {id:'s29',name:'サードプレイスジム',area:'堺筋本町',addr:'大阪府大阪市中央区南船場1-1-12 企業交流プラザビル10F',phone:'090-8985-2968',hours:'9:00〜23:00（最終受付 22:00）',holiday:'不定休',cat:'ジム・整体',tags:['ジム','パーソナル'],bg:'g-gym',lat:34.6819,lng:135.5003,region:'心斎橋・難波'},
+  {id:'s30',name:'foodscape! BAKERY 北浜',area:'北浜',addr:'大阪市中央区平野町1-7-1 堺筋髙橋ビル1F',phone:'06-4256-0085',hours:'平日8:30〜18:00 土日祝8:30〜17:00',holiday:'火曜',cat:'カフェ',tags:['ベーカリー','パン','北浜'],bg:'g-cafe',lat:34.6889,lng:135.5088,region:'中之島・北浜'},
   {id:'s31',name:'韓国バーヨンウォン',area:'梅田',addr:'大阪市北区堂山町10-16 3階',phone:'070-6457-0167',hours:'20:00〜翌5:00',holiday:'不定休',cat:'飲食',tags:['韓国バー','ナイト'],bg:'g-food',lat:34.703,lng:135.500,region:'梅田・北区'},
   {id:'s32',name:"T's",area:'梅田',addr:'大阪市北区',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','ファッション'],bg:'g-shop',lat:34.704,lng:135.498,region:'梅田・北区'},
   {id:'s33',name:'dM',area:'心斎橋',addr:'大阪市中央区',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','ストリート'],bg:'g-shop',lat:34.677,lng:135.502,region:'心斎橋・難波'},
@@ -411,6 +413,8 @@ const STORES = [
   {id:'s40',name:'つけ麺 雀 アメ村本店',area:'アメ村',addr:'大阪府大阪市中央区西心斎橋2-11-11',phone:'06-6211-1174',hours:'11:30〜16:30 / 18:00〜22:00',holiday:'元旦以外無休',cat:'飲食',tags:['つけ麺','ラーメン'],bg:'g-food',lat:34.6714,lng:135.4988,region:'心斎橋・難波'},
   {id:'s41',name:'焼き鳥 末広',area:'南新町',addr:'大阪市中央区南新町2-3-1 クィーンズビル1F',phone:'090-9985-8008',hours:'月〜土 11:30〜15:00 / 17:00〜23:00',holiday:'不定休',cat:'飲食',tags:['焼き鳥','居酒屋'],bg:'g-food',lat:34.6825,lng:135.515,region:'心斎橋・難波'},
   {id:'s42',name:"美容室ORL'MENT【オルメント】",area:'扇町',addr:'大阪府大阪市北区与力町7-12',phone:'050-1868-9336',hours:'10:00〜20:00',holiday:'不定休',cat:'美容室',tags:['美容室','デザイン'],bg:'g-hair',lat:34.701,lng:135.508,region:'梅田・北区'},
+  {id:'s43',name:'志仙 にしやま（中華ワイン居酒屋）',area:'北浜',addr:'大阪府大阪市中央区高麗橋2-3-12 高麗橋ビル1F',phone:'06-4963-3979',hours:'16:00〜23:00（L.O.22:00）',holiday:'不定休',cat:'飲食',tags:['中華','ワイン','北浜'],bg:'g-food',lat:34.6895,lng:135.5093,region:'中之島・北浜'},
+  {id:'s44',name:'焼肉 亀田',area:'心斎橋',addr:'大阪府大阪市中央区南船場4丁目8-2',phone:'06-6241-2533',hours:'17:00〜翌4:00',holiday:'年中無休',cat:'飲食',tags:['焼肉','心斎橋'],bg:'g-food',lat:34.6773,lng:135.5030,region:'心斎橋・難波'},
   {id:'s46',name:'イクリプシス',area:'祇園四条',addr:'京都府京都市東山区中之町200 鴨川ビル5F',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','京都'],bg:'g-shop',lat:35.004,lng:135.7747,region:'京都'},
   {id:'s47',name:'鉄板鍋ショウ',area:'寺田町',addr:'大阪府大阪市天王寺区寺田町2-4-11',phone:'06-6773-0118',hours:'月 19:00〜23:30 / 火〜日祝 17:30〜23:30',holiday:'不定休',cat:'飲食',tags:['鉄板','鍋'],bg:'g-food',lat:34.6582,lng:135.5311,region:'天王寺'},
   {id:'s48',name:'ホットブルズ',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目13-28 IMANO OSAKA SHINSAIBASHI HOSTEL 1F',phone:'',hours:'',holiday:'',cat:'飲食',tags:['バー','クラフト'],bg:'g-food',lat:34.6703,lng:135.4944,region:'堀江'},
@@ -420,10 +424,13 @@ const STORES = [
   {id:'s52',name:'JAZZ BERRY',area:'堀江',addr:'大阪府大阪市西区北堀江1-9-18 ベルヴォーグ北堀江102',phone:'090-7754-0003',hours:'12:00〜23:00',holiday:'不定休',cat:'飲食',tags:['バー','ジャズ'],bg:'g-food',lat:34.67,lng:135.4932,region:'堀江',plan:'ume',photo:'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=600&q=80',comment:'ジャズが流れる大人の隠れ家バー。クラフトカクテルと軽食を昼から楽しめる堀江の名スポット。',igUrl:'https://www.instagram.com/'},
   {id:'s53',name:'CAFE CHARBONの隣のパン屋',area:'堀江',addr:'大阪市西区北堀江1-6-23付近',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['パン','ベーカリー'],bg:'g-cafe',lat:34.6696,lng:135.4916,region:'堀江'},
   {id:'s54',name:'WEST WOOD BAKER',area:'堀江',addr:'大阪府大阪市西区南堀江1-16-9',phone:'06-6538-0022',hours:'9:00〜22:00',holiday:'なし（無休）',cat:'カフェ',tags:['パン','ベーカリー','無休'],bg:'g-cafe',lat:34.6659,lng:135.4898,region:'堀江',plan:'ume',photo:'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80',comment:'年中無休で焼き立てパンを提供する堀江のベーカリー。モーニングからナイトまで、いつでも立ち寄れる街のパン屋さん。',igUrl:'https://www.instagram.com/'},
+  {id:'s56',name:'ROCKS',area:'堀江',addr:'大阪府大阪市西区北堀江1-13-11',phone:'06-6538-7778',hours:'月〜木・日祝9:00〜22:30 金土9:00〜23:00',holiday:'年末年始のみ',cat:'カフェ',tags:['カフェ','堀江'],bg:'g-cafe',lat:34.6701,lng:135.4952,region:'堀江'},
   {id:'s58',name:'and 堀江店',area:'堀江',addr:'大阪市西区北堀江',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['セレクト','ストリート'],bg:'g-shop',lat:34.67,lng:135.493,region:'堀江'},
   {id:'s59',name:'PROTEIN LAB.',area:'堀江',addr:'大阪府大阪市西区北堀江1-15-19',phone:'06-6710-9739',hours:'10:00〜22:00（L.O.21:30）',holiday:'不定休',cat:'カフェ',tags:['プロテイン','ヘルシー'],bg:'g-gym',lat:34.6702,lng:135.496,region:'堀江'},
   {id:'s61',name:'BLUX BURGER',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目9-9',phone:'',hours:'10:00〜16:00 / 18:00〜翌1:00',holiday:'不明',cat:'飲食',tags:['バーガー','ナイト'],bg:'g-food',lat:34.6699,lng:135.4931,region:'堀江'},
+  {id:'s62',name:'Noho',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目3-17',phone:'06-6533-0555',hours:'8:00〜21:00（フードL.O.20:00）',holiday:'不定休',cat:'カフェ',tags:['カフェ','堀江'],bg:'g-cafe',lat:34.6693,lng:135.4893,region:'堀江'},
   {id:'s63',name:'WISM',area:'堀江',addr:'大阪府大阪市西区南堀江1-9-7',phone:'06-4390-4050',hours:'11:30〜20:00',holiday:'不定休',cat:'ショップ',tags:['セレクト','ファッション'],bg:'g-shop',lat:34.6653,lng:135.4895,region:'堀江'},
+  {id:'s64',name:'ロックリー',area:'天満',addr:'大阪府大阪市北区池田町7-5',phone:'06-6881-1090',hours:'月〜金17:00〜翌0:00 土日祝13:00〜翌0:00',holiday:'なし',cat:'飲食',tags:['居酒屋','天満'],bg:'g-food',lat:34.6978,lng:135.5218,region:'梅田・北区'},
   {id:'s65',name:"men's salon Flip 大阪梅田",area:'梅田',addr:'大阪市北区梅田',phone:'',hours:'',holiday:'',cat:'美容室',tags:['メンズ','バーバー'],bg:'g-hair',lat:34.704,lng:135.497,region:'梅田・北区'},
   {id:'s66',name:'アジイチバ',area:'梅田',addr:'大阪府大阪市北区曽根崎2-10-18 本陣ビルB1',phone:'06-6312-3755',hours:'17:00〜24:00（L.O.23:30）',holiday:'不定休',cat:'飲食',tags:['アジア','居酒屋'],bg:'g-food',lat:34.7014,lng:135.4989,region:'梅田・北区'},
   {id:'s67',name:'TONARI（ナリ）',area:'梅田',addr:'大阪府大阪市北区中崎西1-9-3',phone:'06-7181-4525',hours:'月〜金 11:00〜22:00 / 土日祝 10:00〜22:00',holiday:'不定休',cat:'カフェ',tags:['カフェ','ランチ'],bg:'g-cafe',lat:34.704,lng:135.500,region:'梅田・北区'},
@@ -445,7 +452,9 @@ const STORES = [
   {id:'s83',name:'GARB weeks',area:'中之島',addr:'大阪府大阪市北区中之島1-1-29 中之島公園内',phone:'050-3627-9872',hours:'11:30〜22:00（L.O.21:30）',holiday:'なし（無休）',cat:'カフェ',tags:['公園カフェ','中之島'],bg:'g-cafe',lat:34.6916,lng:135.5002,region:'中之島・北浜'},
   {id:'s84',name:'大阪市中央公会堂',area:'中之島',addr:'大阪市北区中之島1丁目1番27号',phone:'06-6208-2002',hours:'9:30〜21:30',holiday:'第4火曜・年末年始',cat:'その他',tags:['文化施設','中之島'],bg:'g-other',lat:34.6911,lng:135.5001,region:'中之島・北浜'},
   {id:'s85',name:'DRAWING HOUSE OF NAKANOSHIMA',area:'中之島',addr:'大阪市北区中之島1-1-27 大阪市中央公会堂B1F',phone:'06-6233-9660',hours:'11:00〜22:00（L.O.21:00）',holiday:'第4火曜',cat:'カフェ',tags:['カフェ','アート'],bg:'g-cafe',lat:34.691,lng:135.5001,region:'中之島・北浜'},
+  {id:'s86',name:'러블리J「ロブリJ」',area:'ソウル明洞',addr:'韓国ソウル市中区明洞',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['韓国','明洞','ショップ'],bg:'g-shop',lat:37.5637,lng:126.9829,region:'その他'},
   {id:'s87',name:'&ISLAND',area:'北浜',addr:'大阪府大阪市中央区北浜2-1-23',phone:'06-6233-2010',hours:'月〜土祝 11:00〜22:00 / 日 11:00〜21:00',holiday:'不定休',cat:'飲食',tags:['ダイニング','北浜'],bg:'g-food',lat:34.6896,lng:135.5088,region:'中之島・北浜'},
+  {id:'s88',name:'oui',area:'北浜',addr:'大阪市中央区北浜2-1-21 北浜ゲイトビル1F',phone:'06-6231-1192',hours:'月〜金11:00〜14:00/17:30〜23:00 土祝11:30〜14:30/17:30〜23:00',holiday:'日曜',cat:'飲食',tags:['ダイニング','北浜'],bg:'g-food',lat:34.6895,lng:135.5086,region:'中之島・北浜'},
   {id:'s89',name:'MOUNT',area:'北浜',addr:'大阪府大阪市中央区北浜2-1-17 北浜ビジネス会館1F',phone:'06-6227-8024',hours:'月〜金 10:00〜17:30 / 土 11:00〜18:00 / 日祝 11:00〜17:00',holiday:'不定休',cat:'カフェ',tags:['コーヒー','ランチ'],bg:'g-cafe',lat:34.6893,lng:135.5084,region:'中之島・北浜'},
   // ── 2026-06-24 新規追加（新町エリア）──
   {id:'s90',name:'Cafe+82 Osaka',area:'新町',addr:'大阪市西区新町',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['カフェ','韓国'],bg:'g-cafe',lat:34.673,lng:135.497,region:'堀江'},
@@ -646,7 +655,7 @@ function renderCard(s){
       </div>
       <div class="shop-body">
         ${s.tiktokId?planBadgeHtml(s.plan).replace('class="plan-badge','style="position:static;display:inline-block;margin-bottom:8px" class="plan-badge')+'':''}
-        ${s.hareMedia?'<div class="haremedia-badge">📲 晴れマップSNSで紹介中</div>':''}
+        ${s.hareMedia?'<div class="haremedia-badge">📲 ハレマップSNSで紹介中</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area} &middot; <span class="shop-cat-label" style="position:static;display:inline;background:var(--bg3);padding:2px 8px;border-radius:10px;font-size:9px">${s.cat}</span></div>
         <div class="shop-tags" style="margin-top:8px">${tags}</div>
@@ -660,7 +669,6 @@ function renderCard(s){
 
   if(s.plan==='take'){
     const gallery=s.photos?.length?`<div class="shop-gallery-row">${s.photos.map(p=>`<img src="${p}" alt="">`).join('')}</div>`:'';
-    const bookingBtn=s.booking?`<a href="${s.booking}" class="shop-booking" target="_blank">予約・問い合わせ</a>`:'';
     return `<div class="shop-card">
       <div style="position:relative;overflow:hidden">
         <img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:160px">
@@ -669,13 +677,13 @@ function renderCard(s){
       </div>
       ${gallery}
       <div class="shop-body">
-        ${s.hareMedia?'<div class="haremedia-badge">📲 晴れマップSNS紹介済み</div>':''}
+        ${s.hareMedia?'<div class="haremedia-badge">📲 ハレマップSNS紹介済み</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${tags}</div>
         ${s.desc?`<div class="shop-desc">${s.desc}</div>`:''}
         ${info}
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">${igBtn}${bookingBtn}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">${igBtn}</div>
       </div>
     </div>`;
   }
