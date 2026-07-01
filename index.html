@@ -11,11 +11,12 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --pk:#FF1493;--pk2:#d60f7d;--pk-bg:rgba(255,20,147,.07);
-  --bg:#fff;--bg2:#f8f8f8;--bg3:#f1f1f1;
-  --bd:#e5e5e5;--bd2:#cecece;
-  --t1:#111;--t2:#555;--t3:#999;
-  --sh:0 2px 12px rgba(0,0,0,.06);--sh-h:0 6px 24px rgba(0,0,0,.12);
+  --pk:#2563EB;--pk2:#1D4ED8;--pk-bg:rgba(37,99,235,.07);
+  --gold:#F59E0B;--premium:#7C3AED;--green:#059669;
+  --bg:#fff;--bg2:#F8FAFC;--bg3:#F1F5F9;
+  --bd:#E2E8F0;--bd2:#CBD5E1;
+  --t1:#0F172A;--t2:#475569;--t3:#94A3B8;
+  --sh:0 2px 12px rgba(0,0,0,.06);--sh-h:0 8px 28px rgba(15,23,42,.13);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t1);font-family:'Montserrat','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
@@ -24,23 +25,23 @@ button{cursor:pointer;font-family:inherit}
 
 /* NAV */
 .nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bd)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;gap:16px}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;gap:16px}
 .nav-logo{font-size:19px;font-weight:700;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
 .nav-logo span{color:var(--pk)}
-.nav-search{flex:1;max-width:440px;display:flex;border:1.5px solid var(--bd2);border-radius:6px;overflow:hidden;background:#fff}
+.nav-search{flex:1;max-width:440px;display:flex;border:1.5px solid var(--bd2);border-radius:8px;overflow:hidden;background:#fff;box-shadow:var(--sh)}
 .nav-search input{flex:1;border:none;padding:0 14px;font-size:13px;color:var(--t1);font-family:inherit;outline:none}
 .nav-search input::placeholder{color:var(--t3)}
 .nav-search button{padding:0 18px;background:var(--pk);border:none;color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;transition:background .2s;flex-shrink:0}
 .nav-search button:hover{background:var(--pk2)}
 
 /* HERO */
-.hero{background:linear-gradient(160deg,#fff 0%,#fff5fa 60%,#ffe0ef 100%);padding:56px 20px 44px;text-align:center;border-bottom:1px solid var(--bd)}
-.hero-eyebrow{display:inline-block;font-size:10px;letter-spacing:.42em;color:var(--pk);border:1px solid rgba(255,20,147,.3);padding:5px 18px;margin-bottom:22px;border-radius:2px}
+.hero{background:linear-gradient(160deg,#F8FAFC 0%,#EFF6FF 55%,#EDE9FE 100%);padding:60px 20px 48px;text-align:center;border-bottom:1px solid var(--bd)}
+.hero-eyebrow{display:inline-block;font-size:10px;letter-spacing:.42em;color:var(--pk);border:1px solid rgba(37,99,235,.3);padding:5px 18px;margin-bottom:22px;border-radius:2px;background:rgba(37,99,235,.04)}
 .hero h1{font-size:clamp(26px,6vw,48px);font-weight:700;letter-spacing:.03em;margin-bottom:12px;line-height:1.2}
 .hero h1 em{color:var(--pk);font-style:normal}
 .hero-desc{font-size:13px;color:var(--t2);letter-spacing:.05em;margin-bottom:32px;line-height:1.9}
-.hero-box{max-width:520px;margin:0 auto 24px;display:flex;border:1.5px solid var(--bd2);border-radius:8px;overflow:hidden;background:#fff;box-shadow:var(--sh)}
-.hero-box input{flex:1;border:none;padding:14px 20px;font-size:13px;color:var(--t1);font-family:inherit;outline:none}
+.hero-box{max-width:540px;margin:0 auto 24px;display:flex;border:1.5px solid var(--bd2);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 4px 20px rgba(37,99,235,.12)}
+.hero-box input{flex:1;border:none;padding:15px 20px;font-size:13px;color:var(--t1);font-family:inherit;outline:none}
 .hero-box input::placeholder{color:var(--t3)}
 .hero-box button{padding:0 28px;background:var(--pk);border:none;color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;transition:background .2s;white-space:nowrap}
 .hero-box button:hover{background:var(--pk2)}
@@ -50,7 +51,7 @@ button{cursor:pointer;font-family:inherit}
 .cat-pill.on{background:var(--pk);border-color:var(--pk);color:#fff}
 
 /* AREA NAV */
-.area-nav{background:#fff;border-bottom:1px solid var(--bd);padding:10px 20px;overflow-x:auto;position:sticky;top:56px;z-index:100}
+.area-nav{background:#fff;border-bottom:1px solid var(--bd);padding:10px 20px;overflow-x:auto;position:sticky;top:58px;z-index:100}
 .area-nav::-webkit-scrollbar{display:none}
 .area-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .area-label{font-size:9px;letter-spacing:.25em;color:var(--t3);text-transform:uppercase;margin-right:4px;flex-shrink:0}
@@ -66,15 +67,15 @@ button{cursor:pointer;font-family:inherit}
 .sstat-l{font-size:9px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase}
 
 /* SPONSOR BAND */
-.sponsor-band{background:var(--t1);padding:20px;border-bottom:1px solid #222}
+.sponsor-band{background:#0F172A;padding:20px;border-bottom:1px solid #1E293B}
 .sponsor-inner{max-width:1200px;margin:0 auto}
-.sponsor-label{font-size:9px;letter-spacing:.4em;color:#666;text-transform:uppercase;margin-bottom:12px}
+.sponsor-label{font-size:9px;letter-spacing:.4em;color:#475569;text-transform:uppercase;margin-bottom:12px}
 .sponsor-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.sponsor-card{background:#1a1a1a;border:1px solid #333;padding:12px 20px;display:flex;align-items:center;gap:12px;transition:border-color .2s;border-radius:4px}
+.sponsor-card{background:#1E293B;border:1px solid #334155;padding:12px 20px;display:flex;align-items:center;gap:12px;transition:border-color .2s;border-radius:6px}
 .sponsor-card:hover{border-color:var(--pk)}
 .sponsor-name{font-size:12px;font-weight:600;color:#fff;letter-spacing:.04em}
-.sponsor-cat{font-size:9px;color:#666;letter-spacing:.1em;margin-top:2px}
-.sponsor-badge{font-size:8px;letter-spacing:.18em;padding:2px 8px;background:var(--pk);color:#fff;border-radius:2px;flex-shrink:0}
+.sponsor-cat{font-size:9px;color:#64748B;letter-spacing:.1em;margin-top:2px}
+.sponsor-badge{font-size:8px;letter-spacing:.18em;padding:2px 8px;background:var(--gold);color:#fff;border-radius:2px;flex-shrink:0}
 
 /* MAP */
 .map-section{border-bottom:1px solid var(--bd)}
@@ -91,125 +92,112 @@ button{cursor:pointer;font-family:inherit}
 
 /* SHOP GRID */
 .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;padding-bottom:64px}
-.shop-card{background:#fff;border:1.5px solid var(--bd);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s,border-color .18s}
-.shop-card:hover{box-shadow:var(--sh-h);transform:translateY(-2px);border-color:rgba(255,20,147,.3)}
-.shop-photo{height:140px;display:flex;align-items:flex-end;position:relative;overflow:hidden}
+.shop-card{background:#fff;border:1.5px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s,border-color .18s}
+.shop-card:hover{box-shadow:var(--sh-h);transform:translateY(-2px);border-color:rgba(37,99,235,.3)}
 .shop-cat-label{font-size:9px;letter-spacing:.16em;padding:3px 10px;margin:0 12px 12px;background:rgba(255,255,255,.92);border-radius:20px;color:var(--t1);font-weight:600;border:1px solid rgba(0,0,0,.08)}
-.shop-body{padding:14px 16px 16px}
-.shop-name{font-size:13px;font-weight:700;letter-spacing:.03em;line-height:1.3;margin-bottom:4px;color:var(--t1)}
+.shop-body{padding:16px 18px 18px}
+.shop-name{font-size:13px;font-weight:700;letter-spacing:.03em;line-height:1.35;margin-bottom:4px;color:var(--t1)}
 .shop-area{font-size:10px;color:var(--t3);letter-spacing:.06em;margin-bottom:8px}
 .shop-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
 .tag{font-size:9px;letter-spacing:.04em;padding:3px 8px;border-radius:10px;border:1px solid var(--bd);color:var(--t2);background:var(--bg2)}
 .shop-info{font-size:10px;color:var(--t2);line-height:1.8;margin-bottom:10px;border-top:1px solid var(--bd);padding-top:10px}
 .shop-info span{display:block}
 .shop-desc{font-size:11px;color:var(--t2);line-height:1.75;margin-bottom:10px}
-.shop-ig{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:6px;border:1.5px solid var(--bd2);color:var(--t2);font-size:10px;font-weight:500;letter-spacing:.08em;transition:all .18s}
+.shop-ig{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:7px;border:1.5px solid var(--bd2);color:var(--t2);font-size:10px;font-weight:500;letter-spacing:.08em;transition:all .18s}
 .shop-ig:hover{border-color:var(--pk);color:var(--pk)}
 .ig-svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 
+/* FREE CARD */
+.shop-card-free{border-left:3px solid var(--bd2)}
+.shop-card-free .shop-body{padding:18px 20px}
+.free-cat-icon{font-size:22px;margin-bottom:10px;line-height:1}
+.shop-addr{font-size:10px;color:var(--t3);margin-top:6px;line-height:1.6}
+
 /* GRADIENTS */
-.g-cafe{background:linear-gradient(135deg,#fde8d8,#ffd8e8,#f5e8f0)}
-.g-food{background:linear-gradient(135deg,#fef0d0,#ffe0c8,#fde8c0)}
-.g-hair{background:linear-gradient(135deg,#f0d8ff,#e8d0f8,#f8d8ff)}
-.g-gym {background:linear-gradient(135deg,#d8eeff,#dce8f8,#d8f0ff)}
-.g-shop{background:linear-gradient(135deg,#dce8ff,#e0d8ff,#e8e0ff)}
-.g-other{background:linear-gradient(135deg,#e8f0e8,#dce8dc,#e8ece8)}
+.g-cafe{background:linear-gradient(135deg,#EFF6FF,#DBEAFE)}
+.g-food{background:linear-gradient(135deg,#FFF7ED,#FED7AA)}
+.g-hair{background:linear-gradient(135deg,#FAF5FF,#E9D5FF)}
+.g-gym {background:linear-gradient(135deg,#ECFDF5,#A7F3D0)}
+.g-shop{background:linear-gradient(135deg,#EFF6FF,#BFDBFE)}
+.g-other{background:linear-gradient(135deg,#F8FAFC,#E2E8F0)}
 
 /* FOOTER */
-footer{background:var(--t1);padding:36px 20px;text-align:center}
-.ft-logo{font-size:15px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:#fff}
+footer{background:#0F172A;padding:40px 20px;text-align:center}
+.ft-logo{font-size:16px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:#fff}
 .ft-logo span{color:var(--pk)}
-.ft-sub{font-size:9px;letter-spacing:.22em;color:#555;margin-bottom:8px;text-transform:uppercase}
-.ft-hash{font-size:10px;color:#333;letter-spacing:.06em}
+.ft-sub{font-size:9px;letter-spacing:.22em;color:#475569;margin-bottom:8px;text-transform:uppercase}
+.ft-hash{font-size:10px;color:#334155;letter-spacing:.06em}
 .empty{grid-column:1/-1;text-align:center;padding:64px 20px;color:var(--t3);font-size:12px;letter-spacing:.1em}
 
 /* PLAN SECTION */
-.plan-section{background:linear-gradient(160deg,#fff5fa 0%,#f3f0ff 100%);border-bottom:1px solid var(--bd);padding:36px 20px}
-.plan-section-inner{max-width:1200px;margin:0 auto}
+.plan-section{background:linear-gradient(160deg,#F8FAFC 0%,#EFF6FF 100%);border-bottom:1px solid var(--bd);padding:48px 20px}
+.plan-section-inner{max-width:1100px;margin:0 auto}
 .plan-eyebrow{font-size:9px;letter-spacing:.42em;color:var(--pk);text-transform:uppercase;margin-bottom:10px;font-weight:600}
-.plan-section h2{font-size:clamp(18px,3vw,26px);font-weight:700;letter-spacing:.02em;margin-bottom:6px;color:var(--t1)}
-.plan-section>div>p{font-size:12px;color:var(--t2);letter-spacing:.04em;line-height:1.85;margin-bottom:24px}
-.plan-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.plan-card{background:#fff;border:1.5px solid var(--bd);border-radius:10px;padding:18px;position:relative;display:flex;flex-direction:column}
-.plan-card.featured{border-color:#AFA9EC;border-width:2px}
-.plan-popular{font-size:8px;font-weight:700;letter-spacing:.14em;padding:2px 10px;border-radius:0 8px 0 6px;background:var(--pk);color:#fff;position:absolute;top:-1px;right:-1px}
-.plan-chip{font-size:9px;font-weight:700;letter-spacing:.14em;padding:3px 10px;border-radius:3px;display:inline-block;margin-bottom:12px}
+.plan-section h2{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:.02em;margin-bottom:8px;color:var(--t1)}
+.plan-section>div>p{font-size:12px;color:var(--t2);letter-spacing:.04em;line-height:1.85;margin-bottom:28px}
+.plan-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plan-card{background:#fff;border:1.5px solid var(--bd);border-radius:14px;padding:22px;position:relative;display:flex;flex-direction:column;box-shadow:var(--sh)}
+.plan-card.featured{border-color:var(--pk);border-width:2px;box-shadow:0 6px 24px rgba(37,99,235,.14)}
+.plan-card.plan-premium{border-color:var(--premium);border-width:2px;box-shadow:0 6px 24px rgba(124,58,237,.13)}
+.plan-popular{font-size:8px;font-weight:700;letter-spacing:.14em;padding:3px 12px;border-radius:0 12px 0 8px;background:var(--pk);color:#fff;position:absolute;top:-1px;right:-1px}
+.plan-chip{font-size:9px;font-weight:700;letter-spacing:.14em;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:14px}
 .chip-free{background:var(--bg3);color:var(--t3)}
-.chip-ume{background:#EAF3DE;color:#3B6D11}
-.chip-take{background:#E1F5EE;color:#0F6E56}
-.chip-matsu{background:#EEEDFE;color:#534AB7}
-.plan-price{font-size:22px;font-weight:700;color:var(--t1);line-height:1;margin-bottom:2px}
+.chip-take{background:#DCFCE7;color:#15803D}
+.chip-matsu{background:#EDE9FE;color:var(--premium)}
+.plan-price{font-size:28px;font-weight:700;color:var(--t1);line-height:1;margin-bottom:4px}
 .plan-price sub{font-size:10px;color:var(--t3);font-weight:400}
-.plan-card-name{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.06em;margin-bottom:12px}
-.plan-features{list-style:none;font-size:11px;color:var(--t2);line-height:2.1;border-top:1px solid var(--bd);padding-top:10px;flex:1}
-.plan-features li::before{content:'✓  ';color:var(--pk);font-weight:700}
-.plan-cta{display:block;margin-top:14px;text-align:center;padding:9px;background:var(--pk);color:#fff;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.14em;transition:background .18s}
+.plan-card-name{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.06em;margin-bottom:14px}
+.plan-features{list-style:none;font-size:11px;color:var(--t2);line-height:2.1;border-top:1px solid var(--bd);padding-top:12px;flex:1}
+.plan-features li::before{content:'✓  ';color:var(--green);font-weight:700}
+.plan-features li.premium::before{color:var(--premium)}
+.plan-cta{display:block;margin-top:16px;text-align:center;padding:11px;background:var(--pk);color:#fff;border-radius:9px;font-size:11px;font-weight:700;letter-spacing:.12em;transition:background .18s}
 .plan-cta:hover{background:var(--pk2)}
+.plan-cta-premium{background:var(--premium)}
+.plan-cta-premium:hover{background:#6D28D9}
+.plan-cta-free{background:var(--bg3);color:var(--t2)}
+.plan-cta-free:hover{background:var(--bd2);color:var(--t1)}
 
 /* PLAN TIER BADGES ON CARDS */
-.plan-badge{font-size:8px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:2px;position:absolute;top:10px;left:10px;z-index:2}
-.badge-matsu{background:#534AB7;color:#fff}
-.badge-take{background:#0F6E56;color:#fff}
-.badge-ume{background:#3B6D11;color:#fff}
+.plan-badge{font-size:8px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:3px;position:absolute;top:10px;left:10px;z-index:2}
+.badge-matsu{background:var(--premium);color:#fff}
+.badge-take{background:var(--green);color:#fff}
 
 /* PHOTO CARD VARIANTS */
 .shop-cover{width:100%;object-fit:cover;display:block}
 .shop-gallery-row{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px 3px 0}
 .shop-gallery-row img{width:100%;height:68px;object-fit:cover;display:block}
-.video-wrap{position:relative;cursor:pointer;overflow:hidden}
-.video-play-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.28);transition:background .2s}
-.video-wrap:hover .video-play-icon{background:rgba(0,0,0,.38)}
-.play-circle{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.3)}
-.play-triangle{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:16px solid var(--pk);margin-left:3px}
 
 /* HAREMEDIA BADGE */
-.haremedia-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--pk-bg);border:1px solid rgba(255,20,147,.25);border-radius:3px;font-size:9px;color:var(--pk);font-weight:600;letter-spacing:.05em;margin-bottom:8px}
-
-/* BOOKING LINK */
-.shop-booking{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:6px;border:1.5px solid var(--pk);color:var(--pk);font-size:10px;font-weight:600;letter-spacing:.08em;transition:all .18s;margin-top:4px}
-.shop-booking:hover{background:var(--pk);color:#fff}
+.haremedia-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--pk-bg);border:1px solid rgba(37,99,235,.25);border-radius:4px;font-size:9px;color:var(--pk);font-weight:600;letter-spacing:.05em;margin-bottom:8px}
 
 /* MATSU CARD: full-width 2-col */
-.shop-card.tier-matsu{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;border-color:rgba(83,74,183,.35);box-shadow:0 4px 24px rgba(83,74,183,.1)}
+.shop-card.tier-matsu{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;border-color:rgba(124,58,237,.3);box-shadow:0 4px 24px rgba(124,58,237,.1)}
+.shop-card.tier-matsu:hover{border-color:rgba(124,58,237,.5);box-shadow:0 8px 32px rgba(124,58,237,.15)}
 .shop-card.tier-matsu .shop-cover{height:100%;max-height:300px}
-.shop-card.tier-matsu .shop-body{padding:20px 22px}
-/* TIKTOK EMBED */
-.tiktok-frame-wrap{width:100%;background:#111;display:flex;justify-content:center;align-items:flex-start;padding:10px 0;overflow:hidden}
-.tiktok-frame-wrap iframe{width:325px;height:735px;border:none;flex-shrink:0}
-.tiktok-link{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;background:#111;color:#bbb;font-size:10px;font-weight:700;letter-spacing:.1em;text-decoration:none;border-top:1px solid #2a2a2a;transition:background .18s}
-.tiktok-link:hover,.tiktok-link:active{background:#1a1a1a;color:#fff}
+.shop-card.tier-matsu .shop-body{padding:22px 24px}
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  /* nav */
   .nav-logo{font-size:16px}
   .nav-search{display:flex}
   .nav-inner{gap:8px}
-  /* hero */
   .hero{padding:24px 16px 18px}
   .hero-eyebrow{display:none}
   .hero h1{font-size:21px;margin-bottom:6px}
   .hero-desc{font-size:11px;line-height:1.7;margin-bottom:12px}
   .hero-box{margin-bottom:12px}
-  /* category pills: horizontal scroll */
   .cat-row{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 2px 4px}
   .cat-row::-webkit-scrollbar{display:none}
   .cat-pill{flex-shrink:0}
-  /* stats */
   .stats-strip{gap:24px;padding:12px 20px}
-  /* plan grid: 2 columns */
-  .plan-section{padding:24px 16px}
-  .plan-grid-4{grid-template-columns:repeat(2,1fr)}
-  /* shop grid */
+  .plan-section{padding:28px 16px}
+  .plan-grid-3{grid-template-columns:1fr}
   .shop-grid{grid-template-columns:1fr 1fr;gap:10px;padding-bottom:48px}
   .shop-card.tier-matsu{grid-template-columns:1fr}
   .shop-card.tier-matsu .shop-body{padding:14px 16px}
   .shop-name{font-size:12px}
-  /* map */
   #map{height:240px}
-  /* sponsor */
   .sponsor-row{gap:10px}
-  /* tiktok — height governed by iframe, no override needed */
 }
 @media(max-width:480px){
   .nav-search input{font-size:12px}
@@ -219,7 +207,7 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
   .hero-box input{font-size:14px;padding:12px 16px}
   .hero-box button{padding:0 16px;font-size:11px}
   .cat-pill{font-size:12px;padding:8px 15px}
-  .plan-grid-4{grid-template-columns:1fr}
+  .plan-grid-3{grid-template-columns:1fr}
   .shop-grid{grid-template-columns:1fr;gap:12px}
   .shop-card{border-radius:8px}
 }
@@ -283,60 +271,48 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
   <div class="plan-section-inner">
     <div class="plan-eyebrow">LISTING PLANS</div>
     <h2>ハレマップに掲載しませんか？</h2>
-    <p>あなたのお店・サービスをハレマップのユーザーに届けよう。無料プランから始め、好きなタイミングでアップグレードできます。<br>竹・松プランでは<strong>ハレマップ公式SNSアカウント</strong>によるPR投稿もご提供しています。</p>
-    <div class="plan-grid-4">
+    <p>あなたのお店をハレマップのユーザーに届けよう。無料プランから始め、好きなタイミングでアップグレードできます。<br>スタンダード・プレミアムでは<strong>ハレマップ公式SNSアカウント</strong>によるPR投稿もご提供しています。</p>
+    <div class="plan-grid-3">
       <div class="plan-card">
         <span class="plan-chip chip-free">無料</span>
         <div class="plan-price">¥0</div>
         <div class="plan-card-name">基本掲載</div>
         <ul class="plan-features">
           <li>店舗名・エリア・カテゴリ</li>
-          <li>営業時間・定休日・住所</li>
+          <li>住所掲載</li>
           <li>マップにピン表示</li>
-          <li>ジャンル・タグフィルター</li>
+          <li>ジャンルフィルター対応</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">お申し込みはこちら</a>
-      </div>
-      <div class="plan-card">
-        <span class="plan-chip chip-ume">梅</span>
-        <div class="plan-price">¥3,000<sub>〜 / 期間</sub></div>
-        <div class="plan-card-name">写真 + SNSリンク掲載</div>
-        <ul class="plan-features">
-          <li>無料の全内容</li>
-          <li>外観写真 1枚</li>
-          <li>Instagramリンク</li>
-          <li>店舗コメント（150文字）</li>
-          <li>梅バッジ表示</li>
-        </ul>
-        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">お申し込みはこちら</a>
+        <a href="https://www.instagram.com/" class="plan-cta plan-cta-free" target="_blank">申し込む（無料）</a>
       </div>
       <div class="plan-card featured">
         <span class="plan-popular">人気</span>
-        <span class="plan-chip chip-take">竹</span>
-        <div class="plan-price">¥10,000<sub>〜 / 期間</sub></div>
-        <div class="plan-card-name">ギャラリー + SNS紹介</div>
+        <span class="plan-chip chip-take">スタンダード</span>
+        <div class="plan-price">¥5,000<sub>〜 / 月</sub></div>
+        <div class="plan-card-name">写真 + 詳細掲載</div>
         <ul class="plan-features">
-          <li>梅の全内容</li>
-          <li>写真ギャラリー（最大5枚）</li>
-          <li>おすすめ商品・紹介文</li>
-          <li>予約・問い合わせリンク</li>
-          <li>ハレマップSNSで紹介 1回</li>
+          <li>無料プランのすべて</li>
+          <li>メイン写真 1枚</li>
+          <li>店舗説明文（200文字）</li>
+          <li>営業時間・定休日</li>
+          <li>Instagramリンク</li>
           <li>検索で優先表示</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">お申し込みはこちら</a>
+        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">申し込む</a>
       </div>
-      <div class="plan-card">
-        <span class="plan-chip chip-matsu">松</span>
-        <div class="plan-price">¥30,000<sub>〜 / 期間</sub></div>
-        <div class="plan-card-name">動画 + ハレマップPR</div>
+      <div class="plan-card plan-premium">
+        <span class="plan-chip chip-matsu">プレミアム</span>
+        <div class="plan-price">¥20,000<sub>〜 / 月</sub></div>
+        <div class="plan-card-name">特集掲載 + SNS PR</div>
         <ul class="plan-features">
-          <li>竹の全内容</li>
-          <li>リール動画 埋め込み</li>
-          <li>ハレマップSNSでPR投稿</li>
-          <li>トップページ優先表示</li>
-          <li>プレミアムパートナーバッジ</li>
+          <li>スタンダードのすべて</li>
+          <li>写真ギャラリー（最大5枚）</li>
+          <li>トップに全幅で特集表示</li>
+          <li class="premium">ハレマップSNS公式でPR投稿</li>
+          <li class="premium">プレミアムパートナーバッジ</li>
+          <li class="premium">ハレマップ取材・記事掲載</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">お申し込みはこちら</a>
+        <a href="https://www.instagram.com/" class="plan-cta plan-cta-premium" target="_blank">申し込む</a>
       </div>
     </div>
   </div>
@@ -368,7 +344,7 @@ footer{background:var(--t1);padding:36px 20px;text-align:center}
 </div>
 
 <footer>
-  <div class="ft-logo">晴れ<span>マップ</span></div>
+  <div class="ft-logo">ハレ<span>マップ</span></div>
   <div class="ft-sub">HAREMEDIA — 街のお気に入りを届けるメディア</div>
   <div class="ft-hash">#ハレマップ &nbsp;#HARECOLLECTION2026 &nbsp;#ハレコレ2026</div>
 </footer>
@@ -573,7 +549,7 @@ function filtered(){
 // MAP
 const pinkIcon=L.divIcon({
   className:'',
-  html:`<div style="width:26px;height:26px;border-radius:50%;background:#FF1493;border:3px solid #fff;box-shadow:0 2px 8px rgba(255,20,147,.5);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
+  html:`<div style="width:26px;height:26px;border-radius:50%;background:#2563EB;border:3px solid #fff;box-shadow:0 2px 8px rgba(37,99,235,.5);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
   iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-15]
 });
 
@@ -600,10 +576,14 @@ function renderMap(stores){
 
 const igSvg=`<svg class="ig-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
 
+function catIcon(cat){
+  const m={'カフェ':'☕','飲食':'🍽️','美容室':'✂️','ジム・整体':'💪','ショップ':'🛍️','その他':'📍'};
+  return m[cat]||'📍';
+}
 function planBadgeHtml(plan){
-  if(plan==='matsu') return '<span class="plan-badge badge-matsu">松 PREMIUM</span>';
-  if(plan==='take')  return '<span class="plan-badge badge-take">竹 STANDARD</span>';
-  if(plan==='ume')   return '<span class="plan-badge badge-ume">梅 BASIC</span>';
+  if(plan==='matsu') return '<span class="plan-badge badge-matsu">PREMIUM</span>';
+  if(plan==='take')  return '<span class="plan-badge badge-take">STANDARD</span>';
+  if(plan==='ume')   return '<span class="plan-badge badge-take">STANDARD</span>';
   return '';
 }
 function shopInfoHtml(s){
@@ -632,32 +612,19 @@ function renderCard(s){
   const info=shopInfoHtml(s);
   const igBtn=s.igUrl?`<a href="${s.igUrl}" class="shop-ig" target="_blank">${igSvg} Instagram</a>`:'';
 
+  // プレミアム: 全幅2カラム、写真+ギャラリー
   if(s.plan==='matsu'){
-    let mediaHtml;
-    if(s.tiktokId){
-      const ttLink=s.tiktokUrl?`<a href="${s.tiktokUrl}" class="tiktok-link" target="_blank" rel="noopener">▶ TikTokで動画を見る</a>`:'';
-      mediaHtml=`<div class="tiktok-frame-wrap">
-        <iframe src="https://www.tiktok.com/embed/v2/${s.tiktokId}" allow="fullscreen;autoplay" allowfullscreen loading="lazy"></iframe>
-      </div>${ttLink}`;
-    } else if(s.video){
-      mediaHtml=`<a href="${s.video}" target="_blank" class="video-wrap" style="display:block">
-        <img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:300px">
-        <div class="video-play-icon"><div class="play-circle"><div class="play-triangle"></div></div></div>
-      </a>`;
-    } else {
-      mediaHtml=`<img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:300px">`;
-    }
+    const photo=s.photo||catPhoto(s.cat);
     const gallery=s.photos?.length?`<div class="shop-gallery-row">${s.photos.map(p=>`<img src="${p}" alt="">`).join('')}</div>`:'';
     return `<div class="shop-card tier-matsu">
       <div style="position:relative;overflow:hidden">
-        ${mediaHtml}
-        ${s.tiktokId?'':planBadgeHtml(s.plan)}
+        <img src="${photo}" alt="${s.name}" class="shop-cover" style="height:300px">
+        ${planBadgeHtml(s.plan)}
       </div>
       <div class="shop-body">
-        ${s.tiktokId?planBadgeHtml(s.plan).replace('class="plan-badge','style="position:static;display:inline-block;margin-bottom:8px" class="plan-badge')+'':''}
         ${s.hareMedia?'<div class="haremedia-badge">📲 ハレマップSNSで紹介中</div>':''}
         <div class="shop-name">${s.name}</div>
-        <div class="shop-area">${s.area} &middot; <span class="shop-cat-label" style="position:static;display:inline;background:var(--bg3);padding:2px 8px;border-radius:10px;font-size:9px">${s.cat}</span></div>
+        <div class="shop-area">${s.area} &middot; <span style="display:inline;background:var(--bg3);padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600">${s.cat}</span></div>
         <div class="shop-tags" style="margin-top:8px">${tags}</div>
         ${s.desc?`<div class="shop-desc">${s.desc}</div>`:''}
         ${info}
@@ -667,11 +634,14 @@ function renderCard(s){
     </div>`;
   }
 
-  if(s.plan==='take'){
+  // スタンダード（take・ume統合）: 写真カード
+  if(s.plan==='take'||s.plan==='ume'){
+    const photo=s.photo||catPhoto(s.cat);
     const gallery=s.photos?.length?`<div class="shop-gallery-row">${s.photos.map(p=>`<img src="${p}" alt="">`).join('')}</div>`:'';
+    const descHtml=s.desc||s.comment||'';
     return `<div class="shop-card">
       <div style="position:relative;overflow:hidden">
-        <img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:160px">
+        <img src="${photo}" alt="${s.name}" class="shop-cover" style="height:160px">
         ${planBadgeHtml(s.plan)}
         <span class="shop-cat-label">${s.cat}</span>
       </div>
@@ -681,43 +651,21 @@ function renderCard(s){
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${tags}</div>
-        ${s.desc?`<div class="shop-desc">${s.desc}</div>`:''}
+        ${descHtml?`<div class="shop-desc">${descHtml}</div>`:''}
         ${info}
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">${igBtn}</div>
       </div>
     </div>`;
   }
 
-  if(s.plan==='ume'){
-    return `<div class="shop-card">
-      <div style="position:relative;overflow:hidden">
-        <img src="${s.photo}" alt="${s.name}" class="shop-cover" style="height:160px">
-        ${planBadgeHtml(s.plan)}
-        <span class="shop-cat-label">${s.cat}</span>
-      </div>
-      <div class="shop-body">
-        <div class="shop-name">${s.name}</div>
-        <div class="shop-area">${s.area}</div>
-        <div class="shop-tags">${tags}</div>
-        ${s.comment?`<div class="shop-desc">${s.comment}</div>`:''}
-        ${info}
-        <div style="margin-top:6px">${igBtn}</div>
-      </div>
-    </div>`;
-  }
-
-  const freePhoto=s.photo||catPhoto(s.cat);
-  return `<div class="shop-card">
-    <div style="position:relative;overflow:hidden">
-      <img src="${freePhoto}" alt="${s.name}" class="shop-cover" style="height:140px;object-fit:cover;width:100%">
-      <span class="shop-cat-label">${s.cat}</span>
-    </div>
+  // 無料: テキストのみ、写真なし
+  return `<div class="shop-card shop-card-free">
     <div class="shop-body">
+      <div class="free-cat-icon">${catIcon(s.cat)}</div>
       <div class="shop-name">${s.name}</div>
-      <div class="shop-area">${s.area}</div>
-      <div class="shop-tags">${tags}</div>
-      ${info}
-      ${igBtn?`<div style="margin-top:6px">${igBtn}</div>`:''}
+      <div class="shop-area">${s.area} &middot; ${s.cat}</div>
+      <div class="shop-tags" style="margin-top:6px">${tags}</div>
+      ${s.addr?`<div class="shop-addr">📍 ${s.addr}</div>`:''}
     </div>
   </div>`;
 }
