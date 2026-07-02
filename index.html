@@ -26,11 +26,6 @@ button{cursor:pointer;font-family:inherit}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;gap:16px}
 .nav-logo{font-size:19px;font-weight:700;letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
 .nav-logo span{color:var(--pk)}
-.nav-search{flex:1;max-width:440px;display:flex;border:1.5px solid var(--bd2);border-radius:8px;overflow:hidden;background:#fff;box-shadow:var(--sh)}
-.nav-search input{flex:1;border:none;padding:0 14px;font-size:13px;color:var(--t1);font-family:inherit;outline:none}
-.nav-search input::placeholder{color:var(--t3)}
-.nav-search button{padding:0 18px;background:var(--pk);border:none;color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;transition:background .2s;flex-shrink:0}
-.nav-search button:hover{background:var(--pk2)}
 
 /* HERO */
 .hero{background:linear-gradient(160deg,#F8FAFC 0%,#EFF6FF 55%,#EDE9FE 100%);padding:60px 20px 48px;text-align:center;border-bottom:1px solid var(--bd)}
@@ -177,7 +172,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
 /* RESPONSIVE */
 @media(max-width:768px){
   .nav-logo{font-size:16px}
-  .nav-search{display:flex}
   .nav-inner{gap:8px}
   .hero{padding:24px 16px 18px}
   .hero-eyebrow{display:none}
@@ -202,9 +196,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   .area-stats-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:480px){
-  .nav-search input{font-size:12px}
-  .nav-search button{padding:0 10px;font-size:10px}
-  .hero h1{font-size:19px}
+.hero h1{font-size:19px}
   .hero-desc{display:none}
   .hero-box input{font-size:14px;padding:12px 16px}
   .hero-box button{padding:0 16px;font-size:11px}
@@ -220,10 +212,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">ハレ<span>マップ</span></a>
-    <div class="nav-search">
-      <input type="text" id="navQ" placeholder="店舗名、エリア、カテゴリで検索">
-      <button id="navBtn">検索</button>
-    </div>
   </div>
 </nav>
 
@@ -265,7 +253,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
 <div class="stats-strip">
   <div class="sstat"><div class="sstat-n" id="sTotal">--</div><div class="sstat-l">掲載店舗</div></div>
   <div class="sstat"><div class="sstat-n" id="sArea">--</div><div class="sstat-l">エリア</div></div>
-  <div class="sstat"><div class="sstat-n p" id="sDays">--</div><div class="sstat-l">Days to 8/8</div></div>
 </div>
 
 <!-- PLAN SECTION -->
@@ -273,7 +260,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   <div class="plan-section-inner">
     <div class="plan-eyebrow">LISTING PLANS</div>
     <h2>ハレマップに掲載しませんか？</h2>
-    <p>掲載費用は無料から。スタンダード・プレミアムプランでは、写真掲載・詳細情報・ハレマップ公式SNSでのご紹介も対応しています。</p>
+    <p>掲載費用は無料から。スタンダード・プレミアムプランでは、写真掲載・詳細情報など充実した掲載が可能です。</p>
     <div class="plan-grid-3">
       <div class="plan-card">
         <span class="plan-chip chip-free">無料</span>
@@ -281,34 +268,30 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
         <div class="plan-card-name">基本掲載</div>
         <ul class="plan-features">
           <li>店舗名・エリア・カテゴリ</li>
-          <li>ジャンルフィルター対応</li>
         </ul>
         <a href="https://www.instagram.com/" class="plan-cta plan-cta-free" target="_blank">掲載を相談する</a>
       </div>
       <div class="plan-card featured">
         <span class="plan-popular">人気</span>
         <span class="plan-chip chip-take">スタンダード</span>
-        <div class="plan-price">¥5,000<sub>〜 / 月</sub></div>
+        <div class="plan-price">¥1,000<sub>〜 / 月</sub></div>
         <div class="plan-card-name">写真 + 詳細掲載</div>
         <ul class="plan-features">
           <li>無料プランのすべて</li>
           <li>メイン写真 1枚</li>
           <li>営業時間・定休日</li>
-          <li>Instagramリンク</li>
-          <li>検索で優先表示</li>
         </ul>
         <a href="https://www.instagram.com/" class="plan-cta" target="_blank">掲載を相談する</a>
       </div>
       <div class="plan-card plan-premium">
         <span class="plan-chip chip-matsu">プレミアム</span>
-        <div class="plan-price">¥20,000<sub>〜 / 月</sub></div>
-        <div class="plan-card-name">特集掲載 + SNS PR</div>
+        <div class="plan-price">¥2,000<sub>〜 / 月</sub></div>
+        <div class="plan-card-name">写真ギャラリー + 最優先表示</div>
         <ul class="plan-features">
           <li>スタンダードのすべて</li>
-          <li>写真ギャラリー（最大5枚）</li>
-          <li>トップに全幅で特集表示</li>
-          <li class="premium">ハレマップSNS公式でPR投稿</li>
-          <li class="premium">プレミアムパートナーバッジ</li>
+          <li class="premium">写真ギャラリー（最大3枚）</li>
+          <li class="premium">Instagramリンク</li>
+          <li class="premium">検索で最優先表示</li>
         </ul>
         <a href="https://www.instagram.com/" class="plan-cta plan-cta-premium" target="_blank">掲載を相談する</a>
       </div>
@@ -697,7 +680,6 @@ function renderCard(s){
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${tags}</div>
         ${info}
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">${igBtn}</div>
       </div>
     </div>`;
   }
@@ -762,8 +744,6 @@ function syncAreaStatCards(){
 // Stats
 document.getElementById('sTotal').textContent=STORES.length;
 document.getElementById('sArea').textContent=new Set(STORES.map(s=>s.region)).size;
-const days=Math.ceil((new Date('2026-08-08')-new Date())/86400000);
-document.getElementById('sDays').textContent=days>0?days:0;
 
 // Filters
 document.querySelectorAll('.cat-pill').forEach(b=>{
@@ -780,13 +760,7 @@ document.querySelectorAll('.area-pill').forEach(b=>{
     renderGrid();
   });
 });
-document.getElementById('navQ').addEventListener('input',e=>{searchQ=e.target.value;renderGrid();});
 document.getElementById('heroQ').addEventListener('input',e=>{searchQ=e.target.value;renderGrid();});
-document.getElementById('navBtn').addEventListener('click',()=>{
-  searchQ=document.getElementById('navQ').value;
-  renderGrid();
-  document.getElementById('all').scrollIntoView({behavior:'smooth'});
-});
 document.getElementById('heroBtn').addEventListener('click',()=>{
   searchQ=document.getElementById('heroQ').value;
   renderGrid();

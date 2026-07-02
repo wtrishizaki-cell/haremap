@@ -1,0 +1,7 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+git add index.html
+git commit -m "ハレマップ更新 $(date '+%Y/%m/%d %H:%M')"
+git push
+echo ""
+echo "✅ 公開完了 — https://wtrishizaki-cell.github.io/haremap/"
