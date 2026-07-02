@@ -80,7 +80,8 @@ button{cursor:pointer;font-family:inherit}
 .sec-count{font-size:11px;color:var(--t3);letter-spacing:.08em}
 
 /* SHOP GRID */
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;padding-bottom:64px}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;margin-bottom:24px}
+.shop-grid-free{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:64px}
 .shop-card{background:#fff;border:1.5px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .15s,border-color .18s}
 .shop-card:hover{box-shadow:var(--sh-h);transform:translateY(-2px);border-color:rgba(37,99,235,.3)}
 .shop-cat-label{font-size:9px;letter-spacing:.16em;padding:3px 10px;margin:0 12px 12px;background:rgba(255,255,255,.92);border-radius:20px;color:var(--t1);font-weight:600;border:1px solid rgba(0,0,0,.08)}
@@ -184,7 +185,8 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   .stats-strip{gap:24px;padding:12px 20px}
   .plan-section{padding:28px 16px}
   .plan-grid-3{grid-template-columns:1fr}
-  .shop-grid{grid-template-columns:1fr 1fr;gap:10px;padding-bottom:48px}
+  .shop-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .shop-grid-free{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
   .shop-card.tier-matsu{grid-template-columns:1fr}
   .shop-card.tier-matsu .shop-body{padding:14px 16px}
   .shop-name{font-size:12px}
@@ -203,6 +205,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   .cat-pill{font-size:12px;padding:8px 15px}
   .plan-grid-3{grid-template-columns:1fr}
   .shop-grid{grid-template-columns:1fr;gap:12px}
+  .shop-grid-free{grid-template-columns:1fr 1fr;gap:8px}
   .shop-card{border-radius:8px}
 }
 </style>
@@ -318,9 +321,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
     <div class="sec-count" id="gridCount"></div>
   </div>
 </div>
-<div style="max-width:1200px;margin:0 auto;padding:0 20px">
-  <div class="shop-grid" id="shopGrid"></div>
-</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 20px" id="shopGrid"></div>
 
 <footer>
   <div class="ft-logo">ハレ<span>マップ</span></div>
@@ -700,7 +701,14 @@ function renderGrid(){
     grid.innerHTML='<div class="empty">該当する店舗は見つかりませんでした。</div>';
     return;
   }
-  grid.innerHTML=items.map(s=>renderCard(s)).join('');
+  const premium=items.filter(s=>s.plan==='matsu');
+  const standard=items.filter(s=>s.plan==='take'||s.plan==='ume');
+  const free=items.filter(s=>!s.plan);
+  let html='';
+  if(premium.length) html+=`<div class="shop-grid">${premium.map(s=>renderCard(s)).join('')}</div>`;
+  if(standard.length) html+=`<div class="shop-grid">${standard.map(s=>renderCard(s)).join('')}</div>`;
+  if(free.length) html+=`<div class="shop-grid-free">${free.map(s=>renderCard(s)).join('')}</div>`;
+  grid.innerHTML=html;
 }
 
 function renderAreaStats(){
