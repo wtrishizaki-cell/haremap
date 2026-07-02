@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="build-time" content="1783015028">
+<meta name="build-time" content="1783016829">
 <title>ハレマップ — 大阪のお気に入りを見つけよう</title>
 <meta name="description" content="ハレマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -291,6 +291,27 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   <div class="sstat"><div class="sstat-n" id="sArea">--</div><div class="sstat-l">エリア</div></div>
 </div>
 
+<div class="area-stats-section">
+  <div class="area-stats-inner">
+    <div class="area-stats-top">
+      <div>
+        <div class="sec-title">COVERAGE AREA</div>
+        <p style="font-size:11px;color:var(--t3);margin-top:4px;letter-spacing:.04em">エリアを選んで絞り込む</p>
+      </div>
+      <div class="area-stats-total" id="areaTotal"></div>
+    </div>
+    <div class="area-stats-grid" id="areaStatsGrid"></div>
+  </div>
+</div>
+
+<div class="section" id="all">
+  <div class="sec-head">
+    <div class="sec-title">掲載店舗一覧</div>
+    <div class="sec-count" id="gridCount"></div>
+  </div>
+</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 20px" id="shopGrid"></div>
+
 <!-- PLAN SECTION -->
 <div class="plan-section">
   <div class="plan-section-inner">
@@ -334,27 +355,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
     </div>
   </div>
 </div>
-
-<div class="area-stats-section">
-  <div class="area-stats-inner">
-    <div class="area-stats-top">
-      <div>
-        <div class="sec-title">COVERAGE AREA</div>
-        <p style="font-size:11px;color:var(--t3);margin-top:4px;letter-spacing:.04em">エリアを選んで絞り込む</p>
-      </div>
-      <div class="area-stats-total" id="areaTotal"></div>
-    </div>
-    <div class="area-stats-grid" id="areaStatsGrid"></div>
-  </div>
-</div>
-
-<div class="section" id="all">
-  <div class="sec-head">
-    <div class="sec-title">掲載店舗一覧</div>
-    <div class="sec-count" id="gridCount"></div>
-  </div>
-</div>
-<div style="max-width:1200px;margin:0 auto;padding:0 20px" id="shopGrid"></div>
 
 <footer>
   <div class="ft-logo">ハレ<span>マップ</span></div>
