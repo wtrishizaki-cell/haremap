@@ -6,8 +6,6 @@
 <title>ハレマップ — 大阪のお気に入りを見つけよう</title>
 <meta name="description" content="ハレマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -66,23 +64,19 @@ button{cursor:pointer;font-family:inherit}
 .sstat-n.p{color:var(--pk)}
 .sstat-l{font-size:9px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase}
 
-/* SPONSOR BAND */
-.sponsor-band{background:#0F172A;padding:20px;border-bottom:1px solid #1E293B}
-.sponsor-inner{max-width:1200px;margin:0 auto}
-.sponsor-label{font-size:9px;letter-spacing:.4em;color:#475569;text-transform:uppercase;margin-bottom:12px}
-.sponsor-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-.sponsor-card{background:#1E293B;border:1px solid #334155;padding:12px 20px;display:flex;align-items:center;gap:12px;transition:border-color .2s;border-radius:6px}
-.sponsor-card:hover{border-color:var(--pk)}
-.sponsor-name{font-size:12px;font-weight:600;color:#fff;letter-spacing:.04em}
-.sponsor-cat{font-size:9px;color:#64748B;letter-spacing:.1em;margin-top:2px}
-.sponsor-badge{font-size:8px;letter-spacing:.18em;padding:2px 8px;background:var(--gold);color:#fff;border-radius:2px;flex-shrink:0}
 
-/* MAP */
-.map-section{border-bottom:1px solid var(--bd)}
-.map-bar{max-width:1200px;margin:0 auto;padding:16px 20px 10px;display:flex;align-items:center;justify-content:space-between}
-.map-title{font-size:11px;font-weight:600;letter-spacing:.35em;color:var(--t2);text-transform:uppercase}
-.map-hint{font-size:10px;color:var(--t3);letter-spacing:.04em}
-#map{height:320px;width:100%;background:var(--bg3)}
+/* AREA STATS */
+.area-stats-section{background:var(--bg2);border-bottom:1px solid var(--bd)}
+.area-stats-inner{max-width:1200px;margin:0 auto;padding:40px 20px}
+.area-stats-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
+.area-stats-total{font-size:11px;color:var(--t3);letter-spacing:.08em}
+.area-stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.area-stat-card{background:#fff;border:1.5px solid var(--bd);border-radius:10px;padding:18px 16px;text-align:left;cursor:pointer;transition:all .2s;font-family:inherit;width:100%}
+.area-stat-card:hover{border-color:var(--pk);box-shadow:0 3px 14px rgba(37,99,235,.1);transform:translateY(-1px)}
+.area-stat-card.on{border-color:var(--pk);background:var(--pk-bg);box-shadow:0 3px 14px rgba(37,99,235,.12)}
+.area-stat-name{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.03em;margin-bottom:10px}
+.area-stat-n{font-size:28px;font-weight:700;color:var(--pk);line-height:1;margin-bottom:2px}
+.area-stat-unit{font-size:9px;color:var(--t3);letter-spacing:.15em;text-transform:uppercase}
 
 /* SECTION */
 .section{max-width:1200px;margin:0 auto;padding:0 20px}
@@ -107,11 +101,15 @@ button{cursor:pointer;font-family:inherit}
 .shop-ig:hover{border-color:var(--pk);color:var(--pk)}
 .ig-svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 
-/* FREE CARD */
-.shop-card-free{border-left:3px solid var(--bd2)}
-.shop-card-free .shop-body{padding:18px 20px}
-.free-cat-icon{font-size:22px;margin-bottom:10px;line-height:1}
-.shop-addr{font-size:10px;color:var(--t3);margin-top:6px;line-height:1.6}
+/* FREE CARD — uniform height, no emoji */
+.shop-card-free{height:118px}
+.shop-card-free .shop-body{padding:18px 20px;display:flex;flex-direction:column;height:100%}
+.free-cat-chip{font-size:8px;letter-spacing:.2em;font-weight:700;color:var(--pk);text-transform:uppercase;margin-bottom:10px}
+.shop-card-free .shop-name{font-size:12px;font-weight:700;color:var(--t1);line-height:1.4;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.shop-card-free .shop-area{font-size:10px;color:var(--t3);margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* INFO LABELS */
+.info-label{font-size:8px;letter-spacing:.1em;color:var(--t3);font-weight:600;text-transform:uppercase;margin-right:6px;display:inline-block;min-width:20px}
 
 /* GRADIENTS */
 .g-cafe{background:linear-gradient(135deg,#EFF6FF,#DBEAFE)}
@@ -150,12 +148,12 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
 .plan-features{list-style:none;font-size:11px;color:var(--t2);line-height:2.1;border-top:1px solid var(--bd);padding-top:12px;flex:1}
 .plan-features li::before{content:'✓  ';color:var(--green);font-weight:700}
 .plan-features li.premium::before{color:var(--premium)}
-.plan-cta{display:block;margin-top:16px;text-align:center;padding:11px;background:var(--pk);color:#fff;border-radius:9px;font-size:11px;font-weight:700;letter-spacing:.12em;transition:background .18s}
-.plan-cta:hover{background:var(--pk2)}
-.plan-cta-premium{background:var(--premium)}
-.plan-cta-premium:hover{background:#6D28D9}
-.plan-cta-free{background:var(--bg3);color:var(--t2)}
-.plan-cta-free:hover{background:var(--bd2);color:var(--t1)}
+.plan-cta{display:block;margin-top:16px;text-align:center;padding:10px;background:transparent;color:var(--pk);border:1.5px solid var(--pk);border-radius:8px;font-size:10px;font-weight:600;letter-spacing:.08em;transition:all .18s}
+.plan-cta:hover{background:var(--pk);color:#fff}
+.plan-cta-premium{color:var(--premium);border-color:var(--premium)}
+.plan-cta-premium:hover{background:var(--premium);color:#fff}
+.plan-cta-free{color:var(--t3);border-color:var(--bd2)}
+.plan-cta-free:hover{background:var(--bg3);color:var(--t2)}
 
 /* PLAN TIER BADGES ON CARDS */
 .plan-badge{font-size:8px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:3px;position:absolute;top:10px;left:10px;z-index:2}
@@ -196,8 +194,12 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   .shop-card.tier-matsu{grid-template-columns:1fr}
   .shop-card.tier-matsu .shop-body{padding:14px 16px}
   .shop-name{font-size:12px}
-  #map{height:240px}
-  .sponsor-row{gap:10px}
+  .area-stats-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+  .area-stats-top{flex-direction:column;align-items:flex-start;gap:4px}
+  .area-stats-inner{padding:28px 16px}
+}
+@media(max-width:480px){
+  .area-stats-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:480px){
   .nav-search input{font-size:12px}
@@ -271,7 +273,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
   <div class="plan-section-inner">
     <div class="plan-eyebrow">LISTING PLANS</div>
     <h2>ハレマップに掲載しませんか？</h2>
-    <p>あなたのお店をハレマップのユーザーに届けよう。無料プランから始め、好きなタイミングでアップグレードできます。<br>スタンダード・プレミアムでは<strong>ハレマップ公式SNSアカウント</strong>によるPR投稿もご提供しています。</p>
+    <p>掲載費用は無料から。スタンダード・プレミアムプランでは、写真掲載・詳細情報・ハレマップ公式SNSでのご紹介も対応しています。</p>
     <div class="plan-grid-3">
       <div class="plan-card">
         <span class="plan-chip chip-free">無料</span>
@@ -283,7 +285,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
           <li>マップにピン表示</li>
           <li>ジャンルフィルター対応</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta plan-cta-free" target="_blank">申し込む（無料）</a>
+        <a href="https://www.instagram.com/" class="plan-cta plan-cta-free" target="_blank">掲載を相談する</a>
       </div>
       <div class="plan-card featured">
         <span class="plan-popular">人気</span>
@@ -298,7 +300,7 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
           <li>Instagramリンク</li>
           <li>検索で優先表示</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">申し込む</a>
+        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">掲載を相談する</a>
       </div>
       <div class="plan-card plan-premium">
         <span class="plan-chip chip-matsu">プレミアム</span>
@@ -312,25 +314,23 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
           <li class="premium">プレミアムパートナーバッジ</li>
           <li class="premium">ハレマップ取材・記事掲載</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta plan-cta-premium" target="_blank">申し込む</a>
+        <a href="https://www.instagram.com/" class="plan-cta plan-cta-premium" target="_blank">掲載を相談する</a>
       </div>
     </div>
   </div>
 </div>
 
-<div class="sponsor-band" id="sponsorBand" style="display:none">
-  <div class="sponsor-inner">
-    <div class="sponsor-label">Official Sponsor</div>
-    <div class="sponsor-row" id="sponsorRow"></div>
+<div class="area-stats-section">
+  <div class="area-stats-inner">
+    <div class="area-stats-top">
+      <div>
+        <div class="sec-title">COVERAGE AREA</div>
+        <p style="font-size:11px;color:var(--t3);margin-top:4px;letter-spacing:.04em">エリアを選んで絞り込む</p>
+      </div>
+      <div class="area-stats-total" id="areaTotal"></div>
+    </div>
+    <div class="area-stats-grid" id="areaStatsGrid"></div>
   </div>
-</div>
-
-<div class="map-section">
-  <div class="map-bar">
-    <div class="map-title">店舗マップ</div>
-    <div class="map-hint">マーカーをタップすると店舗情報が表示されます</div>
-  </div>
-  <div id="map"></div>
 </div>
 
 <div class="section" id="all">
@@ -526,11 +526,6 @@ const STORES = [
   {id:'s171',name:'BUY ME STAND',area:'松阪',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['コーヒー','スタンド'],bg:'g-cafe',lat:34.577,lng:136.527,region:'その他'},
 ];
 
-// スポンサー企業（店舗とは別セクション）
-const SPONSORS = [
-  {name:'積水ハウス（株）',area:'神戸',cat:'住宅・建設',url:'',addr:'兵庫県神戸市中央区小野柄通7-1-1'},
-];
-
 let activeCat='', activeRegion='', searchQ='';
 
 const PLAN_ORDER={matsu:0,take:1,ume:2};
@@ -546,40 +541,9 @@ function filtered(){
   }).sort((a,b)=>(PLAN_ORDER[a.plan]??3)-(PLAN_ORDER[b.plan]??3));
 }
 
-// MAP
-const pinkIcon=L.divIcon({
-  className:'',
-  html:`<div style="width:26px;height:26px;border-radius:50%;background:#2563EB;border:3px solid #fff;box-shadow:0 2px 8px rgba(37,99,235,.5);display:flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>`,
-  iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-15]
-});
-
-const map=L.map('map',{zoomControl:true}).setView([34.693,135.502],11);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
-  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-  subdomains:'abcd',maxZoom:19
-}).addTo(map);
-
-let markers=[];
-function renderMap(stores){
-  markers.forEach(m=>map.removeLayer(m));
-  markers=[];
-  stores.forEach(s=>{
-    const m=L.marker([s.lat,s.lng],{icon:pinkIcon})
-      .bindPopup(`<div style="font-family:'Noto Sans JP',sans-serif"><b style="font-size:13px;color:#111">${s.name}</b><br><span style="font-size:10px;color:#777">${s.area} &middot; ${s.cat}</span></div>`)
-      .addTo(map);
-    markers.push(m);
-  });
-  if(stores.length){
-    try{map.fitBounds(L.featureGroup(markers).getBounds().pad(0.15));}catch(e){}
-  }
-}
 
 const igSvg=`<svg class="ig-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
 
-function catIcon(cat){
-  const m={'カフェ':'☕','飲食':'🍽️','美容室':'✂️','ジム・整体':'💪','ショップ':'🛍️','その他':'📍'};
-  return m[cat]||'📍';
-}
 function planBadgeHtml(plan){
   if(plan==='matsu') return '<span class="plan-badge badge-matsu">PREMIUM</span>';
   if(plan==='take')  return '<span class="plan-badge badge-take">STANDARD</span>';
@@ -589,9 +553,9 @@ function planBadgeHtml(plan){
 function shopInfoHtml(s){
   if(!s.hours&&!s.holiday&&!s.addr) return '';
   return `<div class="shop-info">
-    ${s.addr?`<span>📍 ${s.addr}</span>`:''}
-    ${s.hours?`<span>🕐 ${s.hours}</span>`:''}
-    ${s.holiday?`<span>定休日: ${s.holiday}</span>`:''}
+    ${s.addr?`<span><span class="info-label">住所</span>${s.addr}</span>`:''}
+    ${s.hours?`<span><span class="info-label">営業</span>${s.hours}</span>`:''}
+    ${s.holiday?`<span><span class="info-label">定休</span>${s.holiday}</span>`:''}
   </div>`;
 }
 function catPhoto(cat){
@@ -622,7 +586,7 @@ function renderCard(s){
         ${planBadgeHtml(s.plan)}
       </div>
       <div class="shop-body">
-        ${s.hareMedia?'<div class="haremedia-badge">📲 ハレマップSNSで紹介中</div>':''}
+        ${s.hareMedia?'<div class="haremedia-badge">ハレマップ SNS掲載中</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area} &middot; <span style="display:inline;background:var(--bg3);padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600">${s.cat}</span></div>
         <div class="shop-tags" style="margin-top:8px">${tags}</div>
@@ -647,7 +611,7 @@ function renderCard(s){
       </div>
       ${gallery}
       <div class="shop-body">
-        ${s.hareMedia?'<div class="haremedia-badge">📲 ハレマップSNS紹介済み</div>':''}
+        ${s.hareMedia?'<div class="haremedia-badge">ハレマップ SNS掲載中</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${tags}</div>
@@ -658,14 +622,12 @@ function renderCard(s){
     </div>`;
   }
 
-  // 無料: テキストのみ、写真なし
+  // 無料: テキストのみ、固定高さ
   return `<div class="shop-card shop-card-free">
     <div class="shop-body">
-      <div class="free-cat-icon">${catIcon(s.cat)}</div>
+      <div class="free-cat-chip">${s.cat}</div>
       <div class="shop-name">${s.name}</div>
-      <div class="shop-area">${s.area} &middot; ${s.cat}</div>
-      <div class="shop-tags" style="margin-top:6px">${tags}</div>
-      ${s.addr?`<div class="shop-addr">📍 ${s.addr}</div>`:''}
+      <div class="shop-area">${s.area}</div>
     </div>
   </div>`;
 }
@@ -676,26 +638,43 @@ function renderGrid(){
   const grid=document.getElementById('shopGrid');
   if(!items.length){
     grid.innerHTML='<div class="empty">該当する店舗は見つかりませんでした。</div>';
-    renderMap([]);
     return;
   }
   grid.innerHTML=items.map(s=>renderCard(s)).join('');
-  renderMap(items);
 }
 
-// スポンサー
-(function(){
-  const band=document.getElementById('sponsorBand');
-  const row=document.getElementById('sponsorRow');
-  if(!SPONSORS.length) return;
-  band.style.display='block';
-  row.innerHTML=SPONSORS.map(s=>`
-    <div class="sponsor-card">
-      <span class="sponsor-badge">SPONSOR</span>
-      <div><div class="sponsor-name">${s.name}</div><div class="sponsor-cat">${s.cat} &middot; ${s.area}</div></div>
-    </div>
-  `).join('');
-})();
+function renderAreaStats(){
+  const regions=[...new Set(STORES.map(s=>s.region))].sort();
+  const grid=document.getElementById('areaStatsGrid');
+  if(!grid) return;
+  const total=document.getElementById('areaTotal');
+  if(total) total.textContent=STORES.length+' 店舗';
+  grid.innerHTML=regions.map(r=>{
+    const n=STORES.filter(s=>s.region===r).length;
+    return `<button class="area-stat-card" data-region="${r}">
+      <div class="area-stat-name">${r}</div>
+      <div class="area-stat-n">${n}</div>
+      <div class="area-stat-unit">STORES</div>
+    </button>`;
+  }).join('');
+  grid.querySelectorAll('.area-stat-card').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const r=btn.dataset.region;
+      activeRegion=(activeRegion===r?'':r);
+      document.querySelectorAll('.area-pill').forEach(p=>{
+        p.classList.toggle('on',p.dataset.region===activeRegion);
+      });
+      syncAreaStatCards();
+      renderGrid();
+    });
+  });
+}
+
+function syncAreaStatCards(){
+  document.querySelectorAll('.area-stat-card').forEach(c=>{
+    c.classList.toggle('on',c.dataset.region===activeRegion);
+  });
+}
 
 // Stats
 document.getElementById('sTotal').textContent=STORES.length;
@@ -713,7 +692,9 @@ document.querySelectorAll('.cat-pill').forEach(b=>{
 document.querySelectorAll('.area-pill').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('.area-pill').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); activeRegion=b.dataset.region; renderGrid();
+    b.classList.add('on'); activeRegion=b.dataset.region;
+    syncAreaStatCards();
+    renderGrid();
   });
 });
 document.getElementById('navQ').addEventListener('input',e=>{searchQ=e.target.value;renderGrid();});
@@ -729,6 +710,7 @@ document.getElementById('heroBtn').addEventListener('click',()=>{
   document.getElementById('all').scrollIntoView({behavior:'smooth'});
 });
 
+renderAreaStats();
 renderGrid();
 </script>
 </body>
