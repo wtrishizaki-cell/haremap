@@ -281,8 +281,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
         <div class="plan-card-name">基本掲載</div>
         <ul class="plan-features">
           <li>店舗名・エリア・カテゴリ</li>
-          <li>住所掲載</li>
-          <li>マップにピン表示</li>
           <li>ジャンルフィルター対応</li>
         </ul>
         <a href="https://www.instagram.com/" class="plan-cta plan-cta-free" target="_blank">掲載を相談する</a>
@@ -295,7 +293,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
         <ul class="plan-features">
           <li>無料プランのすべて</li>
           <li>メイン写真 1枚</li>
-          <li>店舗説明文（200文字）</li>
           <li>営業時間・定休日</li>
           <li>Instagramリンク</li>
           <li>検索で優先表示</li>
@@ -312,7 +309,6 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
           <li>トップに全幅で特集表示</li>
           <li class="premium">ハレマップSNS公式でPR投稿</li>
           <li class="premium">プレミアムパートナーバッジ</li>
-          <li class="premium">ハレマップ取材・記事掲載</li>
         </ul>
         <a href="https://www.instagram.com/" class="plan-cta plan-cta-premium" target="_blank">掲載を相談する</a>
       </div>
@@ -363,9 +359,9 @@ const STORES = [
   {id:'s11',name:'RENGA',area:'松屋町',addr:'大阪府大阪市中央区松屋町4-18 実和ビル1F',phone:'06-6777-6696',hours:'7:00〜21:00',holiday:'正月3日のみ',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.6762,lng:135.5147,region:'心斎橋・難波'},
   {id:'s13',name:'ソレアス整骨院',area:'福島',addr:'大阪府大阪市福島区福島1-2-30 市光ビル2F',phone:'06-6695-7532',hours:'10:30〜20:30',holiday:'日曜',cat:'ジム・整体',tags:['整骨院','ケア'],bg:'g-gym',lat:34.693,lng:135.4742,region:'梅田・北区'},
   {id:'s14',name:'たまごのたまこ',area:'谷町6丁目',addr:'大阪府大阪市中央区谷町6丁目4-26',phone:'090-4279-2310',hours:'火〜日11:30〜16:00',holiday:'月曜',cat:'カフェ',tags:['カフェ','スイーツ'],bg:'g-cafe',lat:34.6774,lng:135.5186,region:'心斎橋・難波'},
-  {id:'s15',name:'PLENU.',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'美容室',tags:['ヘアサロン','デザイン'],bg:'g-hair',lat:34.568,lng:136.527,region:'その他'},
-  {id:'s16',name:'nonfiction（フォトスタジオ）',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'その他',tags:['フォトスタジオ','撮影'],bg:'g-other',lat:34.569,lng:136.5265,region:'その他'},
-  {id:'s17',name:'カメイサンのカフェ',area:'松阪（三重）',addr:'三重県松阪市西之庄町44-11',phone:'0598-31-3372',hours:'平日 10:00〜16:30 / 土日祝 9:00〜17:00',holiday:'月・火曜',cat:'カフェ',tags:['カフェ','のどか'],bg:'g-cafe',lat:34.575,lng:136.5222,region:'その他'},
+  {id:'s15',name:'PLENU.',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'美容室',tags:['ヘアサロン','デザイン'],bg:'g-hair',lat:34.568,lng:136.527,region:'三重'},
+  {id:'s16',name:'nonfiction（フォトスタジオ）',area:'松阪（三重）',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'その他',tags:['フォトスタジオ','撮影'],bg:'g-other',lat:34.569,lng:136.5265,region:'三重'},
+  {id:'s17',name:'カメイサンのカフェ',area:'松阪（三重）',addr:'三重県松阪市西之庄町44-11',phone:'0598-31-3372',hours:'平日 10:00〜16:30 / 土日祝 9:00〜17:00',holiday:'月・火曜',cat:'カフェ',tags:['カフェ','のどか'],bg:'g-cafe',lat:34.575,lng:136.5222,region:'三重'},
   {id:'s18',name:'BUDDHA',area:'玉造',addr:'大阪市東成区中道1-8-15 金井ビル1F',phone:'06-6753-7797',hours:'月〜金 11:00〜15:00',holiday:'土日祝',cat:'飲食',tags:['ランチ','アジアン'],bg:'g-food',lat:34.671,lng:135.5325,region:'玉造・東成'},
   {id:'s20',name:'FRAME+spa&treatment 天王寺あべの店',area:'天王寺',addr:'大阪府大阪市阿倍野区旭町1-1-14 あべの旭町ビル4F',phone:'06-6616-9508',hours:'〜22:00',holiday:'不定休',cat:'ジム・整体',tags:['スパ','トリートメント','天王寺'],bg:'g-gym',lat:34.6450,lng:135.5133,region:'天王寺'},
   {id:'s21',name:'JOBASE',area:'都島',addr:'大阪府大阪市都島区',phone:'',hours:'',holiday:'',cat:'ジム・整体',tags:['ジム','トレーニング'],bg:'g-gym',lat:34.707,lng:135.5215,region:'玉造・東成'},
@@ -415,20 +411,20 @@ const STORES = [
   {id:'s70',name:'VIVA鍼灸整骨院六甲道院',area:'神戸',addr:'兵庫県神戸市灘区深田町3-1-15 ライオンズマンション六甲道第3 107',phone:'078-855-4089',hours:'月〜金 10:00〜13:00 / 15:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','神戸'],bg:'g-gym',lat:34.720,lng:135.238,region:'神戸・兵庫'},
   {id:'s71',name:'VIVA骨盤整体院三田院',area:'三田',addr:'兵庫県三田市天神1-1-6',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整体','骨盤'],bg:'g-gym',lat:34.8875,lng:135.224,region:'神戸・兵庫'},
   {id:'s72',name:'VIVA骨盤整体院宝塚院',area:'宝塚',addr:'兵庫県宝塚市口谷東1-21-11 ヴィラ・デ・フォーレ宝塚1F',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整体','骨盤'],bg:'g-gym',lat:34.7907,lng:135.3603,region:'神戸・兵庫'},
-  {id:'s73',name:'VIVA骨盤整体院高槻院',area:'高槻',addr:'大阪府高槻市紺屋町6-16',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'年中無休',cat:'ジム・整体',tags:['整体','高槻'],bg:'g-gym',lat:34.8473,lng:135.6218,region:'その他'},
-  {id:'s74',name:'VIVA接骨院 阪急茨木駅前院',area:'茨木',addr:'大阪府茨木市別院町3-33 シャーメゾン下中条別院102',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['接骨院','茨木'],bg:'g-gym',lat:34.8231,lng:135.5672,region:'その他'},
-  {id:'s75',name:'VIVA鍼灸接骨整体院 忠岡院',area:'泉北郡',addr:'大阪府泉北郡忠岡町忠岡東1-15-31',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','南大阪'],bg:'g-gym',lat:34.460,lng:135.406,region:'その他'},
-  {id:'s76',name:'VIVA鍼灸接骨整体院 岸和田春木院',area:'岸和田',addr:'大阪府岸和田市春木若松町21-1',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','岸和田'],bg:'g-gym',lat:34.460,lng:135.375,region:'その他'},
-  {id:'s77',name:'VIVA鍼灸接骨整体院 東岸和田院',area:'岸和田',addr:'大阪府岸和田市土生町2-31-25',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','岸和田'],bg:'g-gym',lat:34.461,lng:135.380,region:'その他'},
-  {id:'s78',name:'VIVA鍼灸接骨整体院 堺深井院',area:'堺',addr:'大阪府堺市中区深井清水町4030 淀川深井ビル101号',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','堺'],bg:'g-gym',lat:34.563,lng:135.470,region:'その他'},
+  {id:'s73',name:'VIVA骨盤整体院高槻院',area:'高槻',addr:'大阪府高槻市紺屋町6-16',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'年中無休',cat:'ジム・整体',tags:['整体','高槻'],bg:'g-gym',lat:34.8473,lng:135.6218,region:'北摂'},
+  {id:'s74',name:'VIVA接骨院 阪急茨木駅前院',area:'茨木',addr:'大阪府茨木市別院町3-33 シャーメゾン下中条別院102',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['接骨院','茨木'],bg:'g-gym',lat:34.8231,lng:135.5672,region:'北摂'},
+  {id:'s75',name:'VIVA鍼灸接骨整体院 忠岡院',area:'泉北郡',addr:'大阪府泉北郡忠岡町忠岡東1-15-31',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','南大阪'],bg:'g-gym',lat:34.460,lng:135.406,region:'南大阪'},
+  {id:'s76',name:'VIVA鍼灸接骨整体院 岸和田春木院',area:'岸和田',addr:'大阪府岸和田市春木若松町21-1',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','岸和田'],bg:'g-gym',lat:34.460,lng:135.375,region:'南大阪'},
+  {id:'s77',name:'VIVA鍼灸接骨整体院 東岸和田院',area:'岸和田',addr:'大阪府岸和田市土生町2-31-25',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','岸和田'],bg:'g-gym',lat:34.461,lng:135.380,region:'南大阪'},
+  {id:'s78',name:'VIVA鍼灸接骨整体院 堺深井院',area:'堺',addr:'大阪府堺市中区深井清水町4030 淀川深井ビル101号',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整骨院','堺'],bg:'g-gym',lat:34.563,lng:135.470,region:'南大阪'},
   {id:'s79',name:'VIVA骨盤接骨院 三条寺町院',area:'京都市',addr:'京都府京都市中京区寺町通御池下る下本能寺前町515 ギャラリーカトビル',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['接骨院','京都'],bg:'g-gym',lat:35.0128,lng:135.7694,region:'京都'},
   {id:'s80',name:'VIVA骨盤整体院 垂水院',area:'神戸垂水',addr:'兵庫県神戸市垂水区陸ノ町2-11 1F',phone:'',hours:'平日 10:00〜20:00 / 土日祝 9:00〜18:00',holiday:'不定休',cat:'ジム・整体',tags:['整体','垂水'],bg:'g-gym',lat:34.6284,lng:135.1226,region:'神戸・兵庫'},
   {id:'s81',name:'SHIMATONERIKO 路地裏 COFFEE ROASTER',area:'天王寺',addr:'大阪市阿倍野区松崎町2-3-5',phone:'06-7181-4600',hours:'月水木金土日祝 8:00〜17:00',holiday:'火曜',cat:'カフェ',tags:['コーヒー','ロースター'],bg:'g-cafe',lat:34.6453,lng:135.5183,region:'天王寺'},
-  {id:'s82',name:'ピラティスK 奈良大安寺店',area:'奈良',addr:'奈良県奈良市大安寺町514-1 PAKETテラス2階',phone:'0570-050-055',hours:'火水金 10:00〜22:00 / 木 17:30〜22:00 / 土祝 10:00〜18:30 / 日 10:00〜18:00',holiday:'月曜',cat:'ジム・整体',tags:['ピラティス','奈良'],bg:'g-gym',lat:34.680,lng:135.818,region:'その他'},
+  {id:'s82',name:'ピラティスK 奈良大安寺店',area:'奈良',addr:'奈良県奈良市大安寺町514-1 PAKETテラス2階',phone:'0570-050-055',hours:'火水金 10:00〜22:00 / 木 17:30〜22:00 / 土祝 10:00〜18:30 / 日 10:00〜18:00',holiday:'月曜',cat:'ジム・整体',tags:['ピラティス','奈良'],bg:'g-gym',lat:34.680,lng:135.818,region:'奈良'},
   {id:'s83',name:'GARB weeks',area:'中之島',addr:'大阪府大阪市北区中之島1-1-29 中之島公園内',phone:'050-3627-9872',hours:'11:30〜22:00（L.O.21:30）',holiday:'なし（無休）',cat:'カフェ',tags:['公園カフェ','中之島'],bg:'g-cafe',lat:34.6916,lng:135.5002,region:'中之島・北浜'},
   {id:'s84',name:'大阪市中央公会堂',area:'中之島',addr:'大阪市北区中之島1丁目1番27号',phone:'06-6208-2002',hours:'9:30〜21:30',holiday:'第4火曜・年末年始',cat:'その他',tags:['文化施設','中之島'],bg:'g-other',lat:34.6911,lng:135.5001,region:'中之島・北浜'},
   {id:'s85',name:'DRAWING HOUSE OF NAKANOSHIMA',area:'中之島',addr:'大阪市北区中之島1-1-27 大阪市中央公会堂B1F',phone:'06-6233-9660',hours:'11:00〜22:00（L.O.21:00）',holiday:'第4火曜',cat:'カフェ',tags:['カフェ','アート'],bg:'g-cafe',lat:34.691,lng:135.5001,region:'中之島・北浜'},
-  {id:'s86',name:'러블리J「ロブリJ」',area:'ソウル明洞',addr:'韓国ソウル市中区明洞',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['韓国','明洞','ショップ'],bg:'g-shop',lat:37.5637,lng:126.9829,region:'その他'},
+  {id:'s86',name:'러블리J「ロブリJ」',area:'ソウル明洞',addr:'韓国ソウル市中区明洞',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['韓国','明洞','ショップ'],bg:'g-shop',lat:37.5637,lng:126.9829,region:'韓国'},
   {id:'s87',name:'&ISLAND',area:'北浜',addr:'大阪府大阪市中央区北浜2-1-23',phone:'06-6233-2010',hours:'月〜土祝 11:00〜22:00 / 日 11:00〜21:00',holiday:'不定休',cat:'飲食',tags:['ダイニング','北浜'],bg:'g-food',lat:34.6896,lng:135.5088,region:'中之島・北浜'},
   {id:'s88',name:'oui',area:'北浜',addr:'大阪市中央区北浜2-1-21 北浜ゲイトビル1F',phone:'06-6231-1192',hours:'月〜金11:00〜14:00/17:30〜23:00 土祝11:30〜14:30/17:30〜23:00',holiday:'日曜',cat:'飲食',tags:['ダイニング','北浜'],bg:'g-food',lat:34.6895,lng:135.5086,region:'中之島・北浜'},
   {id:'s89',name:'MOUNT',area:'北浜',addr:'大阪府大阪市中央区北浜2-1-17 北浜ビジネス会館1F',phone:'06-6227-8024',hours:'月〜金 10:00〜17:30 / 土 11:00〜18:00 / 日祝 11:00〜17:00',holiday:'不定休',cat:'カフェ',tags:['コーヒー','ランチ'],bg:'g-cafe',lat:34.6893,lng:135.5084,region:'中之島・北浜'},
@@ -523,7 +519,7 @@ const STORES = [
   {id:'s169',name:'RENGA',area:'松屋町',addr:'大阪市中央区松屋町',phone:'',hours:'',holiday:'',cat:'ショップ',tags:['雑貨','松屋町'],bg:'g-shop',lat:34.677,lng:135.515,region:'心斎橋・難波'},
   // ── その他エリア ──
   {id:'s170',name:'ナナ・ファーム須磨',area:'須磨',addr:'兵庫県神戸市須磨区',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['カフェ','須磨'],bg:'g-cafe',lat:34.637,lng:135.137,region:'神戸・兵庫'},
-  {id:'s171',name:'BUY ME STAND',area:'松阪',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['コーヒー','スタンド'],bg:'g-cafe',lat:34.577,lng:136.527,region:'その他'},
+  {id:'s171',name:'BUY ME STAND',area:'松阪',addr:'三重県松阪市',phone:'',hours:'',holiday:'',cat:'カフェ',tags:['コーヒー','スタンド'],bg:'g-cafe',lat:34.577,lng:136.527,region:'三重'},
 ];
 
 let activeCat='', activeRegion='', searchQ='';
@@ -586,7 +582,6 @@ function renderCard(s){
         ${planBadgeHtml(s.plan)}
       </div>
       <div class="shop-body">
-        ${s.hareMedia?'<div class="haremedia-badge">ハレマップ SNS掲載中</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area} &middot; <span style="display:inline;background:var(--bg3);padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600">${s.cat}</span></div>
         <div class="shop-tags" style="margin-top:8px">${tags}</div>
@@ -598,11 +593,10 @@ function renderCard(s){
     </div>`;
   }
 
-  // スタンダード（take・ume統合）: 写真カード
+  // スタンダード（take・ume統合）: 写真カード（説明文なし）
   if(s.plan==='take'||s.plan==='ume'){
     const photo=s.photo||catPhoto(s.cat);
     const gallery=s.photos?.length?`<div class="shop-gallery-row">${s.photos.map(p=>`<img src="${p}" alt="">`).join('')}</div>`:'';
-    const descHtml=s.desc||s.comment||'';
     return `<div class="shop-card">
       <div style="position:relative;overflow:hidden">
         <img src="${photo}" alt="${s.name}" class="shop-cover" style="height:160px">
@@ -611,11 +605,9 @@ function renderCard(s){
       </div>
       ${gallery}
       <div class="shop-body">
-        ${s.hareMedia?'<div class="haremedia-badge">ハレマップ SNS掲載中</div>':''}
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
         <div class="shop-tags">${tags}</div>
-        ${descHtml?`<div class="shop-desc">${descHtml}</div>`:''}
         ${info}
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">${igBtn}</div>
       </div>
@@ -647,9 +639,12 @@ function renderAreaStats(){
   const regions=[...new Set(STORES.map(s=>s.region))].sort();
   const grid=document.getElementById('areaStatsGrid');
   if(!grid) return;
-  const total=document.getElementById('areaTotal');
-  if(total) total.textContent=STORES.length+' 店舗';
-  grid.innerHTML=regions.map(r=>{
+  const allCard=`<button class="area-stat-card${activeRegion===''?' on':''}" data-region="">
+    <div class="area-stat-name">全エリア</div>
+    <div class="area-stat-n">${STORES.length}</div>
+    <div class="area-stat-unit">STORES</div>
+  </button>`;
+  grid.innerHTML=allCard+regions.map(r=>{
     const n=STORES.filter(s=>s.region===r).length;
     return `<button class="area-stat-card" data-region="${r}">
       <div class="area-stat-name">${r}</div>
@@ -660,7 +655,7 @@ function renderAreaStats(){
   grid.querySelectorAll('.area-stat-card').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const r=btn.dataset.region;
-      activeRegion=(activeRegion===r?'':r);
+      activeRegion=r;
       document.querySelectorAll('.area-pill').forEach(p=>{
         p.classList.toggle('on',p.dataset.region===activeRegion);
       });
