@@ -667,14 +667,12 @@ function renderCard(s){
   // スタンダード（take・ume統合）: 写真カード（説明文なし）
   if(s.plan==='take'||s.plan==='ume'){
     const photo=s.photo||catPhoto(s.cat);
-    const gallery=s.photos?.length?`<div class="shop-gallery-row">${s.photos.map(p=>`<img src="${p}" alt="">`).join('')}</div>`:'';
     return `<div class="shop-card">
       <div style="position:relative;overflow:hidden">
         <img src="${photo}" alt="${s.name}" class="shop-cover" style="height:160px">
         ${planBadgeHtml(s.plan)}
         <span class="shop-cat-label">${s.cat}</span>
       </div>
-      ${gallery}
       <div class="shop-body">
         <div class="shop-name">${s.name}</div>
         <div class="shop-area">${s.area}</div>
