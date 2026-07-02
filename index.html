@@ -18,7 +18,7 @@
   --sh:0 2px 12px rgba(0,0,0,.06);--sh-h:0 8px 28px rgba(15,23,42,.13);
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t1);font-family:'Montserrat','Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--t1);font-family:'Noto Sans JP','Montserrat',sans-serif;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit}
 
@@ -29,7 +29,7 @@ button{cursor:pointer;font-family:inherit}
 .nav-logo span{color:var(--pk)}
 
 /* HERO */
-.hero{background:linear-gradient(160deg,#F8FAFC 0%,#EFF6FF 55%,#EDE9FE 100%);padding:60px 20px 48px;text-align:center;border-bottom:1px solid var(--bd)}
+.hero{background:linear-gradient(160deg,#F8FAFC 0%,#EFF6FF 55%,#EDE9FE 100%);padding:40px 20px 32px;text-align:center;border-bottom:1px solid var(--bd)}
 .hero-eyebrow{display:inline-block;font-size:10px;letter-spacing:.42em;color:var(--pk);border:1px solid rgba(37,99,235,.3);padding:5px 18px;margin-bottom:22px;border-radius:2px;background:rgba(37,99,235,.04)}
 .hero h1{font-size:clamp(26px,6vw,48px);font-weight:700;letter-spacing:.03em;margin-bottom:12px;line-height:1.2}
 .hero h1 em{color:var(--pk);font-style:normal}
@@ -98,11 +98,26 @@ button{cursor:pointer;font-family:inherit}
 .shop-ig:hover{border-color:var(--pk);color:var(--pk)}
 .ig-svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 
+/* STANDARD CARD — HotPepper風 横並びレイアウト */
+.shop-card-std{display:flex;flex-direction:row;align-items:stretch;border-radius:10px;overflow:hidden;min-height:90px}
+.std-img-wrap{width:114px;min-width:114px;flex-shrink:0;position:relative;overflow:hidden}
+.std-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;min-height:90px}
+.shop-card-std .shop-body{padding:11px 13px;flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:0}
+.shop-card-std .shop-name{font-size:13px;margin-bottom:3px;line-height:1.3;font-weight:700;letter-spacing:.01em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.shop-card-std .shop-area{font-size:10px;color:var(--t3);margin-bottom:5px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shop-card-std .shop-tags{gap:3px;margin-bottom:0;flex-wrap:nowrap;overflow:hidden;max-height:20px}
+.shop-card-std .tag{font-size:8px;padding:2px 5px;white-space:nowrap}
+.shop-card-std .shop-info{font-size:9px;line-height:1.6;margin-bottom:0;padding-top:5px;border-top:1px solid var(--bd)}
+.std-hours{font-size:9px;color:var(--t3);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* STANDARD GRID */
+.shop-grid-std{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-bottom:24px}
+
 /* FREE CARD — 2行レイアウト（カテゴリ+エリア / 店舗名） */
-.shop-card-free{height:72px}
-.shop-card-free .shop-body{padding:10px 12px;display:flex;flex-direction:column;justify-content:center;gap:5px;height:100%}
+.shop-card-free{height:68px;border-radius:8px}
+.shop-card-free .shop-body{padding:9px 11px;display:flex;flex-direction:column;justify-content:center;gap:4px;height:100%}
 .free-meta-row{display:flex;align-items:center;gap:5px;min-width:0}
-.free-cat-chip{font-size:8px;letter-spacing:.08em;font-weight:700;color:var(--pk);text-transform:uppercase;flex-shrink:0;white-space:nowrap}
+.free-cat-chip{font-size:8px;letter-spacing:.05em;font-weight:700;color:var(--pk);flex-shrink:0;white-space:nowrap}
 .free-area-text{font-size:9px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
 .shop-card-free .shop-name{font-weight:700;color:var(--t1);line-height:1.2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 
@@ -174,43 +189,57 @@ footer{background:#0F172A;padding:40px 20px;text-align:center}
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .nav-logo{font-size:16px}
-  .nav-inner{gap:8px}
-  .hero{padding:14px 14px 10px}
+  .nav-inner{height:48px}
+  .nav-logo{font-size:16px;letter-spacing:.04em}
+  .hero{padding:12px 14px 10px;background:#f8fafc}
   .hero-eyebrow{display:none}
-  .hero h1{font-size:18px;margin-bottom:4px}
-  .hero-desc{font-size:11px;line-height:1.6;margin-bottom:8px}
-  .hero-box{margin-bottom:8px;border-radius:8px}
-  .hero-box input{padding:10px 14px;font-size:13px}
-  .hero-box button{padding:0 16px;font-size:11px}
+  .hero h1{font-size:17px;margin-bottom:3px;letter-spacing:.01em}
+  .hero-desc{font-size:10.5px;line-height:1.55;margin-bottom:7px;letter-spacing:.02em}
+  .hero-box{margin-bottom:8px;border-radius:8px;box-shadow:0 2px 10px rgba(37,99,235,.1)}
+  .hero-box input{padding:10px 13px;font-size:13px}
+  .hero-box button{padding:0 14px;font-size:11px;letter-spacing:.05em}
   .cat-row{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 2px 4px}
   .cat-row::-webkit-scrollbar{display:none}
-  .cat-pill{flex-shrink:0;font-size:11px;padding:5px 12px}
-  .stats-strip{gap:20px;padding:10px 16px}
-  .sstat-n{font-size:20px}
-  .plan-section{padding:22px 14px}
-  .plan-grid-3{grid-template-columns:1fr}
-  .shop-grid{grid-template-columns:1fr 1fr;gap:8px}
-  .shop-grid-free{grid-template-columns:1fr 1fr;gap:6px}
+  .cat-pill{flex-shrink:0;font-size:11px;padding:5px 11px}
+  .stats-strip{gap:16px;padding:8px 14px}
+  .sstat-n{font-size:18px}
+  .sstat-l{font-size:7.5px}
+  .plan-section{padding:18px 12px}
+  .plan-card{padding:16px}
+  .plan-grid-3{grid-template-columns:1fr;gap:10px}
+  /* プレミアムカード */
+  .shop-grid{grid-template-columns:1fr;gap:8px}
   .shop-card.tier-matsu{grid-template-columns:1fr}
-  .shop-card.tier-matsu .shop-body{padding:14px 16px}
-  .shop-name{font-size:12px}
-  .area-stats-grid{grid-template-columns:repeat(3,1fr);gap:6px}
-  .area-stat-card{padding:12px 10px}
-  .area-stat-n{font-size:22px}
+  .shop-card.tier-matsu .shop-cover{height:190px;max-height:190px}
+  .shop-card.tier-matsu .shop-body{padding:12px 14px}
+  /* スタンダードカード */
+  .shop-grid-std{grid-template-columns:1fr;gap:7px}
+  /* 無料カード */
+  .shop-grid-free{grid-template-columns:1fr 1fr;gap:6px}
+  /* エリア統計 */
+  .area-stats-grid{grid-template-columns:repeat(3,1fr);gap:5px}
+  .area-stat-card{padding:9px 8px}
+  .area-stat-n{font-size:20px}
+  .area-stat-name{font-size:10px;margin-bottom:6px}
+  .area-stat-unit{font-size:8px}
   .area-stats-top{flex-direction:column;align-items:flex-start;gap:4px}
-  .area-stats-inner{padding:18px 14px}
+  .area-stats-inner{padding:14px 12px}
+  /* セクション */
+  .sec-head{padding:14px 0 8px}
+  .sec-title{font-size:10px;letter-spacing:.2em}
+  .shop-name{font-size:12px}
+  .area-nav{top:48px}
 }
 @media(max-width:480px){
-  .area-stats-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:480px){
-  .hero h1{font-size:17px}
+  .hero h1{font-size:15px}
   .hero-desc{display:none}
   .plan-grid-3{grid-template-columns:1fr}
-  .shop-grid{grid-template-columns:1fr;gap:8px}
-  .shop-grid-free{grid-template-columns:1fr 1fr;gap:6px}
+  .shop-card.tier-matsu .shop-cover{height:160px;max-height:160px}
+  .shop-grid{grid-template-columns:1fr;gap:7px}
+  .shop-grid-std{grid-template-columns:1fr;gap:6px}
+  .shop-grid-free{grid-template-columns:1fr 1fr;gap:5px}
   .shop-card{border-radius:8px}
+  .area-stats-grid{grid-template-columns:repeat(2,1fr);gap:5px}
 }
 </style>
 </head>
@@ -669,27 +698,27 @@ function renderCard(s){
     </div>`;
   }
 
-  // スタンダード（take・ume統合）: 写真カード（説明文なし）
+  // スタンダード（take・ume統合）: HotPepper風 横並びカード
   if(s.plan==='take'||s.plan==='ume'){
     const photo=s.photo||catPhoto(s.cat);
-    return `<div class="shop-card">
-      <div style="position:relative;overflow:hidden">
-        <img src="${photo}" alt="${s.name}" class="shop-cover" style="height:160px">
+    const hoursLine=s.hours?`<div class="std-hours">${s.hours}</div>`:'';
+    return `<div class="shop-card shop-card-std">
+      <div class="std-img-wrap">
+        <img src="${photo}" alt="${s.name}">
         ${planBadgeHtml(s.plan)}
-        <span class="shop-cat-label">${s.cat}</span>
       </div>
       <div class="shop-body">
         <div class="shop-name">${s.name}</div>
-        <div class="shop-area">${s.area}</div>
+        <div class="shop-area">${s.area} · ${s.cat}</div>
         <div class="shop-tags">${tags}</div>
-        ${info}
+        ${hoursLine}
       </div>
     </div>`;
   }
 
   // 無料: 2行レイアウト（カテゴリ+エリア / 店舗名）、長い名前は縮小
   const nLen=s.name.length;
-  const nSize=nLen>20?'9px':nLen>14?'10.5px':'12px';
+  const nSize=nLen>20?'10px':nLen>14?'11px':'12.5px';
   return `<div class="shop-card shop-card-free">
     <div class="shop-body">
       <div class="free-meta-row"><span class="free-cat-chip">${s.cat}</span><span class="free-area-text">${s.area}</span></div>
@@ -711,7 +740,7 @@ function renderGrid(){
   const free=items.filter(s=>!s.plan);
   let html='';
   if(premium.length) html+=`<div class="shop-grid">${premium.map(s=>renderCard(s)).join('')}</div>`;
-  if(standard.length) html+=`<div class="shop-grid">${standard.map(s=>renderCard(s)).join('')}</div>`;
+  if(standard.length) html+=`<div class="shop-grid-std">${standard.map(s=>renderCard(s)).join('')}</div>`;
   if(free.length) html+=`<div class="shop-grid-free">${free.map(s=>renderCard(s)).join('')}</div>`;
   grid.innerHTML=html;
 }
