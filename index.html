@@ -5,30 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="build-time" content="1783758806">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ハレマップ — 大阪のお気に入りを見つけよう">
-<meta property="og:description" content="ハレマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
+<meta property="og:title" content="HAREMAP — 大阪・京都・神戸のハレな店を探そう">
+<meta property="og:description" content="ハレコレが選ぶ250店舗を、エリアとジャンルで探せます。カフェ・飲食・美容室・ジム・ショップ・ショップ — HARE COLLECTION 2026 公式掲載サイト">
 <meta property="og:url" content="https://wtrishizaki-cell.github.io/haremap/">
 <meta property="og:image" content="https://wtrishizaki-cell.github.io/haremap/ogp.jpg">
-<meta property="og:site_name" content="ハレマップ">
+<meta property="og:site_name" content="HAREMAP">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ハレマップ — 大阪のお気に入りを見つけよう">
-<meta name="twitter:description" content="ハレマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
-<title>ハレマップ — 大阪のお気に入りを見つけよう</title>
-<meta name="description" content="ハレマップは、街の魅力的なお店・サービスを発見できるメディアサイトです。カフェ・飲食・美容室・ジムなど大阪・京都・神戸エリアから検索できます。">
+<meta name="twitter:title" content="HAREMAP — 大阪・京都・神戸のハレな店を探そう">
+<meta name="twitter:description" content="ハレコレが選ぶ250店舗を、エリアとジャンルで探せます。HARE COLLECTION 2026 公式掲載サイト">
+<title>HAREMAP — 大阪・京都・神戸のハレな店を探そう</title>
+<meta name="description" content="ハレコレが選ぶ250店舗を、エリアとジャンルで探せます。カフェ・飲食・美容室・ジム・ショップ — HARE COLLECTION 2026 公式掲載サイト">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --pk:#0F172A;--pk2:#1E293B;--pk-ac:#3B82F6;
+  --pk:#0F172A;--pk2:#1E293B;--pk-ac:#B8960A;
   --dark:#0A0A0A;--dark2:#111827;
-  --premium:#6D28D9;--green:#059669;--gold:#92700A;
-  --bg:#F7F6F2;--bg2:#EEECEA;--bg3:#E4E1DC;
+  --premium:#0A0A0A;--green:#5C5A57;--gold:#B8960A;
+  --bg:#F5F4F1;--bg2:#EDECE9;--bg3:#E4E3DF;
   --card:#FFFFFF;
-  --bd:#E0DDD8;--bd2:#C9C5BE;
+  --bd:#E2E0DC;--bd2:#C8C5C0;
   --t1:#0A0A0A;--t2:#52504C;--t3:#9A9690;
-  --sh:0 1px 3px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.06);
-  --sh-h:0 6px 24px rgba(0,0,0,.10),0 2px 6px rgba(0,0,0,.04);
-  --r:6px;
+  --sh:0 1px 2px rgba(0,0,0,.03),0 3px 10px rgba(0,0,0,.05);
+  --sh-h:0 4px 20px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.04);
+  --r:3px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t1);font-family:'Noto Sans JP','Montserrat',sans-serif;-webkit-font-smoothing:antialiased}
@@ -74,7 +74,7 @@ button{cursor:pointer;font-family:inherit}
 .sstat{text-align:center;min-width:56px}
 .sstat-n{font-size:28px;font-weight:700;line-height:1;margin-bottom:4px;color:var(--dark);font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
 .sstat-n.p{color:var(--pk-ac)}
-.sstat-l{font-size:8.5px;letter-spacing:.28em;color:var(--t3);text-transform:uppercase;font-family:'Montserrat',sans-serif}
+.sstat-l{font-size:11px;letter-spacing:.16em;color:var(--t2);text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-top:5px}
 
 /* ── AREA STATS ── */
 .area-stats-section{background:var(--bg2);border-bottom:1px solid var(--bd)}
@@ -132,23 +132,20 @@ button{cursor:pointer;font-family:inherit}
 .shop-grid-std{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;margin-bottom:24px}
 
 /* ── FREE CARD ── */
-.shop-card-free{height:68px;border-radius:var(--r)}
-.shop-card-free .shop-body{padding:9px 11px;display:flex;flex-direction:column;justify-content:center;gap:4px;height:100%}
-.free-meta-row{display:flex;align-items:center;gap:5px;min-width:0}
-.free-cat-chip{font-size:7.5px;letter-spacing:.08em;font-weight:700;color:var(--t3);flex-shrink:0;white-space:nowrap;font-family:'Montserrat',sans-serif;text-transform:uppercase}
-.free-area-text{font-size:9px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-.shop-card-free .shop-name{font-weight:700;color:var(--t1);font-size:12px;line-height:1.2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.shop-card-free{height:76px;border-radius:var(--r);border-left-width:3px!important}
+.shop-card-free.g-cafe,.shop-card-free.g-food,.shop-card-free.g-hair,
+.shop-card-free.g-gym,.shop-card-free.g-shop,.shop-card-free.g-other{border-left-color:#0A0A0A!important}
+.shop-card-free .shop-body{padding:10px 13px;display:flex;flex-direction:column;justify-content:center;gap:4px;height:100%}
+.free-meta-row{display:flex;align-items:center;gap:6px;min-width:0}
+.free-cat-chip{font-size:8px;letter-spacing:.06em;font-weight:700;color:var(--t3);flex-shrink:0;white-space:nowrap;font-family:'Montserrat',sans-serif;text-transform:uppercase}
+.free-area-text{font-size:9.5px;color:var(--t3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.shop-card-free .shop-name{font-weight:700;color:var(--t1);font-size:12.5px;line-height:1.2;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 
 /* ── INFO LABELS ── */
 .info-label{font-size:7.5px;letter-spacing:.12em;color:var(--t3);font-weight:700;text-transform:uppercase;margin-right:6px;display:inline-block;min-width:20px;font-family:'Montserrat',sans-serif}
 
-/* ── GRADIENTS (muted warm tones) ── */
-.g-cafe{background:linear-gradient(135deg,#F5F0E8,#EAE3D7)}
-.g-food{background:linear-gradient(135deg,#F5EEE6,#EDE1D2)}
-.g-hair{background:linear-gradient(135deg,#F2EDF5,#E8E0EF)}
-.g-gym {background:linear-gradient(135deg,#EBF2EE,#DCE9E2)}
-.g-shop{background:linear-gradient(135deg,#EEF2F5,#DDE5EC)}
-.g-other{background:linear-gradient(135deg,#F0EEE9,#E4E0D9)}
+/* ── CARD BG (unified neutral) ── */
+.g-cafe,.g-food,.g-hair,.g-gym,.g-shop,.g-other{background:#FFFFFF}
 
 /* ── FOOTER ── */
 footer{background:var(--dark);padding:44px 28px;text-align:center}
@@ -167,27 +164,27 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
 .plan-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .plan-card{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:24px;position:relative;display:flex;flex-direction:column;box-shadow:var(--sh)}
 .plan-card.featured{border-color:var(--dark);border-width:1.5px;box-shadow:3px 3px 0 var(--dark)}
-.plan-card.plan-premium{border-color:rgba(109,40,217,.35);border-width:1.5px;box-shadow:0 6px 24px rgba(109,40,217,.12)}
+.plan-card.plan-premium{border-color:var(--gold);border-width:1.5px;box-shadow:0 6px 24px rgba(184,150,10,.10)}
 .plan-popular{font-size:7.5px;font-weight:700;letter-spacing:.16em;padding:3px 12px;border-radius:0 7px 0 6px;background:var(--dark);color:#fff;position:absolute;top:-1px;right:-1px;font-family:'Montserrat',sans-serif}
 .plan-chip{font-size:8.5px;font-weight:700;letter-spacing:.16em;padding:4px 12px;border-radius:2px;display:inline-block;margin-bottom:16px;font-family:'Montserrat',sans-serif}
 .chip-free{background:var(--bg3);color:var(--t3)}
 .chip-take{background:var(--dark);color:#fff}
-.chip-matsu{background:#EDE9FE;color:var(--premium)}
+.chip-matsu{background:#0A0A0A;color:#fff}
 .plan-price{font-size:30px;font-weight:700;color:var(--t1);line-height:1;margin-bottom:4px;font-family:'Montserrat',sans-serif;letter-spacing:-.02em}
 .plan-price sub{font-size:10px;color:var(--t3);font-weight:400;letter-spacing:.04em}
 .plan-card-name{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.06em;margin-bottom:16px}
 .plan-features{list-style:none;font-size:11.5px;color:var(--t2);line-height:2.1;border-top:1px solid var(--bd);padding-top:14px;flex:1}
 .plan-features li::before{content:'✓  ';color:var(--green);font-weight:700}
-.plan-features li.premium::before{color:var(--premium)}
+.plan-features li.premium::before{color:var(--gold)}
 .plan-cta{display:block;margin-top:18px;text-align:center;padding:11px;background:transparent;color:var(--t1);border:1px solid var(--bd2);border-radius:3px;font-size:10px;font-weight:700;letter-spacing:.1em;transition:all .18s;font-family:'Montserrat',sans-serif}
 .plan-cta:hover{background:var(--dark);border-color:var(--dark);color:#fff}
-.plan-cta-premium{color:var(--premium);border-color:rgba(109,40,217,.3)}
-.plan-cta-premium:hover{background:var(--premium);border-color:var(--premium);color:#fff}
+.plan-cta-premium{color:var(--dark);border-color:var(--gold)}
+.plan-cta-premium:hover{background:var(--dark);border-color:var(--dark);color:#fff}
 .plan-cta-free{color:var(--t3);border-color:var(--bd)}
 .plan-cta-free:hover{background:var(--bg3);color:var(--t2);border-color:var(--bd2)}
 
 /* ── PLAN BADGES ON CARDS ── */
-.plan-badge{font-size:7.5px;font-weight:700;letter-spacing:.16em;padding:3px 9px;border-radius:2px;position:absolute;top:10px;left:10px;z-index:2;font-family:'Montserrat',sans-serif}
+.plan-badge{font-size:9.5px;font-weight:700;letter-spacing:.12em;padding:5px 14px;border-radius:2px;position:absolute;top:12px;left:12px;z-index:2;font-family:'Montserrat',sans-serif}
 .badge-matsu{background:var(--premium);color:#fff}
 .badge-take{background:var(--green);color:#fff}
 
@@ -200,8 +197,8 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
 .haremedia-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:var(--bg2);border:1px solid var(--bd2);border-radius:2px;font-size:8.5px;color:var(--t3);font-weight:700;letter-spacing:.1em;margin-bottom:8px;font-family:'Montserrat',sans-serif}
 
 /* ── MATSU CARD ── */
-.shop-card.tier-matsu{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;border-color:rgba(109,40,217,.2);box-shadow:0 4px 20px rgba(109,40,217,.08)}
-.shop-card.tier-matsu:hover{border-color:rgba(109,40,217,.35);box-shadow:0 8px 28px rgba(109,40,217,.14)}
+.shop-card.tier-matsu{grid-column:1/-1;display:grid;grid-template-columns:1.3fr 1fr;border-color:var(--bd2);box-shadow:var(--sh)}
+.shop-card.tier-matsu:hover{border-color:var(--dark);box-shadow:var(--sh-h)}
 .shop-card.tier-matsu .shop-cover{height:100%;max-height:300px}
 .shop-card.tier-matsu .shop-body{padding:22px 24px}
 
@@ -257,6 +254,58 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
   .area-stats-grid{grid-template-columns:repeat(2,1fr);gap:4px}
   .plan-grid-3{grid-template-columns:1fr}
 }
+
+/* ── EVENT BANNER ── */
+.event-banner{background:var(--pk2);padding:9px 28px;border-bottom:1px solid rgba(255,255,255,.06)}
+.event-banner-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.event-chip{font-size:8px;font-weight:700;letter-spacing:.32em;padding:3px 10px;border:1px solid rgba(255,255,255,.2);border-radius:2px;color:rgba(255,255,255,.55);font-family:'Montserrat',sans-serif;text-transform:uppercase}
+.event-banner-text{font-size:11.5px;font-weight:600;color:#fff;letter-spacing:.04em}
+.event-banner-link{font-size:10px;font-weight:700;color:var(--pk-ac);letter-spacing:.06em;border-bottom:1px solid currentColor;padding-bottom:1px;transition:opacity .15s;white-space:nowrap}
+.event-banner-link:hover{opacity:.7}
+
+/* ── NAV EVENT LINK ── */
+.nav-event{font-size:10px;font-weight:600;letter-spacing:.04em;color:rgba(255,255,255,.55);transition:color .18s;white-space:nowrap;margin-right:4px}
+.nav-event:hover{color:rgba(255,255,255,.9)}
+
+/* ── AREA STAT BAR ── */
+.area-stat-bar{height:2px;background:var(--bd);border-radius:1px;margin-top:10px;overflow:hidden}
+.area-stat-bar-fill{height:100%;background:var(--pk-ac);border-radius:1px}
+.area-stat-card.on .area-stat-bar{background:rgba(255,255,255,.15)}
+.area-stat-card.on .area-stat-bar-fill{background:rgba(255,255,255,.6)}
+
+/* ── MAP SECTION ── */
+.map-section{background:var(--bg2);border-top:1px solid var(--bd);padding:40px 28px}
+.map-section-inner{max-width:1280px;margin:0 auto}
+.map-label{font-size:9px;font-weight:700;letter-spacing:.4em;color:var(--t3);text-transform:uppercase;font-family:'Montserrat',sans-serif;margin-bottom:14px}
+.map-frame{width:100%;height:400px;border:1px solid var(--bd);border-radius:var(--r);display:block}
+
+/* ── CONTACT SECTION ── */
+.contact-section{background:var(--dark);padding:56px 28px;text-align:center}
+.contact-inner{max-width:560px;margin:0 auto}
+.contact-eyebrow{font-size:8px;letter-spacing:.48em;color:#334155;margin-bottom:14px;font-family:'Montserrat',sans-serif;text-transform:uppercase}
+.contact-title{font-size:clamp(20px,2.8vw,28px);font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.01em}
+.contact-desc{font-size:12.5px;color:#64748B;line-height:1.8;margin-bottom:28px}
+.contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.contact-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:3px;font-size:11px;font-weight:700;letter-spacing:.1em;transition:all .2s;font-family:'Montserrat',sans-serif;border:none;cursor:pointer}
+.contact-btn-line{background:#06C755;color:#fff}
+.contact-btn-line:hover{background:#04A844}
+.contact-btn-ig{background:transparent;color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.18)}
+.contact-btn-ig:hover{border-color:rgba(255,255,255,.45);color:#fff}
+
+/* ── FOOTER v2 ── */
+.ft-links{display:flex;gap:20px;justify-content:center;margin:14px 0 10px;flex-wrap:wrap}
+.ft-link{font-size:10.5px;color:#475569;letter-spacing:.04em;transition:color .15s}
+.ft-link:hover{color:#94A3B8}
+.ft-divider{width:1px;height:10px;background:#1E293B;align-self:center}
+.ft-copy{font-size:9px;color:#1E293B;margin-top:8px;letter-spacing:.06em}
+
+@media(max-width:768px){
+  .event-banner{padding:8px 18px}
+  .nav-event{display:none}
+  .map-section{padding:28px 18px}
+  .map-frame{height:260px}
+  .contact-section{padding:40px 18px}
+}
 </style>
 </head>
 <body>
@@ -265,14 +314,23 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">HARE<span>MAP</span></a>
     <div class="nav-spacer"></div>
-    <a href="https://www.instagram.com/" class="nav-cta" target="_blank">掲載相談</a>
+    <a href="https://www.instagram.com/harecollection2026" class="nav-event" target="_blank">HARE COLLECTION 2026 — 8.8</a>
+    <a href="#plan" class="nav-cta">掲載相談</a>
   </div>
 </nav>
 
+<div class="event-banner">
+  <div class="event-banner-inner">
+    <span class="event-chip">EVENT</span>
+    <span class="event-banner-text">HARE COLLECTION 2026 — 2026年8月8日 開催</span>
+    <a href="https://www.instagram.com/harecollection2026" class="event-banner-link" target="_blank">詳細を見る →</a>
+  </div>
+</div>
+
 <section class="hero">
-  <div class="hero-eyebrow">HAREMEDIA — 街のお気に入りを届けるメディア</div>
-  <h1>街の、<em>ハレ</em>な場所へ。</h1>
-  <p class="hero-desc">ハレマップは、大阪・京都・神戸の「本当にいいお店」を発見できるメディアです。<br>カフェ・飲食・美容室・ショップ・ジムなど、エリアやカテゴリから探してください。</p>
+  <div class="hero-eyebrow">HARE COLLECTION 2026 — 公式掲載店舗サイト</div>
+  <h1>大阪・京都・神戸の、<em>ハレ</em>な店へ。</h1>
+  <p class="hero-desc">ハレコレが選ぶ250店舗を、エリアとジャンルから探せます。</p>
   <div class="hero-box">
     <input type="text" id="heroQ" placeholder="店舗名、エリア、カテゴリで検索">
     <button id="heroBtn">検索</button>
@@ -332,8 +390,29 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
 </div>
 <div style="max-width:1200px;margin:0 auto;padding:0 20px" id="shopGrid"></div>
 
+<!-- MAP SECTION -->
+<div class="map-section">
+  <div class="map-section-inner">
+    <div class="map-label">COVERAGE MAP — 大阪・京都・神戸エリア</div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d205744.26866559063!2d135.4627339!3d34.6937367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1720000000000" class="map-frame" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-eyebrow">GET LISTED</div>
+    <h2 class="contact-title">掲載のご相談はこちら</h2>
+    <p class="contact-desc">掲載費用は無料から。<br>LINE公式アカウントまたはInstagram DMでお気軽にご相談ください。</p>
+    <div class="contact-btns">
+      <a href="https://lin.ee/XXXXXXXX" class="contact-btn contact-btn-line" target="_blank">LINE で相談する</a>
+      <a href="https://www.instagram.com/harecollection2026" class="contact-btn contact-btn-ig" target="_blank">Instagram でDM</a>
+    </div>
+  </div>
+</div>
+
 <!-- PLAN SECTION -->
-<div class="plan-section">
+<div class="plan-section" id="plan">
   <div class="plan-section-inner">
     <div class="plan-eyebrow">LISTING PLANS</div>
     <h2>ハレマップに掲載しませんか？</h2>
@@ -346,7 +425,7 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
         <ul class="plan-features">
           <li>店舗名・エリア・カテゴリ</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta plan-cta-free" target="_blank">掲載を相談する</a>
+        <a href="#contact" class="plan-cta plan-cta-free">掲載を相談する</a>
       </div>
       <div class="plan-card featured">
         <span class="plan-popular">人気</span>
@@ -358,7 +437,7 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
           <li>メイン写真 1枚</li>
           <li>営業時間・定休日</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta" target="_blank">掲載を相談する</a>
+        <a href="#contact" class="plan-cta">掲載を相談する</a>
       </div>
       <div class="plan-card plan-premium">
         <span class="plan-chip chip-matsu">プレミアム</span>
@@ -370,16 +449,23 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
           <li class="premium">Instagramリンク</li>
           <li class="premium">検索で最優先表示</li>
         </ul>
-        <a href="https://www.instagram.com/" class="plan-cta plan-cta-premium" target="_blank">掲載を相談する</a>
+        <a href="#contact" class="plan-cta plan-cta-premium">掲載を相談する</a>
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  <div class="ft-logo">ハレ<span>マップ</span></div>
-  <div class="ft-sub">HAREMEDIA — 街のお気に入りを届けるメディア</div>
+  <div class="ft-logo">HARE<span>MAP</span></div>
+  <div class="ft-sub">大阪・京都・神戸のハレな場所を届けるメディア</div>
+  <div class="ft-links">
+    <a href="#" class="ft-link">ホーム</a>
+    <a href="#plan" class="ft-link">掲載プラン</a>
+    <a href="https://www.instagram.com/harecollection2026" class="ft-link" target="_blank">Instagram</a>
+    <a href="#contact" class="ft-link">お問い合わせ</a>
+  </div>
   <div class="ft-hash">#ハレマップ &nbsp;#HARECOLLECTION2026 &nbsp;#ハレコレ2026</div>
+  <div class="ft-copy">© 2026 HAREMAP / HARE COLLECTION</div>
 </footer>
 
 <script>
@@ -647,6 +733,13 @@ const STORES = [
   {id:'s259',name:'KUGO SALON',area:'心斎橋',addr:'',phone:'',hours:'',holiday:'',cat:'飲食',tags:[],bg:'g-food',lat:0,lng:0,region:'心斎橋・難波'},
 ];
 
+// 重複店舗の排除（同名店舗が複数ある場合、最初のエントリを保持）
+(function(){
+  const seen=new Set(),deduped=[];
+  STORES.forEach(s=>{if(!seen.has(s.name)){seen.add(s.name);deduped.push(s);}});
+  STORES.length=0;STORES.push(...deduped);
+})();
+
 let activeCat='', activeRegion='', searchQ='';
 
 const PLAN_ORDER={matsu:0,take:1,ume:2};
@@ -739,7 +832,7 @@ function renderCard(s){
   // 無料: 2行レイアウト（カテゴリ+エリア / 店舗名）、長い名前は縮小
   const nLen=s.name.length;
   const nSize=nLen>20?'10px':nLen>14?'11px':'12.5px';
-  return `<div class="shop-card shop-card-free">
+  return `<div class="shop-card shop-card-free ${s.bg}">
     <div class="shop-body">
       <div class="free-meta-row"><span class="free-cat-chip">${s.cat}</span><span class="free-area-text">${s.area}</span></div>
       <div class="shop-name" style="font-size:${nSize}">${s.name}</div>
@@ -766,20 +859,26 @@ function renderGrid(){
 }
 
 function renderAreaStats(){
-  const regions=[...new Set(STORES.map(s=>s.region))].sort();
+  const counts=new Map();
+  STORES.forEach(s=>{counts.set(s.region,(counts.get(s.region)||0)+1);});
+  const regions=[...counts.entries()].sort((a,b)=>b[1]-a[1]).map(e=>e[0]);
+  const maxN=counts.get(regions[0])||1;
   const grid=document.getElementById('areaStatsGrid');
   if(!grid) return;
   const allCard=`<button class="area-stat-card${activeRegion===''?' on':''}" data-region="">
     <div class="area-stat-name">全エリア</div>
     <div class="area-stat-n">${STORES.length}</div>
     <div class="area-stat-unit">STORES</div>
+    <div class="area-stat-bar"><div class="area-stat-bar-fill" style="width:100%"></div></div>
   </button>`;
   grid.innerHTML=allCard+regions.map(r=>{
-    const n=STORES.filter(s=>s.region===r).length;
+    const n=counts.get(r);
+    const pct=Math.round(n/maxN*100);
     return `<button class="area-stat-card" data-region="${r}">
       <div class="area-stat-name">${r}</div>
       <div class="area-stat-n">${n}</div>
       <div class="area-stat-unit">STORES</div>
+      <div class="area-stat-bar"><div class="area-stat-bar-fill" style="width:${pct}%"></div></div>
     </button>`;
   }).join('');
   grid.querySelectorAll('.area-stat-card').forEach(btn=>{
