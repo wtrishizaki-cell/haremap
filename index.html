@@ -319,13 +319,6 @@ footer{background:var(--dark);padding:44px 28px;text-align:center}
   </div>
 </nav>
 
-<div class="event-banner">
-  <div class="event-banner-inner">
-    <span class="event-chip">EVENT</span>
-    <span class="event-banner-text">HARE COLLECTION 2026 — 2026年8月8日 開催</span>
-    <a href="https://www.instagram.com/harecollection2026" class="event-banner-link" target="_blank">詳細を見る →</a>
-  </div>
-</div>
 
 <section class="hero">
   <div class="hero-eyebrow">HARE COLLECTION 2026 — 公式掲載店舗サイト</div>
@@ -478,7 +471,7 @@ const STORES = [
   {id:'s06',name:'the blue donut',area:'玉造',addr:'大阪府大阪市東成区中道1-8-13',phone:'',hours:'10:00〜16:00（売切次第終了）',holiday:'月・火曜',cat:'カフェ',tags:['ドーナツ','スイーツ'],bg:'g-cafe',lat:34.6708,lng:135.5323,region:'玉造・東成'},
   {id:'s08',name:'MUKU',area:'本町',addr:'大阪府大阪市中央区淡路町4-4-18 プラシーデンス淡路町1F',phone:'080-6314-2432',hours:'8:00〜17:00',holiday:'日・祝日',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.6861,lng:135.5036,region:'心斎橋・難波'},
   {id:'s09',name:'アワログカフェ（Ourlog coffee）',area:'本町',addr:'大阪市中央区淡路町4丁目7-5',phone:'',hours:'月〜金8:00〜19:00 土日祝10:00〜19:00',holiday:'なし',cat:'カフェ',tags:['コーヒー','本町'],bg:'g-cafe',lat:34.6858,lng:135.5040,region:'心斎橋・難波'},
-  {id:'s10',name:'Cafe CHARBON',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目6-23',phone:'06-4391-7215',hours:'平日・日祝 11:30〜22:00 / 金土・祝前 11:30〜23:00',holiday:'年末年始',cat:'カフェ',tags:['カフェ'],bg:'g-cafe',lat:34.6696,lng:135.4916,region:'堀江',plan:'matsu',photo:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80',photos:['https://images.unsplash.com/photo-1541167760496-1628856ab772?w=300&q=80','https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&q=80','https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=300&q=80'],desc:'大阪・堀江の人気夜カフェ。深夜まで営業するスタイリッシュな空間で、こだわりのドリンクとフードが楽しめる。ハレの世界観と溶け合うムーディーな雰囲気が魅力。',igUrl:'https://www.instagram.com/',hareMedia:true,tiktokId:'7634529308790230290',tiktokUrl:'https://vt.tiktok.com/ZSC2PAjbL/'},
+  {id:'s10',name:'Cafe CHARBON',area:'堀江',addr:'大阪府大阪市西区北堀江1丁目6-23',phone:'06-4391-7215',hours:'平日・日祝 11:30〜22:00 / 金土・祝前 11:30〜23:00',holiday:'年末年始',cat:'カフェ',tags:['カフェ'],bg:'g-cafe',lat:34.6696,lng:135.4916,region:'堀江',plan:'matsu',photo:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80',photos:['https://images.unsplash.com/photo-1541167760496-1628856ab772?w=300&q=80','https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&q=80','https://images.unsplash.com/photo-1559305616-3f99cd43e353?w=300&q=80'],desc:'大阪・堀江の人気夜カフェ。深夜まで営業するスタイリッシュな空間で、こだわりのドリンクとフードが楽しめる。ハレの世界観と溶け合うムーディーな雰囲気が魅力。',igUrl:'https://www.instagram.com/',mapUrl:'https://maps.app.goo.gl/TuYveGmAEmZxivaB9',hareMedia:true,tiktokId:'7634529308790230290',tiktokUrl:'https://vt.tiktok.com/ZSC2PAjbL/'},
   {id:'s11',name:'RENGA',area:'松屋町',addr:'大阪府大阪市中央区松屋町4-18 実和ビル1F',phone:'06-6777-6696',hours:'7:00〜21:00',holiday:'正月3日のみ',cat:'カフェ',tags:['コーヒー','モーニング'],bg:'g-cafe',lat:34.6762,lng:135.5147,region:'心斎橋・難波'},
   {id:'s13',name:'ソレアス整骨院',area:'福島',addr:'大阪府大阪市福島区福島1-2-30 市光ビル2F',phone:'06-6695-7532',hours:'10:30〜20:30',holiday:'日曜',cat:'整体',tags:['整骨院','ケア'],bg:'g-gym',lat:34.693,lng:135.4742,region:'梅田・北区'},
   {id:'s14',name:'たまごのたまこ',area:'谷町6丁目',addr:'大阪府大阪市中央区谷町6丁目4-26',phone:'090-4279-2310',hours:'火〜日11:30〜16:00',holiday:'月曜',cat:'カフェ',tags:['カフェ','スイーツ'],bg:'g-cafe',lat:34.6774,lng:135.5186,region:'心斎橋・難波'},
@@ -806,7 +799,10 @@ function renderCard(s){
         ${s.desc?`<div class="shop-desc">${s.desc}</div>`:''}
         ${info}
         ${gallery}
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${igBtn}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          ${igBtn}
+          ${s.mapUrl?`<a href="${s.mapUrl}" class="shop-ig" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Googleマップ</a>`:''}
+        </div>
       </div>
     </div>`;
   }
